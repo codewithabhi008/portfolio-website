@@ -1,5 +1,5 @@
 /* =====================================================
-   PORTFOLIO WEBSITE
+   ABHIJEET TIWARI PORTFOLIO
    Main CSS
 ===================================================== */
 
@@ -58,6 +58,7 @@ body {
     color: var(--text);
     line-height: 1.6;
     transition: background var(--transition), color var(--transition);
+    overflow-x: hidden;
 }
 
 a {
@@ -119,20 +120,26 @@ body.dark .header {
 }
 
 
-/* Logo */
+/* ================= LOGO ================= */
 
 .logo {
     font-size: 1.6rem;
     font-weight: 800;
     color: var(--text);
+
+    transition: var(--transition);
 }
 
 .logo span {
     color: var(--primary);
 }
 
+.logo:hover {
+    transform: translateY(-2px);
+}
 
-/* Navigation */
+
+/* ================= NAVIGATION ================= */
 
 .nav-menu {
     display: flex;
@@ -177,7 +184,7 @@ body.dark .header {
 }
 
 
-/* Navbar buttons */
+/* ================= NAVBAR BUTTONS ================= */
 
 .nav-actions {
     display: flex;
@@ -248,7 +255,7 @@ body.dark .header {
 }
 
 
-/* Hero text */
+/* ================= HERO TEXT ================= */
 
 .hello {
     color: var(--primary);
@@ -293,7 +300,7 @@ body.dark .header {
 }
 
 
-/* Buttons */
+/* ================= BUTTONS ================= */
 
 .hero-buttons {
     display: flex;
@@ -355,7 +362,7 @@ body.dark .header {
 }
 
 
-/* Social */
+/* ================= SOCIAL ================= */
 
 .social-links {
     display: flex;
@@ -388,7 +395,7 @@ body.dark .header {
 }
 
 
-/* Hero image */
+/* ================= HERO IMAGE ================= */
 
 .hero-image {
     position: relative;
@@ -445,7 +452,7 @@ body.dark .header {
 }
 
 
-/* Floating cards */
+/* ================= FLOATING CARDS ================= */
 
 .floating-card {
     position: absolute;
@@ -488,7 +495,7 @@ body.dark .header {
 }
 
 
-/* Scroll */
+/* ================= SCROLL ================= */
 
 .scroll-down {
     position: absolute;
@@ -520,16 +527,13 @@ body.dark .header {
     padding: 100px 0;
 }
 
-.skills-section {
-    background: var(--bg-secondary);
-}
-
+.skills-section,
 .contact-section {
     background: var(--bg-secondary);
 }
 
 
-/* Section heading */
+/* ================= SECTION HEADING ================= */
 
 .section-heading {
     text-align: center;
@@ -581,7 +585,7 @@ body.dark .header {
 }
 
 
-/* Code card */
+/* ================= CODE CARD ================= */
 
 .about-card {
     padding: 1.5rem;
@@ -666,7 +670,7 @@ body.dark .header {
 }
 
 
-/* About text */
+/* ================= ABOUT TEXT ================= */
 
 .about-text h3 {
     font-size: 2rem;
@@ -1082,7 +1086,7 @@ body.dark .header {
 }
 
 
-/* Form */
+/* ================= FORM ================= */
 
 .contact-form {
     padding: 2rem;
@@ -1278,7 +1282,7 @@ body.dark .header {
 }
 
 
-/* Scroll reveal */
+/* ================= SCROLL REVEAL ================= */
 
 .reveal {
     opacity: 0;
@@ -1350,16 +1354,19 @@ body.dark .header {
 
         gap: 3rem;
     }
-
 }
 
 
 @media (max-width: 700px) {
 
+    .navbar {
+        min-height: 70px;
+    }
+
     .nav-menu {
         position: absolute;
 
-        top: 75px;
+        top: 70px;
         left: 0;
 
         width: 100%;
@@ -1412,7 +1419,16 @@ body.dark .header {
     }
 
     .hero h1 {
+        font-size: clamp(2.7rem, 12vw, 4rem);
         letter-spacing: -2px;
+    }
+
+    .hero h2 {
+        font-size: 1.35rem;
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
     }
 
     .scroll-down {
@@ -1437,11 +1453,14 @@ body.dark .header {
 
         text-align: center;
     }
-
 }
 
 
 @media (max-width: 450px) {
+
+    .container {
+        width: 90%;
+    }
 
     .section {
         padding: 75px 0;
@@ -1474,6 +1493,23 @@ body.dark .header {
         padding: 1.2rem;
     }
 
+    .about-card {
+        padding: 1rem;
+    }
+
+    .code-content {
+        padding: 1rem;
+
+        font-size: 0.8rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
 }
 
 
@@ -1492,5 +1528,4 @@ body.dark .header {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-
 }
