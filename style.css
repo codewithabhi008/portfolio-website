@@ -4,7 +4,9 @@
 ===================================================== */
 
 
-/* ================= VARIABLES ================= */
+/* =====================================================
+   VARIABLES
+===================================================== */
 
 :root {
     --primary: #6366f1;
@@ -17,32 +19,53 @@
 
     --text: #111827;
     --text-secondary: #64748b;
+
     --border: #e2e8f0;
+
+    --success: #22c55e;
+    --danger: #ef4444;
 
     --shadow:
         0 10px 30px rgba(15, 23, 42, 0.08);
+
+    --shadow-lg:
+        0 20px 50px rgba(15, 23, 42, 0.12);
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
 
     --transition: 0.3s ease;
 }
 
 
-/* ================= DARK MODE ================= */
+/* =====================================================
+   DARK MODE
+===================================================== */
 
 body.dark {
+
     --bg: #0b1120;
     --bg-secondary: #111827;
     --card: #151e2e;
 
     --text: #f8fafc;
     --text-secondary: #94a3b8;
+
     --border: #263244;
 
     --shadow:
         0 10px 30px rgba(0, 0, 0, 0.25);
+
+    --shadow-lg:
+        0 20px 50px rgba(0, 0, 0, 0.35);
 }
 
 
-/* ================= RESET ================= */
+/* =====================================================
+   RESET
+===================================================== */
 
 * {
     margin: 0;
@@ -52,20 +75,32 @@ body.dark {
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
+    scroll-padding-top: 85px;
 }
 
 body {
+    min-height: 100vh;
+
     font-family: "Inter", sans-serif;
+
     background: var(--bg);
     color: var(--text);
+
     line-height: 1.6;
 
     transition:
-        background var(--transition),
+        background-color var(--transition),
         color var(--transition);
 
     overflow-x: hidden;
+}
+
+body,
+button,
+input,
+textarea {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -73,12 +108,14 @@ a {
     color: inherit;
 }
 
-ul {
+ul,
+ol {
     list-style: none;
 }
 
 img {
     max-width: 100%;
+    height: auto;
     display: block;
 }
 
@@ -88,16 +125,39 @@ textarea {
     font-family: inherit;
 }
 
+button {
+    border: 0;
+}
 
-/* ================= CONTAINER ================= */
-
-.container {
-    width: min(1120px, 92%);
-    margin: auto;
+::selection {
+    color: #ffffff;
+    background: var(--primary);
 }
 
 
-/* ================= HEADER ================= */
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+
+:focus-visible {
+    outline: 3px solid rgba(99, 102, 241, 0.45);
+    outline-offset: 3px;
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container {
+    width: min(1120px, 92%);
+    margin-inline: auto;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
 
 .header {
     position: fixed;
@@ -109,18 +169,20 @@ textarea {
 
     z-index: 1000;
 
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.88);
 
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
 
     border-bottom: 1px solid var(--border);
 
-    transition: var(--transition);
+    transition:
+        background-color var(--transition),
+        border-color var(--transition);
 }
 
 body.dark .header {
-    background: rgba(11, 17, 32, 0.85);
+    background: rgba(11, 17, 32, 0.9);
 }
 
 .navbar {
@@ -132,15 +194,21 @@ body.dark .header {
 }
 
 
-/* ================= LOGO ================= */
+/* =====================================================
+   LOGO
+===================================================== */
 
 .logo {
+    display: inline-block;
+
     font-size: 1.6rem;
     font-weight: 800;
 
     color: var(--text);
 
-    transition: var(--transition);
+    transition:
+        color var(--transition),
+        transform var(--transition);
 }
 
 .logo span {
@@ -152,7 +220,9 @@ body.dark .header {
 }
 
 
-/* ================= NAVIGATION ================= */
+/* =====================================================
+   NAVIGATION
+===================================================== */
 
 .nav-menu {
     display: flex;
@@ -164,12 +234,15 @@ body.dark .header {
 .nav-link {
     position: relative;
 
+    display: inline-block;
+
     font-size: 0.95rem;
     font-weight: 600;
 
     color: var(--text-secondary);
 
-    transition: var(--transition);
+    transition:
+        color var(--transition);
 }
 
 .nav-link:hover,
@@ -188,9 +261,11 @@ body.dark .header {
     width: 0;
     height: 2px;
 
+    border-radius: 10px;
+
     background: var(--primary);
 
-    transition: var(--transition);
+    transition: width var(--transition);
 }
 
 .nav-link:hover::after,
@@ -199,7 +274,9 @@ body.dark .header {
 }
 
 
-/* ================= NAVBAR BUTTONS ================= */
+/* =====================================================
+   NAV ACTIONS
+===================================================== */
 
 .nav-actions {
     display: flex;
@@ -213,23 +290,33 @@ body.dark .header {
     width: 42px;
     height: 42px;
 
+    display: grid;
+    place-items: center;
+
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: var(--radius-sm);
 
     background: var(--card);
     color: var(--text);
 
     cursor: pointer;
 
-    transition: var(--transition);
+    transition:
+        color var(--transition),
+        background var(--transition),
+        border-color var(--transition),
+        transform var(--transition);
 }
 
 .icon-btn:hover,
 .menu-btn:hover {
-    color: white;
+    color: #ffffff;
 
     background: var(--primary);
+
     border-color: var(--primary);
+
+    transform: translateY(-2px);
 }
 
 .menu-btn {
@@ -237,7 +324,9 @@ body.dark .header {
 }
 
 
-/* ================= HERO ================= */
+/* =====================================================
+   HERO
+===================================================== */
 
 .hero {
     min-height: 100vh;
@@ -264,6 +353,20 @@ body.dark .header {
         );
 }
 
+body.dark .hero {
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(99, 102, 241, 0.12),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(139, 92, 246, 0.12),
+            transparent 35%
+        );
+}
+
 .hero-content {
     display: grid;
 
@@ -275,7 +378,9 @@ body.dark .header {
 }
 
 
-/* ================= HERO TEXT ================= */
+/* =====================================================
+   HERO TEXT
+===================================================== */
 
 .hello {
     color: var(--primary);
@@ -301,6 +406,8 @@ body.dark .header {
 }
 
 .hero h2 {
+    min-height: 48px;
+
     font-size: clamp(1.3rem, 3vw, 2rem);
 
     color: var(--text-secondary);
@@ -310,6 +417,11 @@ body.dark .header {
 
 .hero h2 span {
     color: var(--secondary);
+}
+
+#typingText {
+    display: inline-block;
+    min-width: 190px;
 }
 
 .hero-description {
@@ -323,7 +435,9 @@ body.dark .header {
 }
 
 
-/* ================= BUTTONS ================= */
+/* =====================================================
+   BUTTONS
+===================================================== */
 
 .hero-buttons {
     display: flex;
@@ -343,21 +457,29 @@ body.dark .header {
 
     gap: 0.6rem;
 
+    min-height: 46px;
+
     padding: 0.85rem 1.4rem;
 
-    border-radius: 10px;
+    border: 2px solid transparent;
 
+    border-radius: var(--radius-sm);
+
+    font-size: 0.95rem;
     font-weight: 700;
 
     cursor: pointer;
 
-    border: 2px solid transparent;
-
-    transition: var(--transition);
+    transition:
+        background var(--transition),
+        color var(--transition),
+        border-color var(--transition),
+        transform var(--transition),
+        box-shadow var(--transition);
 }
 
 .primary-btn {
-    color: white;
+    color: #ffffff;
 
     background: var(--primary);
 
@@ -366,6 +488,8 @@ body.dark .header {
 }
 
 .primary-btn:hover {
+    color: #ffffff;
+
     background: var(--primary-dark);
 
     transform: translateY(-3px);
@@ -375,43 +499,44 @@ body.dark .header {
 }
 
 .secondary-btn {
-    border-color: var(--border);
-
     color: var(--text);
 
     background: transparent;
+
+    border-color: var(--border);
 }
 
 .secondary-btn:hover {
-    color: white;
-
-    border-color: var(--primary);
+    color: #ffffff;
 
     background: var(--primary);
+
+    border-color: var(--primary);
 
     transform: translateY(-3px);
 }
 
 
-/* ================= RESUME BUTTON ================= */
+/* =====================================================
+   RESUME BUTTON
+===================================================== */
 
-.resume-btn {
+.about-text .primary-btn {
     margin-top: 0.5rem;
-
-    box-shadow:
-        0 10px 25px rgba(99, 102, 241, 0.22);
 }
 
-.resume-btn i {
+.about-text .primary-btn i {
     transition: transform var(--transition);
 }
 
-.resume-btn:hover i {
+.about-text .primary-btn:hover i {
     transform: translateY(3px);
 }
 
 
-/* ================= SOCIAL ================= */
+/* =====================================================
+   SOCIAL LINKS
+===================================================== */
 
 .social-links {
     display: flex;
@@ -433,12 +558,18 @@ body.dark .header {
 
     color: var(--text-secondary);
 
-    transition: var(--transition);
+    background: transparent;
+
+    transition:
+        color var(--transition),
+        background var(--transition),
+        border-color var(--transition),
+        transform var(--transition);
 }
 
 .social-links a:hover,
 .footer-social a:hover {
-    color: white;
+    color: #ffffff;
 
     background: var(--primary);
 
@@ -448,7 +579,9 @@ body.dark .header {
 }
 
 
-/* ================= HERO IMAGE ================= */
+/* =====================================================
+   HERO IMAGE
+===================================================== */
 
 .hero-image {
     position: relative;
@@ -456,6 +589,9 @@ body.dark .header {
     display: flex;
 
     justify-content: center;
+    align-items: center;
+
+    min-height: 400px;
 }
 
 .image-container {
@@ -464,9 +600,9 @@ body.dark .header {
     width: 350px;
     height: 350px;
 
-    border-radius: 50%;
-
     padding: 8px;
+
+    border-radius: 50%;
 
     background:
         linear-gradient(
@@ -494,6 +630,8 @@ body.dark .header {
 
     inset: -30px;
 
+    z-index: -1;
+
     border-radius: 50%;
 
     background: var(--primary);
@@ -501,29 +639,28 @@ body.dark .header {
     filter: blur(80px);
 
     opacity: 0.15;
-
-    z-index: -1;
 }
 
 
-/* ================= FLOATING CARDS ================= */
+/* =====================================================
+   FLOATING CARDS
+===================================================== */
 
 .floating-card {
     position: absolute;
 
     display: flex;
-
     align-items: center;
 
     gap: 0.6rem;
 
     padding: 0.8rem 1rem;
 
-    border-radius: 10px;
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-sm);
 
     background: var(--card);
-
-    border: 1px solid var(--border);
 
     box-shadow: var(--shadow);
 
@@ -543,14 +680,16 @@ body.dark .header {
 }
 
 .card-two {
-    bottom: 18%;
     right: 0;
+    bottom: 18%;
 
     animation-delay: 1s;
 }
 
 
-/* ================= SCROLL ================= */
+/* =====================================================
+   SCROLL DOWN
+===================================================== */
 
 .scroll-down {
     position: absolute;
@@ -558,12 +697,9 @@ body.dark .header {
     bottom: 25px;
     left: 50%;
 
-    transform: translateX(-50%);
-
     display: flex;
 
     flex-direction: column;
-
     align-items: center;
 
     gap: 0.3rem;
@@ -571,6 +707,14 @@ body.dark .header {
     color: var(--text-secondary);
 
     font-size: 0.75rem;
+
+    transform: translateX(-50%);
+
+    transition: color var(--transition);
+}
+
+.scroll-down:hover {
+    color: var(--primary);
 }
 
 .scroll-down i {
@@ -578,7 +722,9 @@ body.dark .header {
 }
 
 
-/* ================= SECTION ================= */
+/* =====================================================
+   SECTIONS
+===================================================== */
 
 .section {
     padding: 100px 0;
@@ -590,7 +736,9 @@ body.dark .header {
 }
 
 
-/* ================= SECTION HEADING ================= */
+/* =====================================================
+   SECTION HEADING
+===================================================== */
 
 .section-heading {
     text-align: center;
@@ -611,6 +759,8 @@ body.dark .header {
 
 .section-heading h2 {
     font-size: clamp(2rem, 5vw, 3rem);
+
+    line-height: 1.2;
 }
 
 .section-heading h2 span {
@@ -629,7 +779,9 @@ body.dark .header {
 }
 
 
-/* ================= ABOUT ================= */
+/* =====================================================
+   ABOUT
+===================================================== */
 
 .about-content {
     display: grid;
@@ -642,12 +794,14 @@ body.dark .header {
 }
 
 
-/* ================= CODE CARD ================= */
+/* =====================================================
+   ABOUT CODE CARD
+===================================================== */
 
 .about-card {
     padding: 1.5rem;
 
-    border-radius: 20px;
+    border-radius: var(--radius-lg);
 
     background:
         linear-gradient(
@@ -661,17 +815,18 @@ body.dark .header {
 
     transform: rotate(-2deg);
 
-    transition: var(--transition);
+    transition:
+        transform var(--transition);
 }
 
 .about-card:hover {
-    transform: rotate(0) translateY(-8px);
+    transform: rotate(0deg) translateY(-8px);
 }
 
 .code-window {
     overflow: hidden;
 
-    border-radius: 12px;
+    border-radius: var(--radius-md);
 
     background: #020617;
 }
@@ -710,7 +865,12 @@ body.dark .header {
 
     color: #cbd5e1;
 
-    font-family: monospace;
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 0.95rem;
 
     line-height: 2;
 }
@@ -728,10 +888,14 @@ body.dark .header {
 }
 
 
-/* ================= ABOUT TEXT ================= */
+/* =====================================================
+   ABOUT TEXT
+===================================================== */
 
 .about-text h3 {
     font-size: 2rem;
+
+    line-height: 1.3;
 
     margin-bottom: 1.2rem;
 }
@@ -760,24 +924,30 @@ body.dark .header {
     display: flex;
 
     flex-direction: column;
+
+    gap: 0.15rem;
 }
 
 .about-info strong {
-    font-size: 0.8rem;
-
     color: var(--text-secondary);
+
+    font-size: 0.8rem;
 }
 
 .about-info span {
     font-weight: 600;
+
+    word-break: break-word;
 }
 
-.available {
-    color: #22c55e !important;
+.about-info .available {
+    color: var(--success);
 }
 
 
-/* ================= SKILLS ================= */
+/* =====================================================
+   SKILLS
+===================================================== */
 
 .skills-grid {
     display: grid;
@@ -798,7 +968,10 @@ body.dark .header {
 
     background: var(--card);
 
-    transition: var(--transition);
+    transition:
+        transform var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
 }
 
 .skill-card:hover {
@@ -814,7 +987,6 @@ body.dark .header {
     height: 55px;
 
     display: grid;
-
     place-items: center;
 
     border-radius: 12px;
@@ -826,37 +998,31 @@ body.dark .header {
 
 .skill-icon.html {
     color: #f97316;
-
     background: rgba(249, 115, 22, 0.1);
 }
 
 .skill-icon.css {
     color: #3b82f6;
-
     background: rgba(59, 130, 246, 0.1);
 }
 
 .skill-icon.js {
     color: #eab308;
-
     background: rgba(234, 179, 8, 0.1);
 }
 
 .skill-icon.git {
     color: #f97316;
-
     background: rgba(249, 115, 22, 0.1);
 }
 
 .skill-icon.react {
     color: #06b6d4;
-
     background: rgba(6, 182, 212, 0.1);
 }
 
 .skill-icon.responsive {
     color: var(--primary);
-
     background: rgba(99, 102, 241, 0.1);
 }
 
@@ -865,6 +1031,8 @@ body.dark .header {
 }
 
 .skill-card p {
+    min-height: 48px;
+
     color: var(--text-secondary);
 
     font-size: 0.9rem;
@@ -873,6 +1041,7 @@ body.dark .header {
 }
 
 .progress {
+    width: 100%;
     height: 6px;
 
     overflow: hidden;
@@ -906,7 +1075,9 @@ body.dark .header {
 }
 
 
-/* ================= PROJECTS ================= */
+/* =====================================================
+   PROJECTS
+===================================================== */
 
 .projects-grid {
     display: grid;
@@ -919,19 +1090,27 @@ body.dark .header {
 .project-card {
     overflow: hidden;
 
+    display: flex;
+    flex-direction: column;
+
     border: 1px solid var(--border);
 
     border-radius: 15px;
 
     background: var(--card);
 
-    transition: var(--transition);
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition);
 }
 
 .project-card:hover {
     transform: translateY(-8px);
 
-    box-shadow: var(--shadow);
+    border-color: rgba(99, 102, 241, 0.35);
+
+    box-shadow: var(--shadow-lg);
 }
 
 .project-image {
@@ -940,7 +1119,6 @@ body.dark .header {
     position: relative;
 
     display: grid;
-
     place-items: center;
 
     overflow: hidden;
@@ -978,17 +1156,27 @@ body.dark .header {
 
     font-size: 5rem;
 
-    transition: var(--transition);
+    transition:
+        transform var(--transition);
 }
 
 .project-card:hover .project-big-icon {
-    transform: scale(1.15) rotate(-5deg);
+    transform:
+        scale(1.15)
+        rotate(-5deg);
 }
+
+
+/* =====================================================
+   PROJECT OVERLAY
+===================================================== */
 
 .project-overlay {
     position: absolute;
 
     inset: 0;
+
+    z-index: 2;
 
     display: flex;
 
@@ -1001,9 +1189,7 @@ body.dark .header {
 
     opacity: 0;
 
-    transition: var(--transition);
-
-    z-index: 2;
+    transition: opacity var(--transition);
 }
 
 .project-card:hover .project-overlay {
@@ -1015,27 +1201,39 @@ body.dark .header {
     height: 45px;
 
     display: grid;
-
     place-items: center;
 
     border-radius: 50%;
 
-    color: var(--text);
+    color: #111827;
 
-    background: white;
+    background: #ffffff;
 
-    transition: var(--transition);
+    transition:
+        color var(--transition),
+        background var(--transition),
+        transform var(--transition);
 }
 
 .project-overlay a:hover {
-    color: white;
+    color: #ffffff;
 
     background: var(--primary);
 
     transform: scale(1.1);
 }
 
+
+/* =====================================================
+   PROJECT CONTENT
+===================================================== */
+
 .project-content {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
     padding: 1.5rem;
 }
 
@@ -1075,6 +1273,10 @@ body.dark .header {
 }
 
 .project-link {
+    width: fit-content;
+
+    margin-top: auto;
+
     color: var(--primary);
 
     font-size: 0.9rem;
@@ -1085,7 +1287,8 @@ body.dark .header {
 .project-link i {
     margin-left: 0.3rem;
 
-    transition: var(--transition);
+    transition:
+        transform var(--transition);
 }
 
 .project-link:hover i {
@@ -1093,7 +1296,9 @@ body.dark .header {
 }
 
 
-/* ================= CONTACT ================= */
+/* =====================================================
+   CONTACT
+===================================================== */
 
 .contact-content {
     display: grid;
@@ -1101,10 +1306,14 @@ body.dark .header {
     grid-template-columns: 0.8fr 1.2fr;
 
     gap: 4rem;
+
+    align-items: start;
 }
 
 .contact-info h3 {
     font-size: 2rem;
+
+    line-height: 1.3;
 
     margin-bottom: 1rem;
 }
@@ -1132,7 +1341,6 @@ body.dark .header {
     flex-shrink: 0;
 
     display: grid;
-
     place-items: center;
 
     border-radius: 10px;
@@ -1140,6 +1348,10 @@ body.dark .header {
     color: var(--primary);
 
     background: rgba(99, 102, 241, 0.1);
+}
+
+.contact-item > div:last-child {
+    min-width: 0;
 }
 
 .contact-item span {
@@ -1153,6 +1365,12 @@ body.dark .header {
 .contact-item p,
 .contact-item a {
     font-weight: 600;
+
+    overflow-wrap: anywhere;
+}
+
+.contact-item a {
+    transition: color var(--transition);
 }
 
 .contact-item a:hover {
@@ -1160,7 +1378,9 @@ body.dark .header {
 }
 
 
-/* ================= FORM ================= */
+/* =====================================================
+   CONTACT FORM
+===================================================== */
 
 .contact-form {
     padding: 2rem;
@@ -1191,6 +1411,8 @@ body.dark .header {
 
     margin-bottom: 0.5rem;
 
+    color: var(--text);
+
     font-size: 0.85rem;
 
     font-weight: 600;
@@ -1214,7 +1436,21 @@ body.dark .header {
 
     background: var(--bg);
 
-    transition: var(--transition);
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition),
+        background var(--transition);
+}
+
+.input-box textarea {
+    min-height: 150px;
+}
+
+.input-box input::placeholder,
+.input-box textarea::placeholder {
+    color: var(--text-secondary);
+
+    opacity: 0.75;
 }
 
 .input-box input:focus,
@@ -1226,13 +1462,17 @@ body.dark .header {
 }
 
 #formMessage {
+    min-height: 20px;
+
     margin-top: 1rem;
 
     font-size: 0.85rem;
 }
 
 
-/* ================= FOOTER ================= */
+/* =====================================================
+   FOOTER
+===================================================== */
 
 .footer {
     padding-top: 2rem;
@@ -1256,6 +1496,12 @@ body.dark .header {
     color: var(--text-secondary);
 
     font-size: 0.85rem;
+
+    text-align: center;
+}
+
+.footer-content strong {
+    color: var(--text);
 }
 
 .footer-social {
@@ -1284,7 +1530,9 @@ body.dark .header {
 }
 
 
-/* ================= BACK TO TOP ================= */
+/* =====================================================
+   BACK TO TOP
+===================================================== */
 
 .back-to-top {
     position: fixed;
@@ -1296,14 +1544,13 @@ body.dark .header {
     height: 45px;
 
     display: grid;
-
     place-items: center;
 
     border: none;
 
     border-radius: 10px;
 
-    color: white;
+    color: #ffffff;
 
     background: var(--primary);
 
@@ -1314,7 +1561,11 @@ body.dark .header {
 
     transform: translateY(20px);
 
-    transition: var(--transition);
+    transition:
+        opacity var(--transition),
+        visibility var(--transition),
+        transform var(--transition),
+        background var(--transition);
 
     z-index: 999;
 }
@@ -1334,7 +1585,9 @@ body.dark .header {
 }
 
 
-/* ================= ANIMATIONS ================= */
+/* =====================================================
+   ANIMATIONS
+===================================================== */
 
 @keyframes floating {
 
@@ -1361,9 +1614,22 @@ body.dark .header {
 }
 
 
-/* ================= SCROLL REVEAL ================= */
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+/*
+   JS active hone par animation chalega.
+   JS disabled ho to content hidden nahi hoga.
+*/
 
 .reveal {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+.js-enabled .reveal {
     opacity: 0;
 
     transform: translateY(40px);
@@ -1373,14 +1639,36 @@ body.dark .header {
         transform 0.7s ease;
 }
 
-.reveal.active {
+.js-enabled .reveal.active {
     opacity: 1;
 
     transform: translateY(0);
 }
 
 
-/* ================= RESPONSIVE ================= */
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1000px) {
+
+    .hero-content {
+        gap: 3rem;
+    }
+
+    .about-content {
+        gap: 3rem;
+    }
+
+    .contact-content {
+        gap: 2.5rem;
+    }
+}
+
+
+/* =====================================================
+   TABLET / SMALL LAPTOP
+===================================================== */
 
 @media (max-width: 900px) {
 
@@ -1404,6 +1692,8 @@ body.dark .header {
 
     .hero-image {
         order: -1;
+
+        min-height: 330px;
     }
 
     .image-container {
@@ -1418,9 +1708,9 @@ body.dark .header {
     }
 
     .about-image {
-        max-width: 600px;
+        width: min(100%, 600px);
 
-        margin: auto;
+        margin-inline: auto;
     }
 
     .skills-grid,
@@ -1436,7 +1726,9 @@ body.dark .header {
 }
 
 
-/* ================= TABLET / MOBILE ================= */
+/* =====================================================
+   MOBILE NAVIGATION
+===================================================== */
 
 @media (max-width: 700px) {
 
@@ -1452,6 +1744,8 @@ body.dark .header {
 
         width: 100%;
 
+        z-index: 999;
+
         flex-direction: column;
 
         align-items: flex-start;
@@ -1464,19 +1758,28 @@ body.dark .header {
 
         border-bottom: 1px solid var(--border);
 
-        transform: translateY(-150%);
+        box-shadow: var(--shadow);
+
+        transform: translateY(-120%);
 
         opacity: 0;
 
+        visibility: hidden;
+
         pointer-events: none;
 
-        transition: var(--transition);
+        transition:
+            transform var(--transition),
+            opacity var(--transition),
+            visibility var(--transition);
     }
 
     .nav-menu.active {
         transform: translateY(0);
 
         opacity: 1;
+
+        visibility: visible;
 
         pointer-events: auto;
     }
@@ -1488,6 +1791,8 @@ body.dark .header {
     .nav-link {
         display: block;
 
+        width: 100%;
+
         padding: 0.8rem 0;
     }
 
@@ -1496,7 +1801,11 @@ body.dark .header {
     }
 
     .menu-btn {
-        display: block;
+        display: grid;
+    }
+
+    .hero {
+        padding-top: 100px;
     }
 
     .hero h1 {
@@ -1509,6 +1818,10 @@ body.dark .header {
         font-size: 1.35rem;
     }
 
+    #typingText {
+        min-width: 0;
+    }
+
     .hero-description {
         font-size: 0.95rem;
     }
@@ -1517,9 +1830,21 @@ body.dark .header {
         display: none;
     }
 
+    .section {
+        padding: 80px 0;
+    }
+
+    .section-heading {
+        margin-bottom: 45px;
+    }
+
     .skills-grid,
     .projects-grid {
         grid-template-columns: 1fr;
+    }
+
+    .skill-card p {
+        min-height: auto;
     }
 
     .about-info {
@@ -1538,20 +1863,25 @@ body.dark .header {
 }
 
 
-/* ================= SMALL MOBILE ================= */
+/* =====================================================
+   MOBILE
+===================================================== */
 
-@media (max-width: 450px) {
+@media (max-width: 550px) {
 
     .container {
-        width: 90%;
-    }
-
-    .section {
-        padding: 75px 0;
+        width: 92%;
     }
 
     .hero {
-        padding-top: 100px;
+        min-height: auto;
+
+        padding-top: 120px;
+        padding-bottom: 80px;
+    }
+
+    .hero-image {
+        min-height: 260px;
     }
 
     .image-container {
@@ -1573,10 +1903,6 @@ body.dark .header {
         right: -5px;
     }
 
-    .contact-form {
-        padding: 1.2rem;
-    }
-
     .about-card {
         padding: 1rem;
     }
@@ -1584,24 +1910,103 @@ body.dark .header {
     .code-content {
         padding: 1rem;
 
-        font-size: 0.8rem;
+        font-size: 0.78rem;
+    }
+
+    .about-text h3 {
+        font-size: 1.6rem;
+    }
+
+    .contact-form {
+        padding: 1.2rem;
+    }
+
+    .contact-info h3 {
+        font-size: 1.6rem;
+    }
+
+    .project-image {
+        height: 200px;
+    }
+
+    .project-big-icon {
+        font-size: 4rem;
     }
 
     .hero-buttons {
         flex-direction: column;
+
+        width: 100%;
     }
 
     .hero-buttons .btn {
         width: 100%;
     }
 
-    .about-text .resume-btn {
+    .about-text .primary-btn {
         width: 100%;
+    }
+
+    .back-to-top {
+        right: 15px;
+        bottom: 15px;
+
+        width: 42px;
+        height: 42px;
     }
 }
 
 
-/* ================= REDUCED MOTION ================= */
+/* =====================================================
+   VERY SMALL MOBILE
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .logo {
+        font-size: 1.35rem;
+    }
+
+    .nav-actions {
+        gap: 0.4rem;
+    }
+
+    .icon-btn,
+    .menu-btn {
+        width: 38px;
+        height: 38px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero h2 {
+        font-size: 1.15rem;
+    }
+
+    .image-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .floating-card {
+        font-size: 0.65rem;
+    }
+
+    .floating-card i {
+        font-size: 0.8rem;
+    }
+
+    .contact-item {
+        align-items: flex-start;
+    }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
