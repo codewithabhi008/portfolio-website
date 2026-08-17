@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://codewithabhi008.github.io/portfolio_abhi/sitemap.xml
