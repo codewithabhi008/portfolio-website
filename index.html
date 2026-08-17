@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
+    <!-- =====================================================
+         BASIC META
+    ====================================================== -->
 
     <meta charset="UTF-8">
 
@@ -9,11 +14,28 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Abhijeet Tiwari | Web Developer</title>
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="IE=edge"
+    >
+
+
+    <!-- =====================================================
+         SEO
+    ====================================================== -->
+
+    <title>
+        Abhijeet Tiwari | Web Developer & Frontend Developer
+    </title>
 
     <meta
         name="description"
-        content="Personal portfolio website of Abhijeet Tiwari, a passionate web developer."
+        content="Abhijeet Tiwari is a Web Developer and Frontend Developer who creates modern, responsive, fast and user-friendly websites using HTML, CSS, JavaScript and React."
+    >
+
+    <meta
+        name="keywords"
+        content="Abhijeet Tiwari, Abhijeet Tiwari Web Developer, Abhijeet Tiwari Portfolio, Web Developer, Frontend Developer, JavaScript Developer, HTML CSS JavaScript, React Developer, Portfolio"
     >
 
     <meta
@@ -21,7 +43,126 @@
         content="Abhijeet Tiwari"
     >
 
-    <!-- ================= GOOGLE FONT ================= -->
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <meta
+        name="googlebot"
+        content="index, follow"
+    >
+
+    <meta
+        name="theme-color"
+        content="#6366f1"
+    >
+
+
+    <!-- =====================================================
+         CANONICAL URL
+    ====================================================== -->
+
+    <link
+        rel="canonical"
+        href="https://codewithabhi008.github.io/portfolio_abhi/"
+    >
+
+
+    <!-- =====================================================
+         OPEN GRAPH / FACEBOOK / LINKEDIN
+    ====================================================== -->
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:title"
+        content="Abhijeet Tiwari | Web Developer & Frontend Developer"
+    >
+
+    <meta
+        property="og:description"
+        content="Portfolio of Abhijeet Tiwari — Web Developer and Frontend Developer creating modern and responsive websites."
+    >
+
+    <meta
+        property="og:url"
+        content="https://codewithabhi008.github.io/portfolio_abhi/"
+    >
+
+    <meta
+        property="og:site_name"
+        content="Abhijeet Tiwari Portfolio"
+    >
+
+    <meta
+        property="og:image"
+        content="https://codewithabhi008.github.io/portfolio_abhi/assets/profile.jpg"
+    >
+
+    <meta
+        property="og:image:alt"
+        content="Abhijeet Tiwari - Web Developer"
+    >
+
+    <meta
+        property="og:locale"
+        content="en_IN"
+    >
+
+
+    <!-- =====================================================
+         TWITTER / X
+    ====================================================== -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        content="Abhijeet Tiwari | Web Developer & Frontend Developer"
+    >
+
+    <meta
+        name="twitter:description"
+        content="Portfolio of Abhijeet Tiwari — Web Developer and Frontend Developer."
+    >
+
+    <meta
+        name="twitter:image"
+        content="https://codewithabhi008.github.io/portfolio_abhi/assets/profile.jpg"
+    >
+
+    <meta
+        name="twitter:image:alt"
+        content="Abhijeet Tiwari - Web Developer"
+    >
+
+
+    <!-- =====================================================
+         FAVICON
+    ====================================================== -->
+
+    <!--
+        Agar assets/favicon.png available hai to ye show hoga.
+        Nahi hai to is line ko baad mein add kar dena.
+    -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="assets/favicon.png"
+    >
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
 
     <link
         rel="preconnect"
@@ -40,7 +181,9 @@
     >
 
 
-    <!-- ================= FONT AWESOME ================= -->
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
 
     <link
         rel="stylesheet"
@@ -48,12 +191,67 @@
     >
 
 
-    <!-- ================= CSS ================= -->
+    <!-- =====================================================
+         MAIN CSS
+    ====================================================== -->
 
     <link
         rel="stylesheet"
         href="style.css"
     >
+
+
+    <!-- =====================================================
+         STRUCTURED DATA - PERSON
+    ====================================================== -->
+
+    <script type="application/ld+json">
+
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+
+        "name": "Abhijeet Tiwari",
+
+        "url": "https://codewithabhi008.github.io/portfolio_abhi/",
+
+        "jobTitle": "Web Developer",
+
+        "description": "Abhijeet Tiwari is a Web Developer and Frontend Developer who creates modern, responsive and user-friendly websites.",
+
+        "email": "mailto:abhijeettiwari955@gmail.com",
+
+        "image": "https://codewithabhi008.github.io/portfolio_abhi/assets/profile.jpg",
+
+        "sameAs": [
+            "https://github.com/codewithabhi008",
+            "https://www.linkedin.com/in/abhijeet-tiwari-609981222",
+            "https://www.instagram.com/imabhii_26",
+            "https://x.com/Abhijeet260820"
+        ]
+    }
+
+    </script>
+
+
+    <!-- =====================================================
+         STRUCTURED DATA - WEBSITE
+    ====================================================== -->
+
+    <script type="application/ld+json">
+
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+
+        "name": "Abhijeet Tiwari Portfolio",
+
+        "alternateName": "Abhijeet Tiwari",
+
+        "url": "https://codewithabhi008.github.io/portfolio_abhi/"
+    }
+
+    </script>
 
 </head>
 
@@ -62,20 +260,28 @@
 
 
     <!-- =====================================================
-         NAVBAR
+         HEADER / NAVBAR
     ====================================================== -->
 
     <header class="header">
 
-        <nav class="navbar container">
+        <nav
+            class="navbar container"
+            aria-label="Main navigation"
+        >
+
+            <!-- LOGO -->
 
             <a
                 href="#home"
                 class="logo"
+                aria-label="Abhijeet Tiwari Home"
             >
                 <span>&lt;</span>AT<span>/&gt;</span>
             </a>
 
+
+            <!-- NAVIGATION -->
 
             <ul
                 class="nav-menu"
@@ -130,21 +336,31 @@
             </ul>
 
 
+            <!-- NAV ACTIONS -->
+
             <div class="nav-actions">
+
+                <!-- DARK MODE -->
 
                 <button
                     id="themeToggle"
                     class="icon-btn"
-                    aria-label="Toggle theme"
+                    type="button"
+                    aria-label="Toggle dark and light mode"
                 >
                     <i class="fas fa-moon"></i>
                 </button>
 
 
+                <!-- MOBILE MENU -->
+
                 <button
                     id="menuToggle"
                     class="menu-btn"
-                    aria-label="Open menu"
+                    type="button"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                    aria-controls="navMenu"
                 >
                     <i class="fas fa-bars"></i>
                 </button>
@@ -158,7 +374,7 @@
 
 
     <!-- =====================================================
-         MAIN
+         MAIN CONTENT
     ====================================================== -->
 
     <main>
@@ -171,6 +387,7 @@
         <section
             id="home"
             class="hero"
+            aria-labelledby="hero-title"
         >
 
             <div class="container hero-content">
@@ -185,24 +402,29 @@
                     </p>
 
 
-                    <h1>
+                    <h1 id="hero-title">
                         Abhijeet <span>Tiwari</span>
                     </h1>
 
 
                     <h2>
                         I'm a
-                        <span id="typingText"></span>
+                        <span id="typingText">
+                            Web Developer
+                        </span>
                     </h2>
 
 
                     <p class="hero-description">
-                        I create modern, responsive and user-friendly
-                        websites with clean code and beautiful designs.
+
+                        I create modern, responsive and
+                        user-friendly websites with clean
+                        code and beautiful designs.
+
                     </p>
 
 
-                    <!-- HERO BUTTONS -->
+                    <!-- BUTTONS -->
 
                     <div class="hero-buttons">
 
@@ -225,11 +447,12 @@
                     </div>
 
 
-
                     <!-- SOCIAL LINKS -->
 
-                    <div class="social-links">
-
+                    <div
+                        class="social-links"
+                        aria-label="Social media links"
+                    >
 
                         <!-- GitHub -->
 
@@ -237,7 +460,7 @@
                             href="https://github.com/codewithabhi008"
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="GitHub"
+                            aria-label="Abhijeet Tiwari on GitHub"
                         >
                             <i class="fab fa-github"></i>
                         </a>
@@ -249,7 +472,7 @@
                             href="https://www.linkedin.com/in/abhijeet-tiwari-609981222"
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="LinkedIn"
+                            aria-label="Abhijeet Tiwari on LinkedIn"
                         >
                             <i class="fab fa-linkedin-in"></i>
                         </a>
@@ -261,7 +484,7 @@
                             href="https://www.instagram.com/imabhii_26"
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="Instagram"
+                            aria-label="Abhijeet Tiwari on Instagram"
                         >
                             <i class="fab fa-instagram"></i>
                         </a>
@@ -273,7 +496,7 @@
                             href="https://x.com/Abhijeet260820"
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="X"
+                            aria-label="Abhijeet Tiwari on X"
                         >
                             <i class="fab fa-x-twitter"></i>
                         </a>
@@ -283,7 +506,7 @@
 
                         <a
                             href="mailto:abhijeettiwari955@gmail.com"
-                            aria-label="Email"
+                            aria-label="Email Abhijeet Tiwari"
                         >
                             <i class="fas fa-envelope"></i>
                         </a>
@@ -305,12 +528,18 @@
 
                         <img
                             src="assets/profile.jpg"
-                            alt="Abhijeet Tiwari"
-                            onerror="this.src='https://via.placeholder.com/400x400/111827/ffffff?text=Abhijeet+Tiwari'"
+                            alt="Abhijeet Tiwari, Web Developer"
+                            width="400"
+                            height="400"
+                            loading="eager"
+                            fetchpriority="high"
+                            onerror="this.onerror=null; this.src='https://via.placeholder.com/400x400/111827/ffffff?text=Abhijeet+Tiwari';"
                         >
 
                     </div>
 
+
+                    <!-- FLOATING CARD 1 -->
 
                     <div class="floating-card card-one">
 
@@ -322,6 +551,8 @@
 
                     </div>
 
+
+                    <!-- FLOATING CARD 2 -->
 
                     <div class="floating-card card-two">
 
@@ -343,6 +574,7 @@
             <a
                 href="#about"
                 class="scroll-down"
+                aria-label="Scroll to About section"
             >
 
                 <span>
@@ -364,6 +596,7 @@
         <section
             id="about"
             class="section"
+            aria-labelledby="about-title"
         >
 
             <div class="container">
@@ -377,7 +610,7 @@
                         GET TO KNOW ME
                     </p>
 
-                    <h2>
+                    <h2 id="about-title">
                         About <span>Me</span>
                     </h2>
 
@@ -386,11 +619,10 @@
                 </div>
 
 
-
                 <div class="about-content">
 
 
-                    <!-- ABOUT CODE CARD -->
+                    <!-- CODE CARD -->
 
                     <div class="about-image reveal">
 
@@ -398,13 +630,13 @@
 
                             <div class="code-window">
 
-
-                                <div class="window-header">
-
+                                <div
+                                    class="window-header"
+                                    aria-hidden="true"
+                                >
                                     <span></span>
                                     <span></span>
                                     <span></span>
-
                                 </div>
 
 
@@ -472,7 +704,6 @@
 
                     <div class="about-text reveal">
 
-
                         <h3>
 
                             Turning ideas into
@@ -505,11 +736,9 @@
                         </p>
 
 
-
                         <!-- ABOUT INFORMATION -->
 
                         <div class="about-info">
-
 
                             <div>
 
@@ -565,8 +794,7 @@
                         </div>
 
 
-
-                        <!-- ================= RESUME ================= -->
+                        <!-- RESUME -->
 
                         <a
                             href="Abhijeet%20Tiwari_CV.pdf"
@@ -579,7 +807,6 @@
                             <i class="fas fa-download"></i>
 
                         </a>
-
 
                     </div>
 
@@ -598,6 +825,7 @@
         <section
             id="skills"
             class="section skills-section"
+            aria-labelledby="skills-title"
         >
 
             <div class="container">
@@ -609,14 +837,13 @@
                         MY EXPERTISE
                     </p>
 
-                    <h2>
+                    <h2 id="skills-title">
                         My <span>Skills</span>
                     </h2>
 
                     <div class="heading-line"></div>
 
                 </div>
-
 
 
                 <div class="skills-grid">
@@ -639,7 +866,10 @@
                         </p>
 
                         <div class="progress">
-                            <span style="width: 95%"></span>
+                            <span
+                                style="width: 95%"
+                                aria-hidden="true"
+                            ></span>
                         </div>
 
                         <small>
@@ -667,7 +897,10 @@
                         </p>
 
                         <div class="progress">
-                            <span style="width: 90%"></span>
+                            <span
+                                style="width: 90%"
+                                aria-hidden="true"
+                            ></span>
                         </div>
 
                         <small>
@@ -695,7 +928,10 @@
                         </p>
 
                         <div class="progress">
-                            <span style="width: 85%"></span>
+                            <span
+                                style="width: 85%"
+                                aria-hidden="true"
+                            ></span>
                         </div>
 
                         <small>
@@ -723,7 +959,10 @@
                         </p>
 
                         <div class="progress">
-                            <span style="width: 85%"></span>
+                            <span
+                                style="width: 85%"
+                                aria-hidden="true"
+                            ></span>
                         </div>
 
                         <small>
@@ -751,7 +990,10 @@
                         </p>
 
                         <div class="progress">
-                            <span style="width: 75%"></span>
+                            <span
+                                style="width: 75%"
+                                aria-hidden="true"
+                            ></span>
                         </div>
 
                         <small>
@@ -779,7 +1021,10 @@
                         </p>
 
                         <div class="progress">
-                            <span style="width: 92%"></span>
+                            <span
+                                style="width: 92%"
+                                aria-hidden="true"
+                            ></span>
                         </div>
 
                         <small>
@@ -803,6 +1048,7 @@
         <section
             id="projects"
             class="section"
+            aria-labelledby="projects-title"
         >
 
             <div class="container">
@@ -814,14 +1060,13 @@
                         MY RECENT WORK
                     </p>
 
-                    <h2>
+                    <h2 id="projects-title">
                         Featured <span>Projects</span>
                     </h2>
 
                     <div class="heading-line"></div>
 
                 </div>
-
 
 
                 <div class="projects-grid">
@@ -837,14 +1082,14 @@
 
                                 <a
                                     href="#"
-                                    aria-label="Live project"
+                                    aria-label="View E-Commerce live project"
                                 >
                                     <i class="fas fa-external-link-alt"></i>
                                 </a>
 
                                 <a
                                     href="#"
-                                    aria-label="GitHub project"
+                                    aria-label="View E-Commerce GitHub repository"
                                 >
                                     <i class="fab fa-github"></i>
                                 </a>
@@ -852,7 +1097,10 @@
                             </div>
 
 
-                            <i class="fas fa-shopping-cart project-big-icon"></i>
+                            <i
+                                class="fas fa-shopping-cart project-big-icon"
+                                aria-hidden="true"
+                            ></i>
 
                         </div>
 
@@ -917,14 +1165,14 @@
 
                                 <a
                                     href="#"
-                                    aria-label="Live project"
+                                    aria-label="View Weather App live project"
                                 >
                                     <i class="fas fa-external-link-alt"></i>
                                 </a>
 
                                 <a
                                     href="#"
-                                    aria-label="GitHub project"
+                                    aria-label="View Weather App GitHub repository"
                                 >
                                     <i class="fab fa-github"></i>
                                 </a>
@@ -932,7 +1180,10 @@
                             </div>
 
 
-                            <i class="fas fa-cloud-sun project-big-icon"></i>
+                            <i
+                                class="fas fa-cloud-sun project-big-icon"
+                                aria-hidden="true"
+                            ></i>
 
                         </div>
 
@@ -993,14 +1244,14 @@
 
                                 <a
                                     href="#"
-                                    aria-label="Live project"
+                                    aria-label="View Task Manager live project"
                                 >
                                     <i class="fas fa-external-link-alt"></i>
                                 </a>
 
                                 <a
                                     href="#"
-                                    aria-label="GitHub project"
+                                    aria-label="View Task Manager GitHub repository"
                                 >
                                     <i class="fab fa-github"></i>
                                 </a>
@@ -1008,7 +1259,10 @@
                             </div>
 
 
-                            <i class="fas fa-list-check project-big-icon"></i>
+                            <i
+                                class="fas fa-list-check project-big-icon"
+                                aria-hidden="true"
+                            ></i>
 
                         </div>
 
@@ -1076,6 +1330,7 @@
         <section
             id="contact"
             class="section contact-section"
+            aria-labelledby="contact-title"
         >
 
             <div class="container">
@@ -1087,7 +1342,7 @@
                         GET IN TOUCH
                     </p>
 
-                    <h2>
+                    <h2 id="contact-title">
                         Contact <span>Me</span>
                     </h2>
 
@@ -1096,14 +1351,12 @@
                 </div>
 
 
-
                 <div class="contact-content">
 
 
-                    <!-- CONTACT INFO -->
+                    <!-- CONTACT INFORMATION -->
 
                     <div class="contact-info reveal">
-
 
                         <h3>
                             Let's work together!
@@ -1118,13 +1371,14 @@
                         </p>
 
 
-
                         <!-- EMAIL -->
 
                         <div class="contact-item">
 
                             <div class="contact-icon">
+
                                 <i class="fas fa-envelope"></i>
+
                             </div>
 
 
@@ -1146,13 +1400,14 @@
                         </div>
 
 
-
                         <!-- LOCATION -->
 
                         <div class="contact-item">
 
                             <div class="contact-icon">
+
                                 <i class="fas fa-location-dot"></i>
+
                             </div>
 
 
@@ -1171,13 +1426,14 @@
                         </div>
 
 
-
                         <!-- WEBSITE -->
 
                         <div class="contact-item">
 
                             <div class="contact-icon">
+
                                 <i class="fas fa-globe"></i>
+
                             </div>
 
 
@@ -1196,13 +1452,14 @@
                         </div>
 
 
-
                         <!-- SOCIAL -->
 
                         <div class="contact-item">
 
                             <div class="contact-icon">
+
                                 <i class="fas fa-share-nodes"></i>
+
                             </div>
 
 
@@ -1231,9 +1488,9 @@
                         id="contactForm"
                     >
 
-
                         <div class="input-group">
 
+                            <!-- NAME -->
 
                             <div class="input-box">
 
@@ -1244,13 +1501,16 @@
                                 <input
                                     type="text"
                                     id="name"
+                                    name="name"
                                     placeholder="Enter your name"
+                                    autocomplete="name"
                                     required
                                 >
 
                             </div>
 
 
+                            <!-- EMAIL -->
 
                             <div class="input-box">
 
@@ -1261,7 +1521,9 @@
                                 <input
                                     type="email"
                                     id="email"
+                                    name="email"
                                     placeholder="Enter your email"
+                                    autocomplete="email"
                                     required
                                 >
 
@@ -1270,6 +1532,7 @@
                         </div>
 
 
+                        <!-- SUBJECT -->
 
                         <div class="input-box">
 
@@ -1280,6 +1543,7 @@
                             <input
                                 type="text"
                                 id="subject"
+                                name="subject"
                                 placeholder="Enter subject"
                                 required
                             >
@@ -1287,6 +1551,7 @@
                         </div>
 
 
+                        <!-- MESSAGE -->
 
                         <div class="input-box">
 
@@ -1296,6 +1561,7 @@
 
                             <textarea
                                 id="message"
+                                name="message"
                                 rows="6"
                                 placeholder="Write your message..."
                                 required
@@ -1304,6 +1570,7 @@
                         </div>
 
 
+                        <!-- SUBMIT -->
 
                         <button
                             type="submit"
@@ -1317,7 +1584,11 @@
                         </button>
 
 
-                        <p id="formMessage"></p>
+                        <p
+                            id="formMessage"
+                            role="status"
+                            aria-live="polite"
+                        ></p>
 
                     </form>
 
@@ -1345,12 +1616,13 @@
             <a
                 href="#home"
                 class="logo"
+                aria-label="Back to home"
             >
                 <span>&lt;</span>AT<span>/&gt;</span>
             </a>
 
 
-            <!-- COPYRIGHT TEXT -->
+            <!-- FOOTER TEXT -->
 
             <p>
 
@@ -1363,11 +1635,12 @@
             </p>
 
 
-
             <!-- FOOTER SOCIAL -->
 
-            <div class="footer-social">
-
+            <div
+                class="footer-social"
+                aria-label="Footer social links"
+            >
 
                 <!-- GitHub -->
 
@@ -1431,7 +1704,6 @@
         </div>
 
 
-
         <!-- COPYRIGHT -->
 
         <div class="copyright">
@@ -1457,6 +1729,7 @@
     <button
         id="backToTop"
         class="back-to-top"
+        type="button"
         aria-label="Back to top"
     >
 
@@ -1471,7 +1744,6 @@
     ====================================================== -->
 
     <script src="script.js"></script>
-
 
 </body>
 
