@@ -326,16 +326,14 @@ contactForm.addEventListener("submit", (event) => {
 
 
     /*
-        This is a frontend-only form.
-
-        To actually receive messages, connect this
-        form to Formspree, EmailJS, Netlify Forms,
-        or your own backend.
+        Contact form will open the user's
+        email application and prepare an email
+        to Abhijeet Tiwari.
     */
 
 
     const mailtoLink =
-        `mailto:your@email.com` +
+        `mailto:abhijeettiwari955@gmail.com` +
         `?subject=${encodeURIComponent(subject)}` +
         `&body=${encodeURIComponent(
             `Name: ${name}\nEmail: ${email}\n\n${message}`
