@@ -1,99 +1,229 @@
 /* =====================================================
-   PORTFOLIO WEBSITE
+   ABHIJEET TIWARI PORTFOLIO
    Main JavaScript
 ===================================================== */
 
 
-/* ================= MOBILE MENU ================= */
+/* ================= DOM ELEMENTS ================= */
 
 const menuToggle = document.getElementById("menuToggle");
 const navMenu = document.getElementById("navMenu");
 
-menuToggle.addEventListener("click", () => {
+const themeToggle = document.getElementById("themeToggle");
 
-    navMenu.classList.toggle("active");
+const typingText = document.getElementById("typingText");
 
-    const icon = menuToggle.querySelector("i");
+const contactForm = document.getElementById("contactForm");
+const formMessage = document.getElementById("formMessage");
 
-    if (navMenu.classList.contains("active")) {
-        icon.classList.remove("fa-bars");
-        icon.classList.add("fa-xmark");
-    } else {
-        icon.classList.remove("fa-xmark");
-        icon.classList.add("fa-bars");
-    }
+const backToTop = document.getElementById("backToTop");
 
-});
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".nav-link");
+
+const revealElements = document.querySelectorAll(".reveal");
 
 
-/* Close mobile menu after clicking link */
+/* =====================================================
+   MOBILE MENU
+===================================================== */
 
-document.querySelectorAll(".nav-link").forEach(link => {
+if (menuToggle && navMenu) {
+
+    menuToggle.addEventListener("click", () => {
+
+        navMenu.classList.toggle("active");
+
+        const icon = menuToggle.querySelector("i");
+
+        if (!icon) return;
+
+        if (navMenu.classList.contains("active")) {
+
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-xmark");
+
+            menuToggle.setAttribute(
+                "aria-label",
+                "Close menu"
+            );
+
+        } else {
+
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
+
+            menuToggle.setAttribute(
+                "aria-label",
+                "Open menu"
+            );
+
+        }
+
+    });
+
+}
+
+
+/* ================= CLOSE MOBILE MENU ================= */
+
+navLinks.forEach(link => {
 
     link.addEventListener("click", () => {
+
+        if (!navMenu || !menuToggle) return;
 
         navMenu.classList.remove("active");
 
         const icon = menuToggle.querySelector("i");
 
-        icon.classList.remove("fa-xmark");
-        icon.classList.add("fa-bars");
+        if (icon) {
+
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
+
+        }
+
+        menuToggle.setAttribute(
+            "aria-label",
+            "Open menu"
+        );
 
     });
 
 });
 
 
-/* ================= DARK / LIGHT MODE ================= */
+/* Close menu when clicking outside */
 
-const themeToggle = document.getElementById("themeToggle");
+document.addEventListener("click", (event) => {
 
-const savedTheme = localStorage.getItem("portfolio-theme");
+    if (!navMenu || !menuToggle) return;
 
-if (savedTheme === "dark") {
-    document.body.classList.add("dark");
-    updateThemeIcon();
-}
+    const clickedInsideMenu =
+        navMenu.contains(event.target);
 
+    const clickedMenuButton =
+        menuToggle.contains(event.target);
 
-themeToggle.addEventListener("click", () => {
+    if (
+        !clickedInsideMenu &&
+        !clickedMenuButton &&
+        navMenu.classList.contains("active")
+    ) {
 
-    document.body.classList.toggle("dark");
+        navMenu.classList.remove("active");
 
-    const isDark = document.body.classList.contains("dark");
+        const icon = menuToggle.querySelector("i");
 
-    localStorage.setItem(
-        "portfolio-theme",
-        isDark ? "dark" : "light"
-    );
+        if (icon) {
 
-    updateThemeIcon();
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
+
+        }
+
+        menuToggle.setAttribute(
+            "aria-label",
+            "Open menu"
+        );
+
+    }
 
 });
 
 
+/* =====================================================
+   DARK / LIGHT MODE
+===================================================== */
+
 function updateThemeIcon() {
 
+    if (!themeToggle) return;
+
     const icon = themeToggle.querySelector("i");
+
+    if (!icon) return;
 
     if (document.body.classList.contains("dark")) {
 
         icon.classList.remove("fa-moon");
         icon.classList.add("fa-sun");
 
+        themeToggle.setAttribute(
+            "aria-label",
+            "Switch to light mode"
+        );
+
+        themeToggle.setAttribute(
+            "title",
+            "Switch to light mode"
+        );
+
     } else {
 
         icon.classList.remove("fa-sun");
         icon.classList.add("fa-moon");
+
+        themeToggle.setAttribute(
+            "aria-label",
+            "Switch to dark mode"
+        );
+
+        themeToggle.setAttribute(
+            "title",
+            "Switch to dark mode"
+        );
 
     }
 
 }
 
 
-/* ================= TYPING EFFECT ================= */
+/* Load saved theme */
 
-const typingText = document.getElementById("typingText");
+const savedTheme =
+    localStorage.getItem("portfolio-theme");
+
+if (savedTheme === "dark") {
+
+    document.body.classList.add("dark");
+
+} else {
+
+    document.body.classList.remove("dark");
+
+}
+
+updateThemeIcon();
+
+
+/* Theme button */
+
+if (themeToggle) {
+
+    themeToggle.addEventListener("click", () => {
+
+        document.body.classList.toggle("dark");
+
+        const isDark =
+            document.body.classList.contains("dark");
+
+        localStorage.setItem(
+            "portfolio-theme",
+            isDark ? "dark" : "light"
+        );
+
+        updateThemeIcon();
+
+    });
+
+}
+
+
+/* =====================================================
+   TYPING EFFECT
+===================================================== */
 
 const words = [
     "Web Developer",
@@ -109,29 +239,52 @@ let deleting = false;
 
 function typeEffect() {
 
-    const currentWord = words[wordIndex];
+    if (!typingText) return;
 
-    if (deleting) {
+    const currentWord =
+        words[wordIndex];
+
+
+    /* Typing */
+
+    if (!deleting) {
 
         typingText.textContent =
-            currentWord.substring(0, charIndex - 1);
-
-        charIndex--;
-
-    } else {
-
-        typingText.textContent =
-            currentWord.substring(0, charIndex + 1);
+            currentWord.substring(
+                0,
+                charIndex + 1
+            );
 
         charIndex++;
 
     }
 
 
-    let typingSpeed = deleting ? 60 : 100;
+    /* Deleting */
+
+    else {
+
+        typingText.textContent =
+            currentWord.substring(
+                0,
+                charIndex - 1
+            );
+
+        charIndex--;
+
+    }
 
 
-    if (!deleting && charIndex === currentWord.length) {
+    let typingSpeed =
+        deleting ? 60 : 100;
+
+
+    /* Word completed */
+
+    if (
+        !deleting &&
+        charIndex === currentWord.length
+    ) {
 
         typingSpeed = 1800;
 
@@ -140,43 +293,65 @@ function typeEffect() {
     }
 
 
-    if (deleting && charIndex === 0) {
+    /* Word deleted */
+
+    if (
+        deleting &&
+        charIndex === 0
+    ) {
 
         deleting = false;
 
         wordIndex++;
 
         if (wordIndex >= words.length) {
+
             wordIndex = 0;
+
         }
 
-        typingSpeed = 500;
+        typingSpeed = 400;
 
     }
 
-    setTimeout(typeEffect, typingSpeed);
+
+    setTimeout(
+        typeEffect,
+        typingSpeed
+    );
+
 }
 
-typeEffect();
+
+/* Start typing effect */
+
+if (typingText) {
+
+    typeEffect();
+
+}
 
 
-/* ================= SCROLL REVEAL ================= */
-
-const revealElements =
-    document.querySelectorAll(".reveal");
-
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
 
 function revealOnScroll() {
 
     const windowHeight =
         window.innerHeight;
 
+
     revealElements.forEach(element => {
 
         const elementTop =
             element.getBoundingClientRect().top;
 
-        if (elementTop < windowHeight - 80) {
+
+        if (
+            elementTop <
+            windowHeight - 80
+        ) {
 
             element.classList.add("active");
 
@@ -189,7 +364,8 @@ function revealOnScroll() {
 
 window.addEventListener(
     "scroll",
-    revealOnScroll
+    revealOnScroll,
+    { passive: true }
 );
 
 window.addEventListener(
@@ -198,30 +374,38 @@ window.addEventListener(
 );
 
 
-/* ================= ACTIVE NAV LINK ================= */
+/* Run immediately */
 
-const sections =
-    document.querySelectorAll("section[id]");
+revealOnScroll();
 
-const navLinks =
-    document.querySelectorAll(".nav-link");
 
+/* =====================================================
+   ACTIVE NAVIGATION
+===================================================== */
 
 function updateActiveNav() {
 
+    if (!sections.length || !navLinks.length) {
+        return;
+    }
+
+
     let currentSection = "";
+
 
     sections.forEach(section => {
 
         const sectionTop =
-            section.offsetTop - 150;
+            section.offsetTop - 160;
 
         const sectionHeight =
             section.offsetHeight;
 
+
         if (
             window.scrollY >= sectionTop &&
-            window.scrollY < sectionTop + sectionHeight
+            window.scrollY <
+            sectionTop + sectionHeight
         ) {
 
             currentSection =
@@ -232,12 +416,26 @@ function updateActiveNav() {
     });
 
 
+    /* At very top show Home */
+
+    if (window.scrollY < 200) {
+
+        currentSection = "home";
+
+    }
+
+
     navLinks.forEach(link => {
 
         link.classList.remove("active");
 
+
+        const href =
+            link.getAttribute("href");
+
+
         if (
-            link.getAttribute("href") ===
+            href ===
             `#${currentSection}`
         ) {
 
@@ -252,17 +450,24 @@ function updateActiveNav() {
 
 window.addEventListener(
     "scroll",
+    updateActiveNav,
+    { passive: true }
+);
+
+window.addEventListener(
+    "load",
     updateActiveNav
 );
 
 
-/* ================= BACK TO TOP ================= */
+/* =====================================================
+   BACK TO TOP
+===================================================== */
 
-const backToTop =
-    document.getElementById("backToTop");
+function updateBackToTop() {
 
+    if (!backToTop) return;
 
-window.addEventListener("scroll", () => {
 
     if (window.scrollY > 500) {
 
@@ -274,84 +479,297 @@ window.addEventListener("scroll", () => {
 
     }
 
-});
+}
 
 
-backToTop.addEventListener("click", () => {
+window.addEventListener(
+    "scroll",
+    updateBackToTop,
+    { passive: true }
+);
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+
+/* Back to top button */
+
+if (backToTop) {
+
+    backToTop.addEventListener(
+        "click",
+        () => {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   CONTACT FORM
+===================================================== */
+
+if (contactForm) {
+
+    contactForm.addEventListener(
+        "submit",
+        (event) => {
+
+            event.preventDefault();
+
+
+            const name =
+                document
+                    .getElementById("name")
+                    ?.value
+                    .trim();
+
+
+            const email =
+                document
+                    .getElementById("email")
+                    ?.value
+                    .trim();
+
+
+            const subject =
+                document
+                    .getElementById("subject")
+                    ?.value
+                    .trim();
+
+
+            const message =
+                document
+                    .getElementById("message")
+                    ?.value
+                    .trim();
+
+
+            /* Validate fields */
+
+            if (
+                !name ||
+                !email ||
+                !subject ||
+                !message
+            ) {
+
+                if (formMessage) {
+
+                    formMessage.textContent =
+                        "Please fill in all fields.";
+
+                    formMessage.style.color =
+                        "#ef4444";
+
+                }
+
+                return;
+
+            }
+
+
+            /* Basic email validation */
+
+            const emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+            if (!emailPattern.test(email)) {
+
+                if (formMessage) {
+
+                    formMessage.textContent =
+                        "Please enter a valid email address.";
+
+                    formMessage.style.color =
+                        "#ef4444";
+
+                }
+
+                return;
+
+            }
+
+
+            /*
+                Frontend-only contact form.
+
+                It opens the user's default email
+                application and prepares an email
+                addressed to Abhijeet Tiwari.
+            */
+
+
+            const mailtoLink =
+                `mailto:abhijeettiwari955@gmail.com` +
+                `?subject=${encodeURIComponent(subject)}` +
+                `&body=${encodeURIComponent(
+                    `Hello Abhijeet,
+
+Name: ${name}
+Email: ${email}
+
+Message:
+${message}
+
+Regards,
+${name}`
+                )}`;
+
+
+            /* Show message */
+
+            if (formMessage) {
+
+                formMessage.textContent =
+                    "Opening your email application...";
+
+                formMessage.style.color =
+                    "#22c55e";
+
+            }
+
+
+            /* Open email application */
+
+            window.location.href =
+                mailtoLink;
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   SMOOTH SCROLL
+===================================================== */
+
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            function (event) {
+
+                const targetId =
+                    this.getAttribute("href");
+
+
+                if (
+                    !targetId ||
+                    targetId === "#"
+                ) {
+                    return;
+                }
+
+
+                const target =
+                    document.querySelector(targetId);
+
+
+                if (!target) {
+                    return;
+                }
+
+
+                event.preventDefault();
+
+
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+        );
+
     });
 
-});
+
+/* =====================================================
+   ESC KEY - CLOSE MOBILE MENU
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (
+            event.key === "Escape" &&
+            navMenu &&
+            navMenu.classList.contains("active")
+        ) {
+
+            navMenu.classList.remove("active");
 
 
-/* ================= CONTACT FORM ================= */
+            if (menuToggle) {
 
-const contactForm =
-    document.getElementById("contactForm");
-
-const formMessage =
-    document.getElementById("formMessage");
+                const icon =
+                    menuToggle.querySelector("i");
 
 
-contactForm.addEventListener("submit", (event) => {
+                if (icon) {
 
-    event.preventDefault();
+                    icon.classList.remove(
+                        "fa-xmark"
+                    );
 
-    const name =
-        document.getElementById("name").value.trim();
+                    icon.classList.add(
+                        "fa-bars"
+                    );
 
-    const email =
-        document.getElementById("email").value.trim();
-
-    const subject =
-        document.getElementById("subject").value.trim();
-
-    const message =
-        document.getElementById("message").value.trim();
+                }
 
 
-    if (!name || !email || !subject || !message) {
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open menu"
+                );
 
-        formMessage.textContent =
-            "Please fill in all fields.";
+            }
 
-        formMessage.style.color = "#ef4444";
-
-        return;
+        }
 
     }
+);
 
 
-    /*
-        Contact form will open the user's
-        email application and prepare an email
-        to Abhijeet Tiwari.
-    */
+/* =====================================================
+   CURRENT YEAR
+===================================================== */
+
+const yearElement =
+    document.getElementById("year");
 
 
-    const mailtoLink =
-        `mailto:abhijeettiwari955@gmail.com` +
-        `?subject=${encodeURIComponent(subject)}` +
-        `&body=${encodeURIComponent(
-            `Name: ${name}\nEmail: ${email}\n\n${message}`
-        )}`;
+if (yearElement) {
+
+    yearElement.textContent =
+        new Date().getFullYear();
+
+}
 
 
-    window.location.href = mailtoLink;
+/* =====================================================
+   INITIAL PAGE SETUP
+===================================================== */
 
+window.addEventListener(
+    "load",
+    () => {
 
-    formMessage.textContent =
-        "Opening your email application...";
+        revealOnScroll();
+        updateActiveNav();
+        updateBackToTop();
+        updateThemeIcon();
 
-    formMessage.style.color = "#22c55e";
-
-});
-
-
-/* ================= CURRENT YEAR ================= */
-
-document.getElementById("year").textContent =
-    new Date().getFullYear();
+    }
+);
