@@ -3,8 +3,16 @@
    Main JavaScript
 ===================================================== */
 
+"use strict";
 
-/* ================= DOM ELEMENTS ================= */
+
+/* =====================================================
+   DOM ELEMENTS
+===================================================== */
+
+const body = document.body;
+
+const header = document.querySelector(".header");
 
 const menuToggle = document.getElementById("menuToggle");
 const navMenu = document.getElementById("navMenu");
@@ -23,114 +31,202 @@ const navLinks = document.querySelectorAll(".nav-link");
 
 const revealElements = document.querySelectorAll(".reveal");
 
+const yearElement = document.getElementById("year");
+
 
 /* =====================================================
-   MOBILE MENU
+   SETTINGS
 ===================================================== */
 
-if (menuToggle && navMenu) {
+const prefersReducedMotion =
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    menuToggle.addEventListener("click", () => {
 
-        navMenu.classList.toggle("active");
+/* =====================================================
+   CURRENT YEAR
+===================================================== */
 
-        const icon = menuToggle.querySelector("i");
+if (yearElement) {
 
-        if (!icon) return;
-
-        if (navMenu.classList.contains("active")) {
-
-            icon.classList.remove("fa-bars");
-            icon.classList.add("fa-xmark");
-
-            menuToggle.setAttribute(
-                "aria-label",
-                "Close menu"
-            );
-
-        } else {
-
-            icon.classList.remove("fa-xmark");
-            icon.classList.add("fa-bars");
-
-            menuToggle.setAttribute(
-                "aria-label",
-                "Open menu"
-            );
-
-        }
-
-    });
+    yearElement.textContent =
+        new Date().getFullYear();
 
 }
 
 
-/* ================= CLOSE MOBILE MENU ================= */
+/* =====================================================
+   MOBILE NAVIGATION
+===================================================== */
+
+function openMobileMenu() {
+
+    if (!navMenu || !menuToggle) return;
+
+    navMenu.classList.add("active");
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        "true"
+    );
+
+    menuToggle.setAttribute(
+        "aria-label",
+        "Close navigation menu"
+    );
+
+    const icon =
+        menuToggle.querySelector("i");
+
+    if (icon) {
+
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-xmark");
+
+    }
+
+}
+
+
+function closeMobileMenu() {
+
+    if (!navMenu || !menuToggle) return;
+
+    navMenu.classList.remove("active");
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+    menuToggle.setAttribute(
+        "aria-label",
+        "Open navigation menu"
+    );
+
+    const icon =
+        menuToggle.querySelector("i");
+
+    if (icon) {
+
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+
+    }
+
+}
+
+
+function toggleMobileMenu() {
+
+    if (!navMenu) return;
+
+    if (navMenu.classList.contains("active")) {
+
+        closeMobileMenu();
+
+    } else {
+
+        openMobileMenu();
+
+    }
+
+}
+
+
+if (menuToggle) {
+
+    menuToggle.addEventListener(
+        "click",
+        toggleMobileMenu
+    );
+
+}
+
+
+/* Close menu after clicking navigation link */
 
 navLinks.forEach(link => {
 
-    link.addEventListener("click", () => {
+    link.addEventListener(
+        "click",
+        () => {
 
-        if (!navMenu || !menuToggle) return;
-
-        navMenu.classList.remove("active");
-
-        const icon = menuToggle.querySelector("i");
-
-        if (icon) {
-
-            icon.classList.remove("fa-xmark");
-            icon.classList.add("fa-bars");
+            closeMobileMenu();
 
         }
-
-        menuToggle.setAttribute(
-            "aria-label",
-            "Open menu"
-        );
-
-    });
+    );
 
 });
 
 
 /* Close menu when clicking outside */
 
-document.addEventListener("click", (event) => {
+document.addEventListener(
+    "click",
+    (event) => {
 
-    if (!navMenu || !menuToggle) return;
+        if (!navMenu || !menuToggle) return;
 
-    const clickedInsideMenu =
-        navMenu.contains(event.target);
+        const clickedInsideMenu =
+            navMenu.contains(event.target);
 
-    const clickedMenuButton =
-        menuToggle.contains(event.target);
+        const clickedMenuButton =
+            menuToggle.contains(event.target);
 
-    if (
-        !clickedInsideMenu &&
-        !clickedMenuButton &&
-        navMenu.classList.contains("active")
-    ) {
+        if (
+            !clickedInsideMenu &&
+            !clickedMenuButton &&
+            navMenu.classList.contains("active")
+        ) {
 
-        navMenu.classList.remove("active");
-
-        const icon = menuToggle.querySelector("i");
-
-        if (icon) {
-
-            icon.classList.remove("fa-xmark");
-            icon.classList.add("fa-bars");
+            closeMobileMenu();
 
         }
 
-        menuToggle.setAttribute(
-            "aria-label",
-            "Open menu"
-        );
+    }
+);
+
+
+/* Close menu with Escape */
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (
+            event.key === "Escape" &&
+            navMenu &&
+            navMenu.classList.contains("active")
+        ) {
+
+            closeMobileMenu();
+
+            menuToggle?.focus();
+
+        }
 
     }
+);
 
-});
+
+/* Close mobile menu when resizing to desktop */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        if (
+            window.innerWidth > 700 &&
+            navMenu?.classList.contains("active")
+        ) {
+
+            closeMobileMenu();
+
+        }
+
+    }
+);
 
 
 /* =====================================================
@@ -141,11 +237,16 @@ function updateThemeIcon() {
 
     if (!themeToggle) return;
 
-    const icon = themeToggle.querySelector("i");
+    const icon =
+        themeToggle.querySelector("i");
 
     if (!icon) return;
 
-    if (document.body.classList.contains("dark")) {
+    const isDark =
+        body.classList.contains("dark");
+
+
+    if (isDark) {
 
         icon.classList.remove("fa-moon");
         icon.classList.add("fa-sun");
@@ -158,6 +259,11 @@ function updateThemeIcon() {
         themeToggle.setAttribute(
             "title",
             "Switch to light mode"
+        );
+
+        themeToggle.setAttribute(
+            "aria-pressed",
+            "true"
         );
 
     } else {
@@ -175,6 +281,11 @@ function updateThemeIcon() {
             "Switch to dark mode"
         );
 
+        themeToggle.setAttribute(
+            "aria-pressed",
+            "false"
+        );
+
     }
 
 }
@@ -185,38 +296,48 @@ function updateThemeIcon() {
 const savedTheme =
     localStorage.getItem("portfolio-theme");
 
+
 if (savedTheme === "dark") {
 
-    document.body.classList.add("dark");
+    body.classList.add("dark");
 
-} else {
+} else if (savedTheme === "light") {
 
-    document.body.classList.remove("dark");
+    body.classList.remove("dark");
+
+} else if (
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+) {
+
+    body.classList.add("dark");
 
 }
+
 
 updateThemeIcon();
 
 
-/* Theme button */
+/* Theme toggle */
 
 if (themeToggle) {
 
-    themeToggle.addEventListener("click", () => {
+    themeToggle.addEventListener(
+        "click",
+        () => {
 
-        document.body.classList.toggle("dark");
+            const isDark =
+                body.classList.toggle("dark");
 
-        const isDark =
-            document.body.classList.contains("dark");
+            localStorage.setItem(
+                "portfolio-theme",
+                isDark ? "dark" : "light"
+            );
 
-        localStorage.setItem(
-            "portfolio-theme",
-            isDark ? "dark" : "light"
-        );
+            updateThemeIcon();
 
-        updateThemeIcon();
-
-    });
+        }
+    );
 
 }
 
@@ -232,93 +353,85 @@ const words = [
     "Problem Solver"
 ];
 
+
 let wordIndex = 0;
 let charIndex = 0;
-let deleting = false;
+let isDeleting = false;
+let typingTimer = null;
 
 
 function typeEffect() {
 
     if (!typingText) return;
 
+
     const currentWord =
         words[wordIndex];
 
 
-    /* Typing */
-
-    if (!deleting) {
-
-        typingText.textContent =
-            currentWord.substring(
-                0,
-                charIndex + 1
-            );
+    if (!isDeleting) {
 
         charIndex++;
 
-    }
+        typingText.textContent =
+            currentWord.substring(
+                0,
+                charIndex
+            );
 
+    } else {
 
-    /* Deleting */
-
-    else {
+        charIndex--;
 
         typingText.textContent =
             currentWord.substring(
                 0,
-                charIndex - 1
+                charIndex
             );
 
-        charIndex--;
-
     }
 
 
-    let typingSpeed =
-        deleting ? 60 : 100;
+    let speed =
+        isDeleting ? 55 : 90;
 
 
-    /* Word completed */
+    /* Word completely typed */
 
     if (
-        !deleting &&
-        charIndex === currentWord.length
+        !isDeleting &&
+        charIndex >= currentWord.length
     ) {
 
-        typingSpeed = 1800;
+        speed = 1800;
 
-        deleting = true;
+        isDeleting = true;
 
     }
 
 
-    /* Word deleted */
+    /* Word completely deleted */
 
     if (
-        deleting &&
-        charIndex === 0
+        isDeleting &&
+        charIndex <= 0
     ) {
 
-        deleting = false;
+        isDeleting = false;
 
-        wordIndex++;
+        wordIndex =
+            (wordIndex + 1) % words.length;
 
-        if (wordIndex >= words.length) {
-
-            wordIndex = 0;
-
-        }
-
-        typingSpeed = 400;
+        speed = 400;
 
     }
 
 
-    setTimeout(
-        typeEffect,
-        typingSpeed
-    );
+    typingTimer =
+        setTimeout(
+            typeEffect,
+            speed
+        );
 
 }
 
@@ -327,7 +440,18 @@ function typeEffect() {
 
 if (typingText) {
 
-    typeEffect();
+    if (prefersReducedMotion) {
+
+        typingText.textContent =
+            words[0];
+
+    } else {
+
+        typingText.textContent = "";
+
+        typeEffect();
+
+    }
 
 }
 
@@ -336,47 +460,69 @@ if (typingText) {
    SCROLL REVEAL
 ===================================================== */
 
-function revealOnScroll() {
+function activateRevealElements() {
 
-    const windowHeight =
-        window.innerHeight;
-
-
-    revealElements.forEach(element => {
-
-        const elementTop =
-            element.getBoundingClientRect().top;
-
-
-        if (
-            elementTop <
-            windowHeight - 80
-        ) {
+    revealElements.forEach(
+        element => {
 
             element.classList.add("active");
 
         }
-
-    });
+    );
 
 }
 
 
-window.addEventListener(
-    "scroll",
-    revealOnScroll,
-    { passive: true }
-);
+if (
+    prefersReducedMotion ||
+    !("IntersectionObserver" in window)
+) {
 
-window.addEventListener(
-    "load",
-    revealOnScroll
-);
+    activateRevealElements();
+
+} else {
+
+    const revealObserver =
+        new IntersectionObserver(
+            (entries, observer) => {
+
+                entries.forEach(
+                    entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add(
+                                "active"
+                            );
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold: 0.12,
+                rootMargin: "0px 0px -50px 0px"
+            }
+        );
 
 
-/* Run immediately */
+    revealElements.forEach(
+        element => {
 
-revealOnScroll();
+            revealObserver.observe(
+                element
+            );
+
+        }
+    );
+
+}
 
 
 /* =====================================================
@@ -390,60 +536,51 @@ function updateActiveNav() {
     }
 
 
-    let currentSection = "";
+    const scrollPosition =
+        window.scrollY +
+        (header ? header.offsetHeight : 80) +
+        80;
 
 
-    sections.forEach(section => {
-
-        const sectionTop =
-            section.offsetTop - 160;
-
-        const sectionHeight =
-            section.offsetHeight;
+    let currentSection = "home";
 
 
-        if (
-            window.scrollY >= sectionTop &&
-            window.scrollY <
-            sectionTop + sectionHeight
-        ) {
+    sections.forEach(
+        section => {
 
-            currentSection =
-                section.getAttribute("id");
+            const sectionTop =
+                section.offsetTop;
 
-        }
+            if (
+                scrollPosition >= sectionTop
+            ) {
 
-    });
+                currentSection =
+                    section.id;
 
-
-    /* At very top show Home */
-
-    if (window.scrollY < 200) {
-
-        currentSection = "home";
-
-    }
-
-
-    navLinks.forEach(link => {
-
-        link.classList.remove("active");
-
-
-        const href =
-            link.getAttribute("href");
-
-
-        if (
-            href ===
-            `#${currentSection}`
-        ) {
-
-            link.classList.add("active");
+            }
 
         }
+    );
 
-    });
+
+    navLinks.forEach(
+        link => {
+
+            const href =
+                link.getAttribute("href");
+
+            const isActive =
+                href === `#${currentSection}`;
+
+
+            link.classList.toggle(
+                "active",
+                isActive
+            );
+
+        }
+    );
 
 }
 
@@ -451,12 +588,9 @@ function updateActiveNav() {
 window.addEventListener(
     "scroll",
     updateActiveNav,
-    { passive: true }
-);
-
-window.addEventListener(
-    "load",
-    updateActiveNav
+    {
+        passive: true
+    }
 );
 
 
@@ -485,11 +619,11 @@ function updateBackToTop() {
 window.addEventListener(
     "scroll",
     updateBackToTop,
-    { passive: true }
+    {
+        passive: true
+    }
 );
 
-
-/* Back to top button */
 
 if (backToTop) {
 
@@ -499,146 +633,11 @@ if (backToTop) {
 
             window.scrollTo({
                 top: 0,
-                behavior: "smooth"
+                behavior:
+                    prefersReducedMotion
+                        ? "auto"
+                        : "smooth"
             });
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   CONTACT FORM
-===================================================== */
-
-if (contactForm) {
-
-    contactForm.addEventListener(
-        "submit",
-        (event) => {
-
-            event.preventDefault();
-
-
-            const name =
-                document
-                    .getElementById("name")
-                    ?.value
-                    .trim();
-
-
-            const email =
-                document
-                    .getElementById("email")
-                    ?.value
-                    .trim();
-
-
-            const subject =
-                document
-                    .getElementById("subject")
-                    ?.value
-                    .trim();
-
-
-            const message =
-                document
-                    .getElementById("message")
-                    ?.value
-                    .trim();
-
-
-            /* Validate fields */
-
-            if (
-                !name ||
-                !email ||
-                !subject ||
-                !message
-            ) {
-
-                if (formMessage) {
-
-                    formMessage.textContent =
-                        "Please fill in all fields.";
-
-                    formMessage.style.color =
-                        "#ef4444";
-
-                }
-
-                return;
-
-            }
-
-
-            /* Basic email validation */
-
-            const emailPattern =
-                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-
-            if (!emailPattern.test(email)) {
-
-                if (formMessage) {
-
-                    formMessage.textContent =
-                        "Please enter a valid email address.";
-
-                    formMessage.style.color =
-                        "#ef4444";
-
-                }
-
-                return;
-
-            }
-
-
-            /*
-                Frontend-only contact form.
-
-                It opens the user's default email
-                application and prepares an email
-                addressed to Abhijeet Tiwari.
-            */
-
-
-            const mailtoLink =
-                `mailto:abhijeettiwari955@gmail.com` +
-                `?subject=${encodeURIComponent(subject)}` +
-                `&body=${encodeURIComponent(
-                    `Hello Abhijeet,
-
-Name: ${name}
-Email: ${email}
-
-Message:
-${message}
-
-Regards,
-${name}`
-                )}`;
-
-
-            /* Show message */
-
-            if (formMessage) {
-
-                formMessage.textContent =
-                    "Opening your email application...";
-
-                formMessage.style.color =
-                    "#22c55e";
-
-            }
-
-
-            /* Open email application */
-
-            window.location.href =
-                mailtoLink;
 
         }
     );
@@ -652,89 +651,371 @@ ${name}`
 
 document
     .querySelectorAll('a[href^="#"]')
-    .forEach(link => {
+    .forEach(
+        link => {
 
-        link.addEventListener(
-            "click",
-            function (event) {
+            link.addEventListener(
+                "click",
+                event => {
 
-                const targetId =
-                    this.getAttribute("href");
+                    const targetId =
+                        link.getAttribute("href");
 
 
-                if (
-                    !targetId ||
-                    targetId === "#"
-                ) {
-                    return;
+                    /*
+                        Ignore empty "#"
+                        links.
+
+                        Important:
+                        Your project buttons currently
+                        use href="#". They will remain
+                        inactive until you add real URLs.
+                    */
+
+                    if (
+                        !targetId ||
+                        targetId === "#"
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    const target =
+                        document.querySelector(
+                            targetId
+                        );
+
+
+                    if (!target) {
+
+                        return;
+
+                    }
+
+
+                    event.preventDefault();
+
+
+                    const headerHeight =
+                        header
+                            ? header.offsetHeight
+                            : 0;
+
+
+                    const targetPosition =
+                        target.getBoundingClientRect().top +
+                        window.scrollY -
+                        headerHeight;
+
+
+                    window.scrollTo({
+
+                        top:
+                            Math.max(
+                                0,
+                                targetPosition
+                            ),
+
+                        behavior:
+                            prefersReducedMotion
+                                ? "auto"
+                                : "smooth"
+
+                    });
+
                 }
+            );
+
+        }
+    );
 
 
-                const target =
-                    document.querySelector(targetId);
+/* =====================================================
+   CONTACT FORM
+===================================================== */
+
+function showFormMessage(
+    message,
+    color
+) {
+
+    if (!formMessage) return;
+
+    formMessage.textContent =
+        message;
+
+    formMessage.style.color =
+        color;
+
+}
 
 
-                if (!target) {
-                    return;
-                }
+if (contactForm) {
+
+    contactForm.addEventListener(
+        "submit",
+        event => {
+
+            event.preventDefault();
 
 
-                event.preventDefault();
+            const nameInput =
+                document.getElementById("name");
+
+            const emailInput =
+                document.getElementById("email");
+
+            const subjectInput =
+                document.getElementById("subject");
+
+            const messageInput =
+                document.getElementById("message");
 
 
-                target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
+            const name =
+                nameInput?.value.trim() || "";
+
+            const email =
+                emailInput?.value.trim() || "";
+
+            const subject =
+                subjectInput?.value.trim() || "";
+
+            const message =
+                messageInput?.value.trim() || "";
+
+
+            /* Reset message */
+
+            showFormMessage(
+                "",
+                ""
+            );
+
+
+            /* Required field validation */
+
+            if (
+                !name ||
+                !email ||
+                !subject ||
+                !message
+            ) {
+
+                showFormMessage(
+                    "Please fill in all fields.",
+                    "#ef4444"
+                );
+
+                return;
+
+            }
+
+
+            /* Name validation */
+
+            if (name.length < 2) {
+
+                showFormMessage(
+                    "Please enter a valid name.",
+                    "#ef4444"
+                );
+
+                nameInput?.focus();
+
+                return;
+
+            }
+
+
+            /* Email validation */
+
+            const emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+
+            if (
+                !emailPattern.test(email)
+            ) {
+
+                showFormMessage(
+                    "Please enter a valid email address.",
+                    "#ef4444"
+                );
+
+                emailInput?.focus();
+
+                return;
+
+            }
+
+
+            /* Subject validation */
+
+            if (subject.length < 3) {
+
+                showFormMessage(
+                    "Please enter a valid subject.",
+                    "#ef4444"
+                );
+
+                subjectInput?.focus();
+
+                return;
+
+            }
+
+
+            /* Message validation */
+
+            if (message.length < 10) {
+
+                showFormMessage(
+                    "Please write a message of at least 10 characters.",
+                    "#ef4444"
+                );
+
+                messageInput?.focus();
+
+                return;
+
+            }
+
+
+            /*
+                Frontend-only form.
+
+                Since GitHub Pages does not provide
+                a backend, mailto is used here.
+            */
+
+            const mailtoLink =
+                "mailto:abhijeettiwari955@gmail.com" +
+                "?subject=" +
+                encodeURIComponent(subject) +
+                "&body=" +
+                encodeURIComponent(
+                    `Hello Abhijeet,
+
+Name: ${name}
+Email: ${email}
+
+Message:
+${message}
+
+Regards,
+${name}`
+                );
+
+
+            showFormMessage(
+                "Opening your email application...",
+                "#22c55e"
+            );
+
+
+            /*
+                Small delay gives the user time
+                to see the success message.
+            */
+
+            setTimeout(
+                () => {
+
+                    window.location.href =
+                        mailtoLink;
+
+                },
+                300
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   FORM INPUT - CLEAR ERROR MESSAGE
+===================================================== */
+
+if (contactForm && formMessage) {
+
+    contactForm
+        .querySelectorAll("input, textarea")
+        .forEach(
+            input => {
+
+                input.addEventListener(
+                    "input",
+                    () => {
+
+                        formMessage.textContent = "";
+
+                    }
+                );
 
             }
         );
 
-    });
+}
 
 
 /* =====================================================
-   ESC KEY - CLOSE MOBILE MENU
+   HEADER SHADOW ON SCROLL
+===================================================== */
+
+function updateHeader() {
+
+    if (!header) return;
+
+
+    if (window.scrollY > 20) {
+
+        header.classList.add(
+            "scrolled"
+        );
+
+    } else {
+
+        header.classList.remove(
+            "scrolled"
+        );
+
+    }
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    updateHeader,
+    {
+        passive: true
+    }
+);
+
+
+/* =====================================================
+   KEYBOARD ACCESSIBILITY
 ===================================================== */
 
 document.addEventListener(
     "keydown",
-    (event) => {
+    event => {
+
+        /*
+            Close mobile menu with Escape.
+        */
 
         if (
             event.key === "Escape" &&
-            navMenu &&
-            navMenu.classList.contains("active")
+            navMenu?.classList.contains("active")
         ) {
 
-            navMenu.classList.remove("active");
-
-
-            if (menuToggle) {
-
-                const icon =
-                    menuToggle.querySelector("i");
-
-
-                if (icon) {
-
-                    icon.classList.remove(
-                        "fa-xmark"
-                    );
-
-                    icon.classList.add(
-                        "fa-bars"
-                    );
-
-                }
-
-
-                menuToggle.setAttribute(
-                    "aria-label",
-                    "Open menu"
-                );
-
-            }
+            closeMobileMenu();
 
         }
 
@@ -743,33 +1024,51 @@ document.addEventListener(
 
 
 /* =====================================================
-   CURRENT YEAR
+   INITIAL PAGE SETUP
 ===================================================== */
 
-const yearElement =
-    document.getElementById("year");
+function initializePage() {
+
+    updateThemeIcon();
+
+    updateActiveNav();
+
+    updateBackToTop();
+
+    updateHeader();
+
+}
 
 
-if (yearElement) {
+if (
+    document.readyState === "loading"
+) {
 
-    yearElement.textContent =
-        new Date().getFullYear();
+    document.addEventListener(
+        "DOMContentLoaded",
+        initializePage
+    );
+
+} else {
+
+    initializePage();
 
 }
 
 
 /* =====================================================
-   INITIAL PAGE SETUP
+   CLEANUP
 ===================================================== */
 
 window.addEventListener(
-    "load",
+    "beforeunload",
     () => {
 
-        revealOnScroll();
-        updateActiveNav();
-        updateBackToTop();
-        updateThemeIcon();
+        if (typingTimer) {
+
+            clearTimeout(typingTimer);
+
+        }
 
     }
 );
