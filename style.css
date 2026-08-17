@@ -25,6 +25,9 @@
     --transition: 0.3s ease;
 }
 
+
+/* ================= DARK MODE ================= */
+
 body.dark {
     --bg: #0b1120;
     --bg-secondary: #111827;
@@ -57,7 +60,11 @@ body {
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
-    transition: background var(--transition), color var(--transition);
+
+    transition:
+        background var(--transition),
+        color var(--transition);
+
     overflow-x: hidden;
 }
 
@@ -94,13 +101,18 @@ textarea {
 
 .header {
     position: fixed;
+
     top: 0;
     left: 0;
+
     width: 100%;
+
     z-index: 1000;
 
     background: rgba(255, 255, 255, 0.85);
+
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
 
     border-bottom: 1px solid var(--border);
 
@@ -125,6 +137,7 @@ body.dark .header {
 .logo {
     font-size: 1.6rem;
     font-weight: 800;
+
     color: var(--text);
 
     transition: var(--transition);
@@ -144,6 +157,7 @@ body.dark .header {
 .nav-menu {
     display: flex;
     align-items: center;
+
     gap: 2rem;
 }
 
@@ -167,6 +181,7 @@ body.dark .header {
     content: "";
 
     position: absolute;
+
     left: 0;
     bottom: -7px;
 
@@ -189,6 +204,7 @@ body.dark .header {
 .nav-actions {
     display: flex;
     align-items: center;
+
     gap: 0.7rem;
 }
 
@@ -211,6 +227,7 @@ body.dark .header {
 .icon-btn:hover,
 .menu-btn:hover {
     color: white;
+
     background: var(--primary);
     border-color: var(--primary);
 }
@@ -249,8 +266,11 @@ body.dark .header {
 
 .hero-content {
     display: grid;
+
     grid-template-columns: 1.1fr 0.9fr;
+
     align-items: center;
+
     gap: 5rem;
 }
 
@@ -259,6 +279,7 @@ body.dark .header {
 
 .hello {
     color: var(--primary);
+
     font-weight: 700;
     font-size: 1.1rem;
 
@@ -267,7 +288,9 @@ body.dark .header {
 
 .hero h1 {
     font-size: clamp(3rem, 7vw, 5.5rem);
+
     line-height: 1.05;
+
     letter-spacing: -3px;
 
     margin-bottom: 1rem;
@@ -304,6 +327,7 @@ body.dark .header {
 
 .hero-buttons {
     display: flex;
+
     gap: 1rem;
 
     flex-wrap: wrap;
@@ -313,6 +337,7 @@ body.dark .header {
 
 .btn {
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
 
@@ -333,6 +358,7 @@ body.dark .header {
 
 .primary-btn {
     color: white;
+
     background: var(--primary);
 
     box-shadow:
@@ -350,15 +376,38 @@ body.dark .header {
 
 .secondary-btn {
     border-color: var(--border);
+
     color: var(--text);
+
+    background: transparent;
 }
 
 .secondary-btn:hover {
     color: white;
+
     border-color: var(--primary);
+
     background: var(--primary);
 
     transform: translateY(-3px);
+}
+
+
+/* ================= RESUME BUTTON ================= */
+
+.resume-btn {
+    margin-top: 0.5rem;
+
+    box-shadow:
+        0 10px 25px rgba(99, 102, 241, 0.22);
+}
+
+.resume-btn i {
+    transition: transform var(--transition);
+}
+
+.resume-btn:hover i {
+    transform: translateY(3px);
 }
 
 
@@ -366,6 +415,7 @@ body.dark .header {
 
 .social-links {
     display: flex;
+
     gap: 0.8rem;
 }
 
@@ -378,6 +428,7 @@ body.dark .header {
     place-items: center;
 
     border: 1px solid var(--border);
+
     border-radius: 50%;
 
     color: var(--text-secondary);
@@ -388,7 +439,9 @@ body.dark .header {
 .social-links a:hover,
 .footer-social a:hover {
     color: white;
+
     background: var(--primary);
+
     border-color: var(--primary);
 
     transform: translateY(-4px);
@@ -401,6 +454,7 @@ body.dark .header {
     position: relative;
 
     display: flex;
+
     justify-content: center;
 }
 
@@ -458,6 +512,7 @@ body.dark .header {
     position: absolute;
 
     display: flex;
+
     align-items: center;
 
     gap: 0.6rem;
@@ -506,7 +561,9 @@ body.dark .header {
     transform: translateX(-50%);
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
 
     gap: 0.3rem;
@@ -621,6 +678,7 @@ body.dark .header {
 
 .window-header {
     display: flex;
+
     gap: 6px;
 
     padding: 12px;
@@ -700,11 +758,13 @@ body.dark .header {
 
 .about-info div {
     display: flex;
+
     flex-direction: column;
 }
 
 .about-info strong {
     font-size: 0.8rem;
+
     color: var(--text-secondary);
 }
 
@@ -754,6 +814,7 @@ body.dark .header {
     height: 55px;
 
     display: grid;
+
     place-items: center;
 
     border-radius: 12px;
@@ -765,31 +826,37 @@ body.dark .header {
 
 .skill-icon.html {
     color: #f97316;
+
     background: rgba(249, 115, 22, 0.1);
 }
 
 .skill-icon.css {
     color: #3b82f6;
+
     background: rgba(59, 130, 246, 0.1);
 }
 
 .skill-icon.js {
     color: #eab308;
+
     background: rgba(234, 179, 8, 0.1);
 }
 
 .skill-icon.git {
     color: #f97316;
+
     background: rgba(249, 115, 22, 0.1);
 }
 
 .skill-icon.react {
     color: #06b6d4;
+
     background: rgba(6, 182, 212, 0.1);
 }
 
 .skill-icon.responsive {
     color: var(--primary);
+
     background: rgba(99, 102, 241, 0.1);
 }
 
@@ -834,6 +901,7 @@ body.dark .header {
 
 .skill-card small {
     color: var(--primary);
+
     font-weight: 700;
 }
 
@@ -872,6 +940,7 @@ body.dark .header {
     position: relative;
 
     display: grid;
+
     place-items: center;
 
     overflow: hidden;
@@ -922,6 +991,7 @@ body.dark .header {
     inset: 0;
 
     display: flex;
+
     justify-content: center;
     align-items: center;
 
@@ -945,6 +1015,7 @@ body.dark .header {
     height: 45px;
 
     display: grid;
+
     place-items: center;
 
     border-radius: 50%;
@@ -970,6 +1041,7 @@ body.dark .header {
 
 .project-tags {
     display: flex;
+
     gap: 0.4rem;
 
     flex-wrap: wrap;
@@ -1006,6 +1078,7 @@ body.dark .header {
     color: var(--primary);
 
     font-size: 0.9rem;
+
     font-weight: 700;
 }
 
@@ -1059,6 +1132,7 @@ body.dark .header {
     flex-shrink: 0;
 
     display: grid;
+
     place-items: center;
 
     border-radius: 10px;
@@ -1118,6 +1192,7 @@ body.dark .header {
     margin-bottom: 0.5rem;
 
     font-size: 0.85rem;
+
     font-weight: 600;
 }
 
@@ -1171,6 +1246,7 @@ body.dark .header {
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 
     gap: 1rem;
@@ -1184,6 +1260,7 @@ body.dark .header {
 
 .footer-social {
     display: flex;
+
     gap: 0.5rem;
 }
 
@@ -1219,6 +1296,7 @@ body.dark .header {
     height: 45px;
 
     display: grid;
+
     place-items: center;
 
     border: none;
@@ -1243,6 +1321,7 @@ body.dark .header {
 
 .back-to-top.show {
     opacity: 1;
+
     visibility: visible;
 
     transform: translateY(0);
@@ -1357,6 +1436,8 @@ body.dark .header {
 }
 
 
+/* ================= TABLET / MOBILE ================= */
+
 @media (max-width: 700px) {
 
     .navbar {
@@ -1420,6 +1501,7 @@ body.dark .header {
 
     .hero h1 {
         font-size: clamp(2.7rem, 12vw, 4rem);
+
         letter-spacing: -2px;
     }
 
@@ -1455,6 +1537,8 @@ body.dark .header {
     }
 }
 
+
+/* ================= SMALL MOBILE ================= */
 
 @media (max-width: 450px) {
 
@@ -1510,6 +1594,10 @@ body.dark .header {
     .hero-buttons .btn {
         width: 100%;
     }
+
+    .about-text .resume-btn {
+        width: 100%;
+    }
 }
 
 
@@ -1525,7 +1613,9 @@ body.dark .header {
     *::before,
     *::after {
         animation-duration: 0.01ms !important;
+
         animation-iteration-count: 1 !important;
+
         transition-duration: 0.01ms !important;
     }
 }
