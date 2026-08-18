@@ -1,71 +1,101 @@
-/* =====================================================
+/* =========================================================
    ABHIJEET TIWARI PORTFOLIO
-   Main CSS
-===================================================== */
+   PROFESSIONAL PORTFOLIO CSS
+   Web Developer + Mechanical Engineer
+========================================================= */
 
 
-/* =====================================================
-   VARIABLES
-===================================================== */
+/* =========================================================
+   ROOT VARIABLES
+========================================================= */
 
 :root {
+
     --primary: #6366f1;
     --primary-dark: #4f46e5;
+    --primary-light: #818cf8;
+
     --secondary: #8b5cf6;
+    --accent: #06b6d4;
+
+    --mechanical: #f97316;
+    --mechanical-dark: #ea580c;
+
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --danger: #ef4444;
 
     --bg: #ffffff;
     --bg-secondary: #f8fafc;
+    --bg-tertiary: #f1f5f9;
+
     --card: #ffffff;
+    --card-hover: #ffffff;
 
     --text: #111827;
     --text-secondary: #64748b;
+    --text-light: #94a3b8;
 
     --border: #e2e8f0;
-
-    --success: #22c55e;
-    --danger: #ef4444;
+    --border-dark: #cbd5e1;
 
     --shadow:
         0 10px 30px rgba(15, 23, 42, 0.08);
 
+    --shadow-md:
+        0 15px 40px rgba(15, 23, 42, 0.10);
+
     --shadow-lg:
-        0 20px 50px rgba(15, 23, 42, 0.12);
+        0 25px 60px rgba(15, 23, 42, 0.14);
+
+    --shadow-primary:
+        0 15px 35px rgba(99, 102, 241, 0.25);
 
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 18px;
     --radius-xl: 24px;
+    --radius-full: 999px;
 
     --transition: 0.3s ease;
+    --transition-slow: 0.5s ease;
 }
 
 
-/* =====================================================
+/* =========================================================
    DARK MODE
-===================================================== */
+========================================================= */
 
 body.dark {
 
-    --bg: #0b1120;
-    --bg-secondary: #111827;
-    --card: #151e2e;
+    --bg: #080d19;
+    --bg-secondary: #0f172a;
+    --bg-tertiary: #111c31;
+
+    --card: #131d2e;
+    --card-hover: #172235;
 
     --text: #f8fafc;
     --text-secondary: #94a3b8;
+    --text-light: #64748b;
 
-    --border: #263244;
+    --border: #243147;
+    --border-dark: #334155;
 
     --shadow:
         0 10px 30px rgba(0, 0, 0, 0.25);
 
+    --shadow-md:
+        0 15px 40px rgba(0, 0, 0, 0.30);
+
     --shadow-lg:
-        0 20px 50px rgba(0, 0, 0, 0.35);
+        0 25px 60px rgba(0, 0, 0, 0.40);
 }
 
 
-/* =====================================================
+/* =========================================================
    RESET
-===================================================== */
+========================================================= */
 
 * {
     margin: 0;
@@ -79,33 +109,40 @@ html {
 }
 
 body {
+
     min-height: 100vh;
 
-    font-family: "Inter", sans-serif;
+    font-family:
+        "Inter",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
 
-    background: var(--bg);
     color: var(--text);
+    background: var(--bg);
 
     line-height: 1.6;
+
+    overflow-x: hidden;
 
     transition:
         background-color var(--transition),
         color var(--transition);
-
-    overflow-x: hidden;
 }
 
 body,
 button,
 input,
 textarea {
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
 }
 
 ul,
@@ -114,9 +151,11 @@ ol {
 }
 
 img {
+
+    display: block;
+
     max-width: 100%;
     height: auto;
-    display: block;
 }
 
 button,
@@ -130,36 +169,50 @@ button {
 }
 
 ::selection {
+
     color: #ffffff;
-    background: var(--primary);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
 }
 
 
-/* =====================================================
+/* =========================================================
    ACCESSIBILITY
-===================================================== */
+========================================================= */
 
 :focus-visible {
-    outline: 3px solid rgba(99, 102, 241, 0.45);
+
+    outline:
+        3px solid
+        rgba(99, 102, 241, 0.45);
+
     outline-offset: 3px;
 }
 
 
-/* =====================================================
+/* =========================================================
    CONTAINER
-===================================================== */
+========================================================= */
 
 .container {
-    width: min(1120px, 92%);
+
+    width: min(1160px, 92%);
+
     margin-inline: auto;
 }
 
 
-/* =====================================================
+/* =========================================================
    HEADER
-===================================================== */
+========================================================= */
 
 .header {
+
     position: fixed;
 
     top: 0;
@@ -169,46 +222,72 @@ button {
 
     z-index: 1000;
 
-    background: rgba(255, 255, 255, 0.88);
+    background:
+        rgba(255, 255, 255, 0.88);
 
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    border-bottom:
+        1px solid var(--border);
 
-    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
     transition:
-        background-color var(--transition),
-        border-color var(--transition);
+        background var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
 }
 
 body.dark .header {
-    background: rgba(11, 17, 32, 0.9);
+
+    background:
+        rgba(8, 13, 25, 0.90);
 }
+
+.header.scrolled {
+
+    box-shadow:
+        0 5px 25px rgba(15, 23, 42, 0.08);
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
 
 .navbar {
-    min-height: 75px;
+
+    min-height: 76px;
 
     display: flex;
+
     align-items: center;
     justify-content: space-between;
+
+    gap: 2rem;
 }
 
 
-/* =====================================================
+/* =========================================================
    LOGO
-===================================================== */
+========================================================= */
 
 .logo {
-    display: inline-block;
 
-    font-size: 1.6rem;
+    display: inline-flex;
+
+    align-items: center;
+
+    font-size: 1.55rem;
+
     font-weight: 800;
+
+    letter-spacing: -1px;
 
     color: var(--text);
 
     transition:
-        color var(--transition),
-        transform var(--transition);
+        transform var(--transition),
+        color var(--transition);
 }
 
 .logo span {
@@ -216,30 +295,37 @@ body.dark .header {
 }
 
 .logo:hover {
-    transform: translateY(-2px);
+
+    transform:
+        translateY(-2px)
+        scale(1.02);
 }
 
 
-/* =====================================================
+/* =========================================================
    NAVIGATION
-===================================================== */
+========================================================= */
 
 .nav-menu {
+
     display: flex;
+
     align-items: center;
 
     gap: 2rem;
 }
 
 .nav-link {
+
     position: relative;
 
     display: inline-block;
 
-    font-size: 0.95rem;
-    font-weight: 600;
-
     color: var(--text-secondary);
+
+    font-size: 0.92rem;
+
+    font-weight: 600;
 
     transition:
         color var(--transition);
@@ -251,55 +337,70 @@ body.dark .header {
 }
 
 .nav-link::after {
+
     content: "";
 
     position: absolute;
 
     left: 0;
-    bottom: -7px;
+    bottom: -8px;
 
     width: 0;
     height: 2px;
 
-    border-radius: 10px;
+    border-radius: var(--radius-full);
 
-    background: var(--primary);
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary),
+            var(--secondary)
+        );
 
-    transition: width var(--transition);
+    transition:
+        width var(--transition);
 }
 
 .nav-link:hover::after,
 .nav-link.active::after {
+
     width: 100%;
 }
 
 
-/* =====================================================
+/* =========================================================
    NAV ACTIONS
-===================================================== */
+========================================================= */
 
 .nav-actions {
+
     display: flex;
+
     align-items: center;
 
-    gap: 0.7rem;
+    gap: 0.65rem;
 }
 
 .icon-btn,
 .menu-btn {
+
     width: 42px;
     height: 42px;
 
     display: grid;
+
     place-items: center;
 
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
+    cursor: pointer;
 
-    background: var(--card);
     color: var(--text);
 
-    cursor: pointer;
+    background: var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius-sm);
 
     transition:
         color var(--transition),
@@ -310,13 +411,15 @@ body.dark .header {
 
 .icon-btn:hover,
 .menu-btn:hover {
+
     color: #ffffff;
 
     background: var(--primary);
 
     border-color: var(--primary);
 
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 }
 
 .menu-btn {
@@ -324,53 +427,125 @@ body.dark .header {
 }
 
 
-/* =====================================================
+/* =========================================================
    HERO
-===================================================== */
+========================================================= */
 
 .hero {
-    min-height: 100vh;
 
     position: relative;
 
+    min-height: 100vh;
+
     display: flex;
+
     align-items: center;
 
-    padding-top: 80px;
+    padding-top: 90px;
 
     overflow: hidden;
 
     background:
+
         radial-gradient(
-            circle at 10% 20%,
+            circle at 5% 20%,
             rgba(99, 102, 241, 0.10),
-            transparent 35%
+            transparent 30%
         ),
+
         radial-gradient(
-            circle at 90% 80%,
+            circle at 95% 80%,
             rgba(139, 92, 246, 0.10),
-            transparent 35%
-        );
+            transparent 32%
+        ),
+
+        var(--bg);
 }
 
 body.dark .hero {
+
     background:
+
         radial-gradient(
-            circle at 10% 20%,
-            rgba(99, 102, 241, 0.12),
-            transparent 35%
+            circle at 5% 20%,
+            rgba(99, 102, 241, 0.13),
+            transparent 30%
         ),
+
         radial-gradient(
-            circle at 90% 80%,
+            circle at 95% 80%,
             rgba(139, 92, 246, 0.12),
-            transparent 35%
-        );
+            transparent 32%
+        ),
+
+        var(--bg);
 }
 
+
+/* =========================================================
+   HERO BACKGROUND DECORATION
+========================================================= */
+
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    top: -150px;
+    right: -100px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(99, 102, 241, 0.07);
+
+    filter: blur(20px);
+
+    pointer-events: none;
+}
+
+.hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    bottom: -100px;
+    left: -80px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(6, 182, 212, 0.07);
+
+    filter: blur(20px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
 .hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
     display: grid;
 
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns:
+        minmax(0, 1.05fr)
+        minmax(360px, 0.95fr);
 
     align-items: center;
 
@@ -378,23 +553,49 @@ body.dark .hero {
 }
 
 
-/* =====================================================
+/* =========================================================
    HERO TEXT
-===================================================== */
+========================================================= */
 
 .hello {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 0.5rem;
+
     color: var(--primary);
 
-    font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1rem;
 
-    margin-bottom: 0.5rem;
+    font-weight: 700;
+
+    margin-bottom: 0.6rem;
+}
+
+.hello::before {
+
+    content: "";
+
+    width: 28px;
+    height: 2px;
+
+    background: var(--primary);
+
+    border-radius: var(--radius-full);
 }
 
 .hero h1 {
-    font-size: clamp(3rem, 7vw, 5.5rem);
 
-    line-height: 1.05;
+    font-size:
+        clamp(
+            3rem,
+            6vw,
+            5.5rem
+        );
+
+    line-height: 1.03;
 
     letter-spacing: -3px;
 
@@ -402,54 +603,85 @@ body.dark .hero {
 }
 
 .hero h1 span {
+
     color: var(--primary);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
 }
 
 .hero h2 {
-    min-height: 48px;
 
-    font-size: clamp(1.3rem, 3vw, 2rem);
+    min-height: 48px;
 
     color: var(--text-secondary);
 
-    margin-bottom: 1.3rem;
+    font-size:
+        clamp(
+            1.25rem,
+            2.8vw,
+            1.9rem
+        );
+
+    font-weight: 600;
+
+    margin-bottom: 1.25rem;
 }
 
 .hero h2 span {
+
     color: var(--secondary);
+
+    font-weight: 700;
 }
 
 #typingText {
+
     display: inline-block;
-    min-width: 190px;
+
+    min-width: 200px;
 }
 
 .hero-description {
-    max-width: 580px;
+
+    max-width: 610px;
 
     color: var(--text-secondary);
 
-    font-size: 1.05rem;
+    font-size: 1.02rem;
 
     margin-bottom: 2rem;
 }
 
 
-/* =====================================================
-   BUTTONS
-===================================================== */
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
 
 .hero-buttons {
-    display: flex;
 
-    gap: 1rem;
+    display: flex;
 
     flex-wrap: wrap;
 
-    margin-bottom: 2rem;
+    gap: 0.9rem;
+
+    margin-bottom: 1.8rem;
 }
 
 .btn {
+
+    min-height: 48px;
+
     display: inline-flex;
 
     align-items: center;
@@ -457,48 +689,57 @@ body.dark .hero {
 
     gap: 0.6rem;
 
-    min-height: 46px;
+    padding:
+        0.8rem 1.35rem;
 
-    padding: 0.85rem 1.4rem;
-
-    border: 2px solid transparent;
+    border:
+        2px solid transparent;
 
     border-radius: var(--radius-sm);
 
-    font-size: 0.95rem;
+    font-size: 0.92rem;
+
     font-weight: 700;
 
     cursor: pointer;
 
     transition:
-        background var(--transition),
         color var(--transition),
+        background var(--transition),
         border-color var(--transition),
         transform var(--transition),
         box-shadow var(--transition);
 }
 
 .primary-btn {
+
     color: #ffffff;
 
-    background: var(--primary);
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
 
     box-shadow:
-        0 10px 25px rgba(99, 102, 241, 0.25);
+        var(--shadow-primary);
 }
 
 .primary-btn:hover {
+
     color: #ffffff;
 
-    background: var(--primary-dark);
-
-    transform: translateY(-3px);
+    transform:
+        translateY(-3px);
 
     box-shadow:
-        0 15px 30px rgba(99, 102, 241, 0.35);
+        0 18px 35px
+        rgba(99, 102, 241, 0.32);
 }
 
 .secondary-btn {
+
     color: var(--text);
 
     background: transparent;
@@ -507,58 +748,49 @@ body.dark .hero {
 }
 
 .secondary-btn:hover {
+
     color: #ffffff;
 
     background: var(--primary);
 
     border-color: var(--primary);
 
-    transform: translateY(-3px);
+    transform:
+        translateY(-3px);
 }
 
 
-/* =====================================================
-   RESUME BUTTON
-===================================================== */
-
-.about-text .primary-btn {
-    margin-top: 0.5rem;
-}
-
-.about-text .primary-btn i {
-    transition: transform var(--transition);
-}
-
-.about-text .primary-btn:hover i {
-    transform: translateY(3px);
-}
-
-
-/* =====================================================
+/* =========================================================
    SOCIAL LINKS
-===================================================== */
+========================================================= */
 
 .social-links {
+
     display: flex;
 
-    gap: 0.8rem;
+    align-items: center;
+
+    gap: 0.7rem;
 }
 
 .social-links a,
 .footer-social a {
+
     width: 42px;
     height: 42px;
 
     display: grid;
+
     place-items: center;
-
-    border: 1px solid var(--border);
-
-    border-radius: 50%;
 
     color: var(--text-secondary);
 
     background: transparent;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 50%;
 
     transition:
         color var(--transition),
@@ -569,38 +801,81 @@ body.dark .hero {
 
 .social-links a:hover,
 .footer-social a:hover {
+
     color: #ffffff;
 
     background: var(--primary);
 
     border-color: var(--primary);
 
-    transform: translateY(-4px);
+    transform:
+        translateY(-4px);
 }
 
 
-/* =====================================================
+/* =========================================================
    HERO IMAGE
-===================================================== */
+========================================================= */
 
 .hero-image {
+
     position: relative;
+
+    min-height: 430px;
 
     display: flex;
 
-    justify-content: center;
     align-items: center;
-
-    min-height: 400px;
+    justify-content: center;
 }
 
 .image-container {
+
     position: relative;
 
-    width: 350px;
-    height: 350px;
+    width: 370px;
+    height: 370px;
 
-    padding: 8px;
+    padding: 9px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary),
+            var(--accent)
+        );
+
+    animation:
+        floating 5s ease-in-out infinite;
+
+    box-shadow:
+        0 25px 70px
+        rgba(99, 102, 241, 0.20);
+}
+
+.image-container img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border:
+        8px solid var(--bg);
+
+    border-radius: 50%;
+}
+
+.image-glow {
+
+    position: absolute;
+
+    inset: -40px;
+
+    z-index: -1;
 
     border-radius: 50%;
 
@@ -611,10 +886,38 @@ body.dark .hero {
             var(--secondary)
         );
 
-    animation: floating 4s ease-in-out infinite;
+    filter: blur(80px);
+
+    opacity: 0.18;
 }
 
-.image-container img {
+
+/* =========================================================
+   PROFILE PHOTO PROFESSIONAL FRAME
+========================================================= */
+
+.profile-frame {
+
+    position: relative;
+
+    padding: 10px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    box-shadow:
+        0 25px 70px
+        rgba(99, 102, 241, 0.25);
+}
+
+.profile-frame img {
+
     width: 100%;
     height: 100%;
 
@@ -625,73 +928,175 @@ body.dark .hero {
     border: 8px solid var(--bg);
 }
 
-.image-glow {
+
+/* =========================================================
+   PROFILE UPLOAD / ADD PHOTO UI
+========================================================= */
+
+.profile-upload {
+
     position: absolute;
 
-    inset: -30px;
+    right: 5px;
+    bottom: 25px;
 
-    z-index: -1;
+    width: 48px;
+    height: 48px;
 
-    border-radius: 50%;
+    display: grid;
+
+    place-items: center;
+
+    color: #ffffff;
 
     background: var(--primary);
 
-    filter: blur(80px);
+    border:
+        4px solid var(--bg);
 
-    opacity: 0.15;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px
+        rgba(99, 102, 241, 0.3);
+
+    transition:
+        transform var(--transition),
+        background var(--transition);
+}
+
+.profile-upload:hover {
+
+    background:
+        var(--primary-dark);
+
+    transform:
+        scale(1.08);
+}
+
+.profile-upload input {
+
+    display: none;
 }
 
 
-/* =====================================================
+/* =========================================================
    FLOATING CARDS
-===================================================== */
+========================================================= */
 
 .floating-card {
+
     position: absolute;
 
     display: flex;
+
     align-items: center;
 
     gap: 0.6rem;
 
-    padding: 0.8rem 1rem;
+    padding:
+        0.75rem 1rem;
 
-    border: 1px solid var(--border);
+    color: var(--text);
 
-    border-radius: var(--radius-sm);
+    background:
+        rgba(255, 255, 255, 0.90);
 
-    background: var(--card);
+    border:
+        1px solid var(--border);
 
-    box-shadow: var(--shadow);
+    border-radius: var(--radius-md);
 
-    font-size: 0.8rem;
+    box-shadow: var(--shadow-md);
+
+    backdrop-filter: blur(10px);
+
+    font-size: 0.78rem;
+
     font-weight: 700;
 
-    animation: floating 3s ease-in-out infinite;
+    animation:
+        floating 3.5s ease-in-out infinite;
+}
+
+body.dark .floating-card {
+
+    background:
+        rgba(19, 29, 46, 0.92);
 }
 
 .floating-card i {
+
     color: var(--primary);
+
+    font-size: 1rem;
 }
 
 .card-one {
-    top: 20%;
+
+    top: 15%;
     left: 0;
 }
 
 .card-two {
+
     right: 0;
-    bottom: 18%;
+    bottom: 15%;
 
     animation-delay: 1s;
 }
 
 
-/* =====================================================
+/* =========================================================
+   PROFESSIONAL BADGES
+========================================================= */
+
+.professional-badge {
+
+    position: absolute;
+
+    left: 5%;
+    bottom: 8%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.6rem;
+
+    padding:
+        0.7rem 1rem;
+
+    color: var(--text);
+
+    background: var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius-full);
+
+    box-shadow: var(--shadow);
+
+    font-size: 0.75rem;
+
+    font-weight: 700;
+}
+
+.professional-badge i {
+
+    color: var(--mechanical);
+}
+
+
+/* =========================================================
    SCROLL DOWN
-===================================================== */
+========================================================= */
 
 .scroll-down {
+
     position: absolute;
 
     bottom: 25px;
@@ -700,17 +1105,20 @@ body.dark .hero {
     display: flex;
 
     flex-direction: column;
+
     align-items: center;
 
     gap: 0.3rem;
 
     color: var(--text-secondary);
 
-    font-size: 0.75rem;
+    font-size: 0.72rem;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
-    transition: color var(--transition);
+    transition:
+        color var(--transition);
 }
 
 .scroll-down:hover {
@@ -718,75 +1126,135 @@ body.dark .hero {
 }
 
 .scroll-down i {
-    animation: bounce 1.5s infinite;
+
+    animation:
+        bounce 1.5s infinite;
 }
 
 
-/* =====================================================
+/* =========================================================
    SECTIONS
-===================================================== */
+========================================================= */
 
 .section {
-    padding: 100px 0;
+
+    position: relative;
+
+    padding:
+        105px 0;
 }
 
 .skills-section,
 .contact-section {
-    background: var(--bg-secondary);
+
+    background:
+        var(--bg-secondary);
 }
 
 
-/* =====================================================
+/* =========================================================
    SECTION HEADING
-===================================================== */
+========================================================= */
 
 .section-heading {
+
     text-align: center;
 
     margin-bottom: 60px;
 }
 
 .section-label {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 0.5rem;
+
     color: var(--primary);
 
-    font-size: 0.8rem;
+    font-size: 0.76rem;
+
     font-weight: 800;
 
     letter-spacing: 2px;
 
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.55rem;
+}
+
+.section-label::before,
+.section-label::after {
+
+    content: "";
+
+    width: 20px;
+    height: 2px;
+
+    background: var(--primary);
+
+    border-radius: var(--radius-full);
 }
 
 .section-heading h2 {
-    font-size: clamp(2rem, 5vw, 3rem);
+
+    font-size:
+        clamp(
+            2rem,
+            5vw,
+            3rem
+        );
 
     line-height: 1.2;
+
+    letter-spacing: -1px;
 }
 
 .section-heading h2 span {
+
     color: var(--primary);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
 }
 
 .heading-line {
+
     width: 60px;
     height: 4px;
 
-    margin: 12px auto 0;
+    margin:
+        13px auto 0;
 
-    border-radius: 20px;
+    border-radius: var(--radius-full);
 
-    background: var(--primary);
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary),
+            var(--secondary)
+        );
 }
 
 
-/* =====================================================
+/* =========================================================
    ABOUT
-===================================================== */
+========================================================= */
 
 .about-content {
+
     display: grid;
 
-    grid-template-columns: 0.9fr 1.1fr;
+    grid-template-columns:
+        0.9fr 1.1fr;
 
     align-items: center;
 
@@ -794,12 +1262,17 @@ body.dark .hero {
 }
 
 
-/* =====================================================
+/* =========================================================
    ABOUT CODE CARD
-===================================================== */
+========================================================= */
 
 .about-card {
+
     padding: 1.5rem;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.05);
 
     border-radius: var(--radius-lg);
 
@@ -811,37 +1284,47 @@ body.dark .hero {
         );
 
     box-shadow:
-        0 25px 60px rgba(15, 23, 42, 0.2);
+        0 25px 60px
+        rgba(15, 23, 42, 0.20);
 
-    transform: rotate(-2deg);
+    transform:
+        rotate(-2deg);
 
     transition:
         transform var(--transition);
 }
 
 .about-card:hover {
-    transform: rotate(0deg) translateY(-8px);
+
+    transform:
+        rotate(0)
+        translateY(-8px);
 }
 
 .code-window {
+
     overflow: hidden;
 
     border-radius: var(--radius-md);
 
-    background: #020617;
+    background:
+        #020617;
 }
 
 .window-header {
+
     display: flex;
 
     gap: 6px;
 
     padding: 12px;
 
-    background: #111827;
+    background:
+        #111827;
 }
 
 .window-header span {
+
     width: 11px;
     height: 11px;
 
@@ -861,16 +1344,16 @@ body.dark .hero {
 }
 
 .code-content {
+
     padding: 1.5rem;
 
     color: #cbd5e1;
 
     font-family:
         "Courier New",
-        Courier,
         monospace;
 
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 
     line-height: 2;
 }
@@ -883,17 +1366,27 @@ body.dark .hero {
     color: #86efac;
 }
 
+.code-content .blue {
+    color: #67e8f9;
+}
+
 .indent {
     padding-left: 1.5rem;
 }
 
 
-/* =====================================================
+/* =========================================================
    ABOUT TEXT
-===================================================== */
+========================================================= */
 
 .about-text h3 {
-    font-size: 2rem;
+
+    font-size:
+        clamp(
+            1.7rem,
+            3vw,
+            2.2rem
+        );
 
     line-height: 1.3;
 
@@ -901,19 +1394,28 @@ body.dark .hero {
 }
 
 .about-text h3 span {
+
     color: var(--primary);
 }
 
 .about-text > p {
+
     color: var(--text-secondary);
 
     margin-bottom: 1rem;
 }
 
+
+/* =========================================================
+   ABOUT INFO
+========================================================= */
+
 .about-info {
+
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
     gap: 1rem;
 
@@ -921,20 +1423,38 @@ body.dark .hero {
 }
 
 .about-info div {
+
     display: flex;
 
     flex-direction: column;
 
     gap: 0.15rem;
+
+    padding:
+        0.85rem;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius-sm);
+
+    background:
+        var(--bg-secondary);
 }
 
 .about-info strong {
+
     color: var(--text-secondary);
 
-    font-size: 0.8rem;
+    font-size: 0.75rem;
 }
 
 .about-info span {
+
+    color: var(--text);
+
+    font-size: 0.9rem;
+
     font-weight: 600;
 
     word-break: break-word;
@@ -945,115 +1465,298 @@ body.dark .hero {
 }
 
 
-/* =====================================================
-   SKILLS
-===================================================== */
+/* =========================================================
+   RESUME BUTTON
+========================================================= */
+
+.about-text .primary-btn {
+
+    margin-top: 0.5rem;
+}
+
+.about-text .primary-btn i {
+
+    transition:
+        transform var(--transition);
+}
+
+.about-text .primary-btn:hover i {
+
+    transform:
+        translateY(3px);
+}
+
+
+/* =========================================================
+   SKILLS MAIN GRID
+========================================================= */
 
 .skills-grid {
+
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns:
+        repeat(3, 1fr);
 
     gap: 1.3rem;
 }
 
+
+/* =========================================================
+   SKILL CARD
+========================================================= */
+
 .skill-card {
+
     position: relative;
 
-    padding: 2rem;
+    padding: 1.8rem;
 
-    border: 1px solid var(--border);
+    overflow: hidden;
 
-    border-radius: 15px;
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius-lg);
 
     background: var(--card);
 
     transition:
         transform var(--transition),
         border-color var(--transition),
-        box-shadow var(--transition);
+        box-shadow var(--transition),
+        background var(--transition);
+}
+
+.skill-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    transform:
+        scaleX(0);
+
+    transform-origin: left;
+
+    transition:
+        transform var(--transition);
 }
 
 .skill-card:hover {
-    transform: translateY(-8px);
 
-    border-color: var(--primary);
+    transform:
+        translateY(-8px);
 
-    box-shadow: var(--shadow);
+    border-color:
+        rgba(99, 102, 241, 0.45);
+
+    background:
+        var(--card-hover);
+
+    box-shadow:
+        var(--shadow-md);
 }
 
+.skill-card:hover::before {
+
+    transform:
+        scaleX(1);
+}
+
+
+/* =========================================================
+   SKILL ICON
+========================================================= */
+
 .skill-icon {
+
     width: 55px;
     height: 55px;
 
     display: grid;
+
     place-items: center;
 
-    border-radius: 12px;
+    border-radius: var(--radius-md);
 
-    font-size: 1.7rem;
+    font-size: 1.65rem;
 
     margin-bottom: 1rem;
+
+    transition:
+        transform var(--transition);
 }
 
+.skill-card:hover .skill-icon {
+
+    transform:
+        scale(1.08)
+        rotate(-3deg);
+}
+
+
+/* WEB SKILLS */
+
 .skill-icon.html {
+
     color: #f97316;
-    background: rgba(249, 115, 22, 0.1);
+
+    background:
+        rgba(249, 115, 22, 0.10);
 }
 
 .skill-icon.css {
+
     color: #3b82f6;
-    background: rgba(59, 130, 246, 0.1);
+
+    background:
+        rgba(59, 130, 246, 0.10);
 }
 
 .skill-icon.js {
+
     color: #eab308;
-    background: rgba(234, 179, 8, 0.1);
+
+    background:
+        rgba(234, 179, 8, 0.10);
 }
 
 .skill-icon.git {
+
     color: #f97316;
-    background: rgba(249, 115, 22, 0.1);
+
+    background:
+        rgba(249, 115, 22, 0.10);
 }
 
 .skill-icon.react {
+
     color: #06b6d4;
-    background: rgba(6, 182, 212, 0.1);
+
+    background:
+        rgba(6, 182, 212, 0.10);
 }
 
 .skill-icon.responsive {
+
     color: var(--primary);
-    background: rgba(99, 102, 241, 0.1);
+
+    background:
+        rgba(99, 102, 241, 0.10);
 }
 
+
+/* =========================================================
+   MECHANICAL SKILL ICONS
+========================================================= */
+
+.skill-icon.autocad {
+
+    color: #e11d48;
+
+    background:
+        rgba(225, 29, 72, 0.10);
+}
+
+.skill-icon.solidworks {
+
+    color: #dc2626;
+
+    background:
+        rgba(220, 38, 38, 0.10);
+}
+
+.skill-icon.bom {
+
+    color: #f59e0b;
+
+    background:
+        rgba(245, 158, 11, 0.10);
+}
+
+.skill-icon.prowess {
+
+    color: #0891b2;
+
+    background:
+        rgba(8, 145, 178, 0.10);
+}
+
+.skill-icon.mechanical {
+
+    color: var(--mechanical);
+
+    background:
+        rgba(249, 115, 22, 0.10);
+}
+
+.skill-icon.engineering {
+
+    color: #7c3aed;
+
+    background:
+        rgba(124, 58, 237, 0.10);
+}
+
+
+/* =========================================================
+   SKILL CARD TEXT
+========================================================= */
+
 .skill-card h3 {
+
     margin-bottom: 0.5rem;
+
+    font-size: 1.05rem;
 }
 
 .skill-card p {
+
     min-height: 48px;
 
     color: var(--text-secondary);
 
-    font-size: 0.9rem;
+    font-size: 0.87rem;
 
     margin-bottom: 1.2rem;
 }
 
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
 .progress {
+
     width: 100%;
     height: 6px;
 
     overflow: hidden;
 
-    border-radius: 10px;
-
-    background: var(--border);
-
     margin-bottom: 0.5rem;
+
+    border-radius: var(--radius-full);
+
+    background:
+        var(--border);
 }
 
 .progress span {
+
     display: block;
 
     height: 100%;
@@ -1068,34 +1771,174 @@ body.dark .hero {
         );
 }
 
+
+/* MECHANICAL PROGRESS */
+
+.mechanical-skill .progress span {
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--mechanical),
+            #f59e0b
+        );
+}
+
 .skill-card small {
+
     color: var(--primary);
 
     font-weight: 700;
 }
 
+.mechanical-skill small {
 
-/* =====================================================
+    color: var(--mechanical);
+}
+
+
+/* =========================================================
+   SKILL CATEGORY TITLE
+========================================================= */
+
+.skill-category {
+
+    margin-top: 5rem;
+}
+
+.skill-category:first-of-type {
+
+    margin-top: 0;
+}
+
+.skill-category-title {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 0.7rem;
+
+    margin-bottom: 2rem;
+
+    font-size: 1.3rem;
+
+    font-weight: 800;
+}
+
+.skill-category-title i {
+
+    color: var(--primary);
+}
+
+.skill-category-title.mechanical-title i {
+
+    color: var(--mechanical);
+}
+
+
+/* =========================================================
+   TECHNICAL SKILLS / TAGS
+========================================================= */
+
+.technical-skills {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 0.8rem;
+
+    margin-top: 2rem;
+}
+
+.technical-tag {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 0.5rem;
+
+    padding:
+        0.65rem 1rem;
+
+    color: var(--text-secondary);
+
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius-full);
+
+    font-size: 0.82rem;
+
+    font-weight: 700;
+
+    transition:
+        color var(--transition),
+        background var(--transition),
+        border-color var(--transition),
+        transform var(--transition);
+}
+
+.technical-tag:hover {
+
+    color: #ffffff;
+
+    background:
+        var(--primary);
+
+    border-color:
+        var(--primary);
+
+    transform:
+        translateY(-3px);
+}
+
+.technical-tag.mechanical-tag:hover {
+
+    background:
+        var(--mechanical);
+
+    border-color:
+        var(--mechanical);
+}
+
+
+/* =========================================================
    PROJECTS
-===================================================== */
+========================================================= */
 
 .projects-grid {
+
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns:
+        repeat(3, 1fr);
 
     gap: 1.5rem;
 }
 
 .project-card {
+
     overflow: hidden;
 
     display: flex;
+
     flex-direction: column;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
-    border-radius: 15px;
+    border-radius: var(--radius-lg);
 
     background: var(--card);
 
@@ -1106,25 +1949,37 @@ body.dark .hero {
 }
 
 .project-card:hover {
-    transform: translateY(-8px);
 
-    border-color: rgba(99, 102, 241, 0.35);
+    transform:
+        translateY(-8px);
 
-    box-shadow: var(--shadow-lg);
+    border-color:
+        rgba(99, 102, 241, 0.35);
+
+    box-shadow:
+        var(--shadow-lg);
 }
 
+
+/* =========================================================
+   PROJECT IMAGE
+========================================================= */
+
 .project-image {
-    height: 220px;
 
     position: relative;
 
+    height: 220px;
+
     display: grid;
+
     place-items: center;
 
     overflow: hidden;
 }
 
 .project-one {
+
     background:
         linear-gradient(
             135deg,
@@ -1134,6 +1989,7 @@ body.dark .hero {
 }
 
 .project-two {
+
     background:
         linear-gradient(
             135deg,
@@ -1143,6 +1999,7 @@ body.dark .hero {
 }
 
 .project-three {
+
     background:
         linear-gradient(
             135deg,
@@ -1151,8 +2008,38 @@ body.dark .hero {
         );
 }
 
+
+/* MECHANICAL PROJECT */
+
+.project-mechanical {
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c2d12,
+            #f97316
+        );
+}
+
+.project-four {
+
+    background:
+        linear-gradient(
+            135deg,
+            #164e63,
+            #0891b2
+        );
+}
+
+
+/* =========================================================
+   PROJECT ICON
+========================================================= */
+
 .project-big-icon {
-    color: rgba(255, 255, 255, 0.8);
+
+    color:
+        rgba(255, 255, 255, 0.85);
 
     font-size: 5rem;
 
@@ -1161,17 +2048,19 @@ body.dark .hero {
 }
 
 .project-card:hover .project-big-icon {
+
     transform:
         scale(1.15)
         rotate(-5deg);
 }
 
 
-/* =====================================================
+/* =========================================================
    PROJECT OVERLAY
-===================================================== */
+========================================================= */
 
 .project-overlay {
+
     position: absolute;
 
     inset: 0;
@@ -1180,34 +2069,39 @@ body.dark .hero {
 
     display: flex;
 
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     gap: 0.8rem;
 
-    background: rgba(0, 0, 0, 0.55);
+    background:
+        rgba(0, 0, 0, 0.58);
 
     opacity: 0;
 
-    transition: opacity var(--transition);
+    transition:
+        opacity var(--transition);
 }
 
 .project-card:hover .project-overlay {
+
     opacity: 1;
 }
 
 .project-overlay a {
+
     width: 45px;
     height: 45px;
 
     display: grid;
-    place-items: center;
 
-    border-radius: 50%;
+    place-items: center;
 
     color: #111827;
 
     background: #ffffff;
+
+    border-radius: 50%;
 
     transition:
         color var(--transition),
@@ -1216,75 +2110,90 @@ body.dark .hero {
 }
 
 .project-overlay a:hover {
+
     color: #ffffff;
 
     background: var(--primary);
 
-    transform: scale(1.1);
+    transform:
+        scale(1.1);
 }
 
 
-/* =====================================================
+/* =========================================================
    PROJECT CONTENT
-===================================================== */
+========================================================= */
 
 .project-content {
+
     flex: 1;
 
     display: flex;
+
     flex-direction: column;
 
     padding: 1.5rem;
 }
 
 .project-tags {
+
     display: flex;
 
-    gap: 0.4rem;
-
     flex-wrap: wrap;
+
+    gap: 0.4rem;
 
     margin-bottom: 0.8rem;
 }
 
 .project-tags span {
-    padding: 0.3rem 0.6rem;
 
-    border-radius: 5px;
+    padding:
+        0.3rem 0.6rem;
 
     color: var(--primary);
 
-    background: rgba(99, 102, 241, 0.1);
+    background:
+        rgba(99, 102, 241, 0.10);
 
-    font-size: 0.7rem;
+    border-radius: 5px;
+
+    font-size: 0.68rem;
+
     font-weight: 700;
 }
 
 .project-content h3 {
+
     margin-bottom: 0.5rem;
+
+    font-size: 1.15rem;
 }
 
 .project-content p {
+
     color: var(--text-secondary);
 
-    font-size: 0.9rem;
+    font-size: 0.88rem;
 
     margin-bottom: 1rem;
 }
 
 .project-link {
+
     width: fit-content;
 
     margin-top: auto;
 
     color: var(--primary);
 
-    font-size: 0.9rem;
+    font-size: 0.88rem;
 
     font-weight: 700;
 }
 
 .project-link i {
+
     margin-left: 0.3rem;
 
     transition:
@@ -1292,25 +2201,141 @@ body.dark .hero {
 }
 
 .project-link:hover i {
-    transform: translateX(5px);
+
+    transform:
+        translateX(5px);
 }
 
 
-/* =====================================================
-   CONTACT
-===================================================== */
+/* =========================================================
+   EXPERIENCE / PROFESSIONAL SECTION
+========================================================= */
 
-.contact-content {
+.experience-grid {
+
     display: grid;
 
-    grid-template-columns: 0.8fr 1.2fr;
+    grid-template-columns:
+        repeat(2, 1fr);
 
-    gap: 4rem;
+    gap: 1.5rem;
+}
+
+.experience-card {
+
+    padding: 1.7rem;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    background: var(--card);
+
+    transition:
+        transform var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+.experience-card:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        var(--primary);
+
+    box-shadow:
+        var(--shadow);
+}
+
+.experience-header {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 1rem;
+
+    margin-bottom: 1rem;
+}
+
+.experience-icon {
+
+    width: 50px;
+    height: 50px;
+
+    display: grid;
+
+    place-items: center;
+
+    flex-shrink: 0;
+
+    color: var(--primary);
+
+    background:
+        rgba(99, 102, 241, 0.10);
+
+    border-radius:
+        var(--radius-md);
+
+    font-size: 1.3rem;
+}
+
+.experience-card.mechanical-experience
+.experience-icon {
+
+    color: var(--mechanical);
+
+    background:
+        rgba(249, 115, 22, 0.10);
+}
+
+.experience-card h3 {
+
+    font-size: 1.1rem;
+
+    margin-bottom: 0.3rem;
+}
+
+.experience-card .company {
+
+    color: var(--primary);
+
+    font-size: 0.85rem;
+
+    font-weight: 700;
+}
+
+.experience-card p {
+
+    color: var(--text-secondary);
+
+    font-size: 0.88rem;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-content {
+
+    display: grid;
+
+    grid-template-columns:
+        0.8fr 1.2fr;
 
     align-items: start;
+
+    gap: 4rem;
 }
 
 .contact-info h3 {
+
     font-size: 2rem;
 
     line-height: 1.3;
@@ -1319,122 +2344,146 @@ body.dark .hero {
 }
 
 .contact-info > p {
+
     color: var(--text-secondary);
 
     margin-bottom: 2rem;
 }
 
 .contact-item {
+
     display: flex;
 
     align-items: center;
 
     gap: 1rem;
 
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.4rem;
 }
 
 .contact-icon {
+
     width: 48px;
     height: 48px;
 
     flex-shrink: 0;
 
     display: grid;
-    place-items: center;
 
-    border-radius: 10px;
+    place-items: center;
 
     color: var(--primary);
 
-    background: rgba(99, 102, 241, 0.1);
+    background:
+        rgba(99, 102, 241, 0.10);
+
+    border-radius: 10px;
 }
 
 .contact-item > div:last-child {
+
     min-width: 0;
 }
 
 .contact-item span {
+
     display: block;
 
     color: var(--text-secondary);
 
-    font-size: 0.8rem;
+    font-size: 0.78rem;
 }
 
 .contact-item p,
 .contact-item a {
+
+    font-size: 0.88rem;
+
     font-weight: 600;
 
     overflow-wrap: anywhere;
 }
 
 .contact-item a {
-    transition: color var(--transition);
+
+    transition:
+        color var(--transition);
 }
 
 .contact-item a:hover {
+
     color: var(--primary);
 }
 
 
-/* =====================================================
+/* =========================================================
    CONTACT FORM
-===================================================== */
+========================================================= */
 
 .contact-form {
+
     padding: 2rem;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
-    border-radius: 15px;
+    border-radius: var(--radius-lg);
 
     background: var(--card);
 
-    box-shadow: var(--shadow);
+    box-shadow:
+        var(--shadow);
 }
 
 .input-group {
+
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
     gap: 1rem;
 }
 
 .input-box {
+
     margin-bottom: 1rem;
 }
 
 .input-box label {
+
     display: block;
 
     margin-bottom: 0.5rem;
 
     color: var(--text);
 
-    font-size: 0.85rem;
+    font-size: 0.82rem;
 
     font-weight: 600;
 }
 
 .input-box input,
 .input-box textarea {
+
     width: 100%;
 
-    padding: 0.9rem 1rem;
+    padding:
+        0.9rem 1rem;
 
     outline: none;
 
     resize: vertical;
 
-    border: 1px solid var(--border);
-
-    border-radius: 8px;
-
     color: var(--text);
 
     background: var(--bg);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius-sm);
 
     transition:
         border-color var(--transition),
@@ -1443,11 +2492,13 @@ body.dark .hero {
 }
 
 .input-box textarea {
+
     min-height: 150px;
 }
 
 .input-box input::placeholder,
 .input-box textarea::placeholder {
+
     color: var(--text-secondary);
 
     opacity: 0.75;
@@ -1455,13 +2506,17 @@ body.dark .hero {
 
 .input-box input:focus,
 .input-box textarea:focus {
-    border-color: var(--primary);
+
+    border-color:
+        var(--primary);
 
     box-shadow:
-        0 0 0 3px rgba(99, 102, 241, 0.1);
+        0 0 0 3px
+        rgba(99, 102, 241, 0.10);
 }
 
 #formMessage {
+
     min-height: 20px;
 
     margin-top: 1rem;
@@ -1470,19 +2525,22 @@ body.dark .hero {
 }
 
 
-/* =====================================================
+/* =========================================================
    FOOTER
-===================================================== */
+========================================================= */
 
 .footer {
+
     padding-top: 2rem;
 
-    border-top: 1px solid var(--border);
-
     background: var(--bg);
+
+    border-top:
+        1px solid var(--border);
 }
 
 .footer-content {
+
     display: flex;
 
     align-items: center;
@@ -1493,48 +2551,55 @@ body.dark .hero {
 }
 
 .footer-content p {
+
     color: var(--text-secondary);
 
-    font-size: 0.85rem;
+    font-size: 0.84rem;
 
     text-align: center;
 }
 
 .footer-content strong {
+
     color: var(--text);
 }
 
 .footer-social {
+
     display: flex;
 
     gap: 0.5rem;
 }
 
 .footer-social a {
+
     width: 36px;
     height: 36px;
 }
 
 .copyright {
+
     margin-top: 2rem;
 
     padding: 1rem;
 
-    text-align: center;
-
     color: var(--text-secondary);
 
-    border-top: 1px solid var(--border);
+    text-align: center;
 
-    font-size: 0.8rem;
+    border-top:
+        1px solid var(--border);
+
+    font-size: 0.78rem;
 }
 
 
-/* =====================================================
+/* =========================================================
    BACK TO TOP
-===================================================== */
+========================================================= */
 
 .back-to-top {
+
     position: fixed;
 
     right: 25px;
@@ -1543,61 +2608,73 @@ body.dark .hero {
     width: 45px;
     height: 45px;
 
+    z-index: 999;
+
     display: grid;
+
     place-items: center;
-
-    border: none;
-
-    border-radius: 10px;
 
     color: #ffffff;
 
-    background: var(--primary);
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    border-radius: 10px;
 
     cursor: pointer;
 
     opacity: 0;
+
     visibility: hidden;
 
-    transform: translateY(20px);
+    transform:
+        translateY(20px);
 
     transition:
         opacity var(--transition),
         visibility var(--transition),
         transform var(--transition),
         background var(--transition);
-
-    z-index: 999;
 }
 
 .back-to-top.show {
+
     opacity: 1;
 
     visibility: visible;
 
-    transform: translateY(0);
+    transform:
+        translateY(0);
 }
 
 .back-to-top:hover {
-    background: var(--primary-dark);
 
-    transform: translateY(-4px);
+    transform:
+        translateY(-4px);
 }
 
 
-/* =====================================================
+/* =========================================================
    ANIMATIONS
-===================================================== */
+========================================================= */
 
 @keyframes floating {
 
     0%,
     100% {
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 
     50% {
-        transform: translateY(-15px);
+
+        transform:
+            translateY(-14px);
     }
 }
 
@@ -1605,34 +2682,55 @@ body.dark .hero {
 
     0%,
     100% {
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 
     50% {
-        transform: translateY(6px);
+
+        transform:
+            translateY(6px);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+
+        box-shadow:
+            0 0 0 0
+            rgba(99, 102, 241, 0.25);
+    }
+
+    50% {
+
+        box-shadow:
+            0 0 0 12px
+            rgba(99, 102, 241, 0);
     }
 }
 
 
-/* =====================================================
+/* =========================================================
    SCROLL REVEAL
-===================================================== */
-
-/*
-   JS active hone par animation chalega.
-   JS disabled ho to content hidden nahi hoga.
-*/
+========================================================= */
 
 .reveal {
+
     opacity: 1;
 
-    transform: translateY(0);
+    transform:
+        translateY(0);
 }
 
 .js-enabled .reveal {
+
     opacity: 0;
 
-    transform: translateY(40px);
+    transform:
+        translateY(40px);
 
     transition:
         opacity 0.7s ease,
@@ -1640,39 +2738,80 @@ body.dark .hero {
 }
 
 .js-enabled .reveal.active {
+
     opacity: 1;
 
-    transform: translateY(0);
+    transform:
+        translateY(0);
 }
 
 
-/* =====================================================
-   TABLET
-===================================================== */
+/* =========================================================
+   DELAY ANIMATIONS
+========================================================= */
 
-@media (max-width: 1000px) {
+.reveal:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.reveal:nth-child(2) {
+    transition-delay: 0.10s;
+}
+
+.reveal:nth-child(3) {
+    transition-delay: 0.15s;
+}
+
+.reveal:nth-child(4) {
+    transition-delay: 0.20s;
+}
+
+.reveal:nth-child(5) {
+    transition-delay: 0.25s;
+}
+
+.reveal:nth-child(6) {
+    transition-delay: 0.30s;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
 
     .hero-content {
+
         gap: 3rem;
     }
 
     .about-content {
+
         gap: 3rem;
     }
 
     .contact-content {
+
         gap: 2.5rem;
+    }
+
+    .image-container {
+
+        width: 330px;
+        height: 330px;
     }
 }
 
 
-/* =====================================================
-   TABLET / SMALL LAPTOP
-===================================================== */
+/* =========================================================
+   SMALL LAPTOP / TABLET
+========================================================= */
 
 @media (max-width: 900px) {
 
     .hero-content {
+
         grid-template-columns: 1fr;
 
         text-align: center;
@@ -1681,44 +2820,57 @@ body.dark .hero {
     }
 
     .hero-description {
-        margin-left: auto;
-        margin-right: auto;
+
+        margin-inline: auto;
     }
 
     .hero-buttons,
     .social-links {
+
         justify-content: center;
     }
 
     .hero-image {
+
         order: -1;
 
-        min-height: 330px;
-    }
-
-    .image-container {
-        width: 280px;
-        height: 280px;
+        min-height: 350px;
     }
 
     .about-content {
+
         grid-template-columns: 1fr;
 
         gap: 3rem;
     }
 
     .about-image {
+
         width: min(100%, 600px);
 
         margin-inline: auto;
     }
 
-    .skills-grid,
+    .skills-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
     .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .experience-grid {
+
+        grid-template-columns:
+            1fr 1fr;
     }
 
     .contact-content {
+
         grid-template-columns: 1fr;
 
         gap: 3rem;
@@ -1726,17 +2878,19 @@ body.dark .hero {
 }
 
 
-/* =====================================================
+/* =========================================================
    MOBILE NAVIGATION
-===================================================== */
+========================================================= */
 
 @media (max-width: 700px) {
 
     .navbar {
+
         min-height: 70px;
     }
 
     .nav-menu {
+
         position: absolute;
 
         top: 70px;
@@ -1746,21 +2900,28 @@ body.dark .hero {
 
         z-index: 999;
 
+        display: flex;
+
         flex-direction: column;
 
         align-items: flex-start;
 
         gap: 0;
 
-        padding: 1rem 4%;
+        padding:
+            1rem 4%;
 
-        background: var(--bg);
+        background:
+            var(--bg);
 
-        border-bottom: 1px solid var(--border);
+        border-bottom:
+            1px solid var(--border);
 
-        box-shadow: var(--shadow);
+        box-shadow:
+            var(--shadow);
 
-        transform: translateY(-120%);
+        transform:
+            translateY(-120%);
 
         opacity: 0;
 
@@ -1775,7 +2936,9 @@ body.dark .hero {
     }
 
     .nav-menu.active {
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
 
         opacity: 1;
 
@@ -1785,242 +2948,357 @@ body.dark .hero {
     }
 
     .nav-menu li {
+
         width: 100%;
     }
 
     .nav-link {
+
         display: block;
 
         width: 100%;
 
-        padding: 0.8rem 0;
+        padding:
+            0.8rem 0;
     }
 
     .nav-link::after {
+
         display: none;
     }
 
     .menu-btn {
+
         display: grid;
     }
 
     .hero {
+
         padding-top: 100px;
     }
 
     .hero h1 {
-        font-size: clamp(2.7rem, 12vw, 4rem);
+
+        font-size:
+            clamp(
+                2.7rem,
+                12vw,
+                4rem
+            );
 
         letter-spacing: -2px;
     }
 
     .hero h2 {
-        font-size: 1.35rem;
+
+        font-size: 1.3rem;
     }
 
     #typingText {
+
         min-width: 0;
     }
 
     .hero-description {
-        font-size: 0.95rem;
+
+        font-size: 0.94rem;
     }
 
     .scroll-down {
+
         display: none;
     }
 
     .section {
-        padding: 80px 0;
+
+        padding:
+            80px 0;
     }
 
     .section-heading {
+
         margin-bottom: 45px;
     }
 
     .skills-grid,
     .projects-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .experience-grid {
+
         grid-template-columns: 1fr;
     }
 
     .skill-card p {
+
         min-height: auto;
     }
 
     .about-info {
+
         grid-template-columns: 1fr;
     }
 
     .input-group {
+
         grid-template-columns: 1fr;
     }
 
     .footer-content {
+
         flex-direction: column;
 
         text-align: center;
     }
+
+    .professional-badge {
+
+        display: none;
+    }
 }
 
 
-/* =====================================================
+/* =========================================================
    MOBILE
-===================================================== */
+========================================================= */
 
 @media (max-width: 550px) {
 
     .container {
+
         width: 92%;
     }
 
     .hero {
+
         min-height: auto;
 
-        padding-top: 120px;
+        padding-top: 115px;
+
         padding-bottom: 80px;
     }
 
     .hero-image {
-        min-height: 260px;
+
+        min-height: 275px;
     }
 
     .image-container {
-        width: 230px;
-        height: 230px;
+
+        width: 235px;
+        height: 235px;
     }
 
     .floating-card {
-        font-size: 0.7rem;
 
-        padding: 0.6rem 0.7rem;
+        padding:
+            0.55rem 0.7rem;
+
+        font-size: 0.67rem;
     }
 
     .card-one {
+
         left: -5px;
     }
 
     .card-two {
+
         right: -5px;
     }
 
     .about-card {
+
         padding: 1rem;
     }
 
     .code-content {
+
         padding: 1rem;
 
-        font-size: 0.78rem;
+        font-size: 0.76rem;
     }
 
     .about-text h3 {
+
         font-size: 1.6rem;
     }
 
     .contact-form {
+
         padding: 1.2rem;
     }
 
     .contact-info h3 {
+
         font-size: 1.6rem;
     }
 
     .project-image {
+
         height: 200px;
     }
 
     .project-big-icon {
+
         font-size: 4rem;
     }
 
     .hero-buttons {
+
         flex-direction: column;
 
         width: 100%;
     }
 
     .hero-buttons .btn {
+
         width: 100%;
     }
 
     .about-text .primary-btn {
+
         width: 100%;
     }
 
     .back-to-top {
+
         right: 15px;
         bottom: 15px;
 
         width: 42px;
         height: 42px;
     }
+
+    .technical-skills {
+
+        justify-content: flex-start;
+    }
+
+    .technical-tag {
+
+        font-size: 0.75rem;
+
+        padding:
+            0.55rem 0.75rem;
+    }
 }
 
 
-/* =====================================================
+/* =========================================================
    VERY SMALL MOBILE
-===================================================== */
+========================================================= */
 
 @media (max-width: 380px) {
 
     .logo {
-        font-size: 1.35rem;
+
+        font-size: 1.3rem;
     }
 
     .nav-actions {
+
         gap: 0.4rem;
     }
 
     .icon-btn,
     .menu-btn {
+
         width: 38px;
         height: 38px;
     }
 
     .hero h1 {
-        font-size: 2.5rem;
+
+        font-size: 2.45rem;
     }
 
     .hero h2 {
-        font-size: 1.15rem;
+
+        font-size: 1.1rem;
     }
 
     .image-container {
+
         width: 200px;
         height: 200px;
     }
 
     .floating-card {
-        font-size: 0.65rem;
+
+        font-size: 0.62rem;
     }
 
     .floating-card i {
-        font-size: 0.8rem;
+
+        font-size: 0.75rem;
     }
 
     .contact-item {
+
         align-items: flex-start;
+    }
+
+    .skill-card {
+
+        padding: 1.4rem;
     }
 }
 
 
-/* =====================================================
+/* =========================================================
    REDUCED MOTION
-===================================================== */
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
     html {
+
         scroll-behavior: auto;
     }
 
     *,
     *::before,
     *::after {
+
         animation-duration: 0.01ms !important;
 
         animation-iteration-count: 1 !important;
 
         transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print {
+
+    .header,
+    .nav-actions,
+    .scroll-down,
+    .back-to-top,
+    .social-links,
+    .footer-social,
+    .hero-buttons {
+
+        display: none !important;
+    }
+
+    body {
+
+        color: #000000;
+
+        background: #ffffff;
+    }
+
+    .section {
+
+        padding:
+            40px 0;
     }
 }
