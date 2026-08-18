@@ -40,7 +40,21 @@ const yearElement = document.getElementById("year");
 
 const prefersReducedMotion =
     window.matchMedia &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+
+/* =====================================================
+   ENABLE JAVASCRIPT MODE
+===================================================== */
+
+/*
+   CSS mein .js-enabled ke through
+   scroll reveal animation control hoti hai.
+*/
+
+body.classList.add("js-enabled");
 
 
 /* =====================================================
@@ -61,7 +75,9 @@ if (yearElement) {
 
 function openMobileMenu() {
 
-    if (!navMenu || !menuToggle) return;
+    if (!navMenu || !menuToggle) {
+        return;
+    }
 
     navMenu.classList.add("active");
 
@@ -75,12 +91,18 @@ function openMobileMenu() {
         "Close navigation menu"
     );
 
+    menuToggle.setAttribute(
+        "title",
+        "Close navigation menu"
+    );
+
     const icon =
         menuToggle.querySelector("i");
 
     if (icon) {
 
         icon.classList.remove("fa-bars");
+
         icon.classList.add("fa-xmark");
 
     }
@@ -90,7 +112,9 @@ function openMobileMenu() {
 
 function closeMobileMenu() {
 
-    if (!navMenu || !menuToggle) return;
+    if (!navMenu || !menuToggle) {
+        return;
+    }
 
     navMenu.classList.remove("active");
 
@@ -104,12 +128,18 @@ function closeMobileMenu() {
         "Open navigation menu"
     );
 
+    menuToggle.setAttribute(
+        "title",
+        "Open navigation menu"
+    );
+
     const icon =
         menuToggle.querySelector("i");
 
     if (icon) {
 
         icon.classList.remove("fa-xmark");
+
         icon.classList.add("fa-bars");
 
     }
@@ -119,9 +149,13 @@ function closeMobileMenu() {
 
 function toggleMobileMenu() {
 
-    if (!navMenu) return;
+    if (!navMenu) {
+        return;
+    }
 
-    if (navMenu.classList.contains("active")) {
+    if (
+        navMenu.classList.contains("active")
+    ) {
 
         closeMobileMenu();
 
@@ -144,7 +178,7 @@ if (menuToggle) {
 }
 
 
-/* Close menu after clicking navigation link */
+/* Close menu after navigation click */
 
 navLinks.forEach(link => {
 
@@ -164,9 +198,11 @@ navLinks.forEach(link => {
 
 document.addEventListener(
     "click",
-    (event) => {
+    event => {
 
-        if (!navMenu || !menuToggle) return;
+        if (!navMenu || !menuToggle) {
+            return;
+        }
 
         const clickedInsideMenu =
             navMenu.contains(event.target);
@@ -192,12 +228,11 @@ document.addEventListener(
 
 document.addEventListener(
     "keydown",
-    (event) => {
+    event => {
 
         if (
             event.key === "Escape" &&
-            navMenu &&
-            navMenu.classList.contains("active")
+            navMenu?.classList.contains("active")
         ) {
 
             closeMobileMenu();
@@ -210,7 +245,7 @@ document.addEventListener(
 );
 
 
-/* Close mobile menu when resizing to desktop */
+/* Close menu on desktop resize */
 
 window.addEventListener(
     "resize",
@@ -235,12 +270,16 @@ window.addEventListener(
 
 function updateThemeIcon() {
 
-    if (!themeToggle) return;
+    if (!themeToggle) {
+        return;
+    }
 
     const icon =
         themeToggle.querySelector("i");
 
-    if (!icon) return;
+    if (!icon) {
+        return;
+    }
 
     const isDark =
         body.classList.contains("dark");
@@ -249,6 +288,7 @@ function updateThemeIcon() {
     if (isDark) {
 
         icon.classList.remove("fa-moon");
+
         icon.classList.add("fa-sun");
 
         themeToggle.setAttribute(
@@ -269,6 +309,7 @@ function updateThemeIcon() {
     } else {
 
         icon.classList.remove("fa-sun");
+
         icon.classList.add("fa-moon");
 
         themeToggle.setAttribute(
@@ -293,8 +334,20 @@ function updateThemeIcon() {
 
 /* Load saved theme */
 
-const savedTheme =
-    localStorage.getItem("portfolio-theme");
+let savedTheme = null;
+
+try {
+
+    savedTheme =
+        localStorage.getItem(
+            "portfolio-theme"
+        );
+
+} catch (error) {
+
+    savedTheme = null;
+
+}
 
 
 if (savedTheme === "dark") {
@@ -307,7 +360,9 @@ if (savedTheme === "dark") {
 
 } else if (
     window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches
+    window.matchMedia(
+        "(prefers-color-scheme: dark)"
+    ).matches
 ) {
 
     body.classList.add("dark");
@@ -329,10 +384,20 @@ if (themeToggle) {
             const isDark =
                 body.classList.toggle("dark");
 
-            localStorage.setItem(
-                "portfolio-theme",
-                isDark ? "dark" : "light"
-            );
+            try {
+
+                localStorage.setItem(
+                    "portfolio-theme",
+                    isDark
+                        ? "dark"
+                        : "light"
+                );
+
+            } catch (error) {
+
+                /* Storage unavailable */
+
+            }
 
             updateThemeIcon();
 
@@ -355,14 +420,19 @@ const words = [
 
 
 let wordIndex = 0;
+
 let charIndex = 0;
+
 let isDeleting = false;
+
 let typingTimer = null;
 
 
 function typeEffect() {
 
-    if (!typingText) return;
+    if (!typingText) {
+        return;
+    }
 
 
     const currentWord =
@@ -393,10 +463,12 @@ function typeEffect() {
 
 
     let speed =
-        isDeleting ? 55 : 90;
+        isDeleting
+            ? 55
+            : 90;
 
 
-    /* Word completely typed */
+    /* Word completed */
 
     if (
         !isDeleting &&
@@ -410,7 +482,7 @@ function typeEffect() {
     }
 
 
-    /* Word completely deleted */
+    /* Word deleted */
 
     if (
         isDeleting &&
@@ -420,7 +492,8 @@ function typeEffect() {
         isDeleting = false;
 
         wordIndex =
-            (wordIndex + 1) % words.length;
+            (wordIndex + 1) %
+            words.length;
 
         speed = 400;
 
@@ -436,7 +509,7 @@ function typeEffect() {
 }
 
 
-/* Start typing effect */
+/* Start typing */
 
 if (typingText) {
 
@@ -465,7 +538,9 @@ function activateRevealElements() {
     revealElements.forEach(
         element => {
 
-            element.classList.add("active");
+            element.classList.add(
+                "active"
+            );
 
         }
     );
@@ -489,7 +564,9 @@ if (
                 entries.forEach(
                     entry => {
 
-                        if (entry.isIntersecting) {
+                        if (
+                            entry.isIntersecting
+                        ) {
 
                             entry.target.classList.add(
                                 "active"
@@ -507,7 +584,9 @@ if (
             },
             {
                 threshold: 0.12,
-                rootMargin: "0px 0px -50px 0px"
+
+                rootMargin:
+                    "0px 0px -50px 0px"
             }
         );
 
@@ -531,18 +610,30 @@ if (
 
 function updateActiveNav() {
 
-    if (!sections.length || !navLinks.length) {
+    if (
+        !sections.length ||
+        !navLinks.length
+    ) {
+
         return;
+
     }
+
+
+    const headerHeight =
+        header
+            ? header.offsetHeight
+            : 80;
 
 
     const scrollPosition =
         window.scrollY +
-        (header ? header.offsetHeight : 80) +
-        80;
+        headerHeight +
+        100;
 
 
-    let currentSection = "home";
+    let currentSection =
+        sections[0]?.id || "home";
 
 
     sections.forEach(
@@ -551,8 +642,10 @@ function updateActiveNav() {
             const sectionTop =
                 section.offsetTop;
 
+
             if (
-                scrollPosition >= sectionTop
+                scrollPosition >=
+                sectionTop
             ) {
 
                 currentSection =
@@ -568,16 +661,36 @@ function updateActiveNav() {
         link => {
 
             const href =
-                link.getAttribute("href");
+                link.getAttribute(
+                    "href"
+                );
+
 
             const isActive =
-                href === `#${currentSection}`;
+                href ===
+                `#${currentSection}`;
 
 
             link.classList.toggle(
                 "active",
                 isActive
             );
+
+
+            if (isActive) {
+
+                link.setAttribute(
+                    "aria-current",
+                    "page"
+                );
+
+            } else {
+
+                link.removeAttribute(
+                    "aria-current"
+                );
+
+            }
 
         }
     );
@@ -600,16 +713,22 @@ window.addEventListener(
 
 function updateBackToTop() {
 
-    if (!backToTop) return;
+    if (!backToTop) {
+        return;
+    }
 
 
     if (window.scrollY > 500) {
 
-        backToTop.classList.add("show");
+        backToTop.classList.add(
+            "show"
+        );
 
     } else {
 
-        backToTop.classList.remove("show");
+        backToTop.classList.remove(
+            "show"
+        );
 
     }
 
@@ -632,11 +751,14 @@ if (backToTop) {
         () => {
 
             window.scrollTo({
+
                 top: 0,
+
                 behavior:
                     prefersReducedMotion
                         ? "auto"
                         : "smooth"
+
             });
 
         }
@@ -650,7 +772,9 @@ if (backToTop) {
 ===================================================== */
 
 document
-    .querySelectorAll('a[href^="#"]')
+    .querySelectorAll(
+        'a[href^="#"]'
+    )
     .forEach(
         link => {
 
@@ -659,17 +783,13 @@ document
                 event => {
 
                     const targetId =
-                        link.getAttribute("href");
+                        link.getAttribute(
+                            "href"
+                        );
 
 
                     /*
-                        Ignore empty "#"
-                        links.
-
-                        Important:
-                        Your project buttons currently
-                        use href="#". They will remain
-                        inactive until you add real URLs.
+                       Ignore empty # links.
                     */
 
                     if (
@@ -682,20 +802,31 @@ document
                     }
 
 
-                    const target =
-                        document.querySelector(
-                            targetId
-                        );
+                    let target = null;
 
+                    try {
 
-                    if (!target) {
+                        target =
+                            document.querySelector(
+                                targetId
+                            );
+
+                    } catch (error) {
 
                         return;
 
                     }
 
 
+                    if (!target) {
+                        return;
+                    }
+
+
                     event.preventDefault();
+
+
+                    closeMobileMenu();
 
 
                     const headerHeight =
@@ -705,7 +836,8 @@ document
 
 
                     const targetPosition =
-                        target.getBoundingClientRect().top +
+                        target.getBoundingClientRect()
+                            .top +
                         window.scrollY -
                         headerHeight;
 
@@ -725,6 +857,32 @@ document
 
                     });
 
+
+                    /*
+                       Update URL without
+                       forcing browser jump.
+                    */
+
+                    if (
+                        history.pushState
+                    ) {
+
+                        try {
+
+                            history.pushState(
+                                null,
+                                "",
+                                targetId
+                            );
+
+                        } catch (error) {
+
+                            /* Ignore */
+
+                        }
+
+                    }
+
                 }
             );
 
@@ -741,13 +899,33 @@ function showFormMessage(
     color
 ) {
 
-    if (!formMessage) return;
+    if (!formMessage) {
+        return;
+    }
+
 
     formMessage.textContent =
         message;
 
+
     formMessage.style.color =
         color;
+
+
+    if (message) {
+
+        formMessage.setAttribute(
+            "role",
+            "status"
+        );
+
+    } else {
+
+        formMessage.removeAttribute(
+            "role"
+        );
+
+    }
 
 }
 
@@ -762,32 +940,43 @@ if (contactForm) {
 
 
             const nameInput =
-                document.getElementById("name");
+                document.getElementById(
+                    "name"
+                );
 
             const emailInput =
-                document.getElementById("email");
+                document.getElementById(
+                    "email"
+                );
 
             const subjectInput =
-                document.getElementById("subject");
+                document.getElementById(
+                    "subject"
+                );
 
             const messageInput =
-                document.getElementById("message");
+                document.getElementById(
+                    "message"
+                );
 
 
             const name =
                 nameInput?.value.trim() || "";
 
+
             const email =
                 emailInput?.value.trim() || "";
 
+
             const subject =
                 subjectInput?.value.trim() || "";
+
 
             const message =
                 messageInput?.value.trim() || "";
 
 
-            /* Reset message */
+            /* Clear previous message */
 
             showFormMessage(
                 "",
@@ -795,7 +984,9 @@ if (contactForm) {
             );
 
 
-            /* Required field validation */
+            /* =================================================
+               REQUIRED FIELD VALIDATION
+            ================================================= */
 
             if (
                 !name ||
@@ -814,9 +1005,13 @@ if (contactForm) {
             }
 
 
-            /* Name validation */
+            /* =================================================
+               NAME VALIDATION
+            ================================================= */
 
-            if (name.length < 2) {
+            if (
+                name.length < 2
+            ) {
 
                 showFormMessage(
                     "Please enter a valid name.",
@@ -830,7 +1025,9 @@ if (contactForm) {
             }
 
 
-            /* Email validation */
+            /* =================================================
+               EMAIL VALIDATION
+            ================================================= */
 
             const emailPattern =
                 /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -852,9 +1049,13 @@ if (contactForm) {
             }
 
 
-            /* Subject validation */
+            /* =================================================
+               SUBJECT VALIDATION
+            ================================================= */
 
-            if (subject.length < 3) {
+            if (
+                subject.length < 3
+            ) {
 
                 showFormMessage(
                     "Please enter a valid subject.",
@@ -868,9 +1069,13 @@ if (contactForm) {
             }
 
 
-            /* Message validation */
+            /* =================================================
+               MESSAGE VALIDATION
+            ================================================= */
 
-            if (message.length < 10) {
+            if (
+                message.length < 10
+            ) {
 
                 showFormMessage(
                     "Please write a message of at least 10 characters.",
@@ -884,20 +1089,19 @@ if (contactForm) {
             }
 
 
-            /*
-                Frontend-only form.
+            /* =================================================
+               EMAIL CLIENT
+            ================================================= */
 
-                Since GitHub Pages does not provide
-                a backend, mailto is used here.
-            */
-
-            const mailtoLink =
-                "mailto:abhijeettiwari955@gmail.com" +
-                "?subject=" +
-                encodeURIComponent(subject) +
-                "&body=" +
+            const mailtoSubject =
                 encodeURIComponent(
-                    `Hello Abhijeet,
+                    subject
+                );
+
+
+            const mailtoBody =
+                encodeURIComponent(
+`Hello Abhijeet,
 
 Name: ${name}
 Email: ${email}
@@ -910,6 +1114,10 @@ ${name}`
                 );
 
 
+            const mailtoLink =
+                `mailto:abhijeettiwari955@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+
+
             showFormMessage(
                 "Opening your email application...",
                 "#22c55e"
@@ -917,8 +1125,8 @@ ${name}`
 
 
             /*
-                Small delay gives the user time
-                to see the success message.
+               Small delay so the success
+               message can be seen.
             */
 
             setTimeout(
@@ -928,7 +1136,7 @@ ${name}`
                         mailtoLink;
 
                 },
-                300
+                400
             );
 
         }
@@ -938,13 +1146,18 @@ ${name}`
 
 
 /* =====================================================
-   FORM INPUT - CLEAR ERROR MESSAGE
+   FORM INPUT - CLEAR MESSAGE
 ===================================================== */
 
-if (contactForm && formMessage) {
+if (
+    contactForm &&
+    formMessage
+) {
 
     contactForm
-        .querySelectorAll("input, textarea")
+        .querySelectorAll(
+            "input, textarea"
+        )
         .forEach(
             input => {
 
@@ -964,12 +1177,14 @@ if (contactForm && formMessage) {
 
 
 /* =====================================================
-   HEADER SHADOW ON SCROLL
+   HEADER SCROLL EFFECT
 ===================================================== */
 
 function updateHeader() {
 
-    if (!header) return;
+    if (!header) {
+        return;
+    }
 
 
     if (window.scrollY > 20) {
@@ -1007,12 +1222,14 @@ document.addEventListener(
     event => {
 
         /*
-            Close mobile menu with Escape.
+           Escape = close mobile menu
         */
 
         if (
             event.key === "Escape" &&
-            navMenu?.classList.contains("active")
+            navMenu?.classList.contains(
+                "active"
+            )
         ) {
 
             closeMobileMenu();
@@ -1021,6 +1238,65 @@ document.addEventListener(
 
     }
 );
+
+
+/* =====================================================
+   SYSTEM THEME CHANGE
+===================================================== */
+
+if (
+    window.matchMedia
+) {
+
+    const systemTheme =
+        window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        );
+
+
+    systemTheme.addEventListener?.(
+        "change",
+        event => {
+
+            /*
+               Only follow system theme
+               when user has not manually
+               selected a theme.
+            */
+
+            let manualTheme = null;
+
+            try {
+
+                manualTheme =
+                    localStorage.getItem(
+                        "portfolio-theme"
+                    );
+
+            } catch (error) {
+
+                manualTheme = null;
+
+            }
+
+
+            if (manualTheme) {
+                return;
+            }
+
+
+            body.classList.toggle(
+                "dark",
+                event.matches
+            );
+
+
+            updateThemeIcon();
+
+        }
+    );
+
+}
 
 
 /* =====================================================
@@ -1040,8 +1316,11 @@ function initializePage() {
 }
 
 
+/* Run initialization */
+
 if (
-    document.readyState === "loading"
+    document.readyState ===
+    "loading"
 ) {
 
     document.addEventListener(
@@ -1066,7 +1345,11 @@ window.addEventListener(
 
         if (typingTimer) {
 
-            clearTimeout(typingTimer);
+            clearTimeout(
+                typingTimer
+            );
+
+            typingTimer = null;
 
         }
 
