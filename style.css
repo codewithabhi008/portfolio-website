@@ -3127,5 +3127,344 @@ a.contact-item:hover {
         scroll-behavior: auto !important;
 
         transition-duration: .01ms !important;
+
+       
+    }
+}
+
+/* =========================================
+   BUTTON RIPPLE
+========================================= */
+
+.btn,
+.nav-cta,
+.whatsapp-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after,
+.nav-cta::after,
+.whatsapp-btn::after {
+    content: "";
+
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.35);
+
+    transform: scale(0);
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+.btn.clicked::after,
+.nav-cta.clicked::after,
+.whatsapp-btn.clicked::after {
+    animation: buttonRipple 0.55s ease-out;
+}
+
+@keyframes buttonRipple {
+
+    0% {
+        transform: scale(0);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(15);
+        opacity: 0;
+    }
+}
+
+
+/* =========================================
+   BETTER FOCUS ACCESSIBILITY
+========================================= */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+}
+
+
+/* =========================================
+   LIGHT MODE CARD FIX
+========================================= */
+
+[data-theme="light"] .floating-card,
+[data-theme="light"] .experience-badge {
+    background: rgba(255, 255, 255, 0.88);
+
+    color: var(--text);
+
+    box-shadow:
+        0 20px 50px rgba(15, 23, 42, 0.12);
+}
+
+
+/* =========================================
+   MOBILE MENU OVERFLOW
+========================================= */
+
+@media (max-width: 850px) {
+
+    .nav-menu {
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+    }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .btn.clicked::after,
+    .nav-cta.clicked::after,
+    .whatsapp-btn.clicked::after {
+        animation: none !important;
+    }
+
+}
+
+/* =========================================
+   PREMIUM FINAL POLISH
+========================================= */
+
+/* Better selection */
+::selection {
+    color: #fff;
+    background: var(--primary);
+}
+
+::-moz-selection {
+    color: #fff;
+    background: var(--primary);
+}
+
+
+/* =========================================
+   BUTTON RIPPLE
+========================================= */
+
+.btn,
+.nav-cta,
+.whatsapp-btn {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.btn::after,
+.nav-cta::after,
+.whatsapp-btn::after {
+    content: "";
+
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+
+    left: 50%;
+    top: 50%;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.35);
+
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+.btn.clicked::after,
+.nav-cta.clicked::after,
+.whatsapp-btn.clicked::after {
+    animation: buttonRipple .55s ease-out;
+}
+
+@keyframes buttonRipple {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            scale(0);
+
+        opacity: .7;
+    }
+
+    100% {
+        transform:
+            translate(-50%, -50%)
+            scale(18);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================
+   BETTER FOCUS
+========================================= */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+}
+
+
+/* =========================================
+   HEADER LIGHT MODE
+========================================= */
+
+[data-theme="light"] .header.scrolled {
+    background: rgba(248,250,252,.94);
+}
+
+
+/* =========================================
+   LIGHT MODE FLOATING ELEMENTS
+========================================= */
+
+[data-theme="light"] .floating-card,
+[data-theme="light"] .experience-badge {
+
+    color: var(--text);
+
+    background:
+        rgba(255,255,255,.88);
+
+    border-color:
+        rgba(15,23,42,.1);
+
+    box-shadow:
+        0 20px 50px rgba(15,23,42,.12);
+}
+
+
+/* =========================================
+   LIGHT MODE SECONDARY BUTTON
+========================================= */
+
+[data-theme="light"] .secondary-btn:hover {
+
+    color: var(--primary);
+
+    background:
+        rgba(99,102,241,.08);
+}
+
+
+/* =========================================
+   LIGHT MODE CODE CARD
+========================================= */
+
+[data-theme="light"] .code-card {
+    background: #0b1120;
+}
+
+
+/* =========================================
+   MOBILE NAV
+========================================= */
+
+@media (max-width: 850px) {
+
+    .nav-menu {
+
+        max-height:
+            calc(100vh - 100px);
+
+        overflow-y: auto;
+
+        overscroll-behavior: contain;
+    }
+
+    .nav-menu::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .nav-menu::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 10px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE TOUCH IMPROVEMENTS
+========================================= */
+
+@media (max-width: 600px) {
+
+    .nav-link {
+        min-height: 46px;
+        display: flex;
+        align-items: center;
+    }
+
+    .icon-btn,
+    .menu-btn {
+        width: 44px;
+        height: 44px;
+    }
+
+    .social-links a,
+    .contact-social a {
+        width: 42px;
+        height: 42px;
+    }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: .01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: .01ms !important;
+    }
+
+    .btn.clicked::after,
+    .nav-cta.clicked::after,
+    .whatsapp-btn.clicked::after {
+        animation: none !important;
     }
 }
