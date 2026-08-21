@@ -6,18 +6,28 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     /* =====================================
+       HELPER
+    ===================================== */
+
+    const $ = (selector) =>
+        document.querySelector(selector);
+
+    const $$ = (selector) =>
+        document.querySelectorAll(selector);
+
+
+    /* =====================================
        PAGE LOADER
     ===================================== */
 
-    const pageLoader =
-        document.getElementById("pageLoader");
+    const pageLoader = $("#pageLoader");
 
     window.addEventListener("load", () => {
 
+        if (!pageLoader) return;
+
         setTimeout(() => {
-
             pageLoader.classList.add("hide");
-
         }, 500);
 
     });
@@ -27,34 +37,34 @@ document.addEventListener("DOMContentLoaded", () => {
        HEADER SCROLL EFFECT
     ===================================== */
 
-    const header =
-        document.getElementById("header");
-
-    const backToTop =
-        document.getElementById("backToTop");
+    const header = $("#header");
+    const backToTop = $("#backToTop");
 
     function handleScroll() {
 
-        if (window.scrollY > 40) {
+        const scrollPosition = window.scrollY;
 
-            header.classList.add("scrolled");
+        if (header) {
 
-        } else {
+            if (scrollPosition > 40) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
 
-            header.classList.remove("scrolled");
+        }
+
+        if (backToTop) {
+
+            if (scrollPosition > 500) {
+                backToTop.classList.add("show");
+            } else {
+                backToTop.classList.remove("show");
+            }
 
         }
 
-
-        if (window.scrollY > 500) {
-
-            backToTop.classList.add("show");
-
-        } else {
-
-            backToTop.classList.remove("show");
-
-        }
+        updateActiveNav();
 
     }
 
@@ -71,60 +81,146 @@ document.addEventListener("DOMContentLoaded", () => {
        MOBILE MENU
     ===================================== */
 
-    const menuToggle =
-        document.getElementById("menuToggle");
+    const menuToggle = $("#menuToggle");
+    const navMenu = $("#navMenu");
+    const navLinks = $$(".nav-link");
 
-    const navMenu =
-        document.getElementById("navMenu");
+    function closeMobileMenu() {
 
-    const navLinks =
-        document.querySelectorAll(".nav-link");
+        if (!navMenu || !menuToggle) return;
 
-    menuToggle.addEventListener("click", () => {
-
-        const isOpen =
-            navMenu.classList.toggle("open");
+        navMenu.classList.remove("open");
 
         menuToggle.setAttribute(
             "aria-expanded",
-            isOpen
+            "false"
         );
 
-        menuToggle.innerHTML = isOpen
-            ? '<i class="fas fa-xmark"></i>'
-            : '<i class="fas fa-bars"></i>';
+        menuToggle.innerHTML =
+            '<i class="fas fa-bars"></i>';
 
-    });
+        document.body.classList.remove("no-scroll");
 
+    }
+
+    if (menuToggle && navMenu) {
+
+        menuToggle.addEventListener(
+            "click",
+            () => {
+
+                const isOpen =
+                    navMenu.classList.toggle("open");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    String(isOpen)
+                );
+
+                menuToggle.innerHTML = isOpen
+                    ? '<i class="fas fa-xmark"></i>'
+                    : '<i class="fas fa-bars"></i>';
+
+                document.body.classList.toggle(
+                    "no-scroll",
+                    isOpen
+                );
+
+            }
+        );
+
+    }
 
     navLinks.forEach(link => {
 
-        link.addEventListener("click", () => {
-
-            navMenu.classList.remove("open");
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-            menuToggle.innerHTML =
-                '<i class="fas fa-bars"></i>';
-
-        });
+        link.addEventListener(
+            "click",
+            () => {
+                closeMobileMenu();
+            }
+        );
 
     });
+
+
+    /* =====================================
+       CLOSE MENU OUTSIDE
+    ===================================== */
+
+    document.addEventListener(
+        "click",
+        event => {
+
+            if (!navMenu || !menuToggle) return;
+
+            const clickedInsideMenu =
+                navMenu.contains(event.target);
+
+            const clickedToggle =
+                menuToggle.contains(event.target);
+
+            if (
+                navMenu.classList.contains("open") &&
+                !clickedInsideMenu &&
+                !clickedToggle
+            ) {
+
+                closeMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================
+       ESC KEY
+    ===================================== */
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (event.key === "Escape") {
+                closeMobileMenu();
+            }
+
+        }
+    );
 
 
     /* =====================================
        DARK / LIGHT MODE
     ===================================== */
 
-    const themeToggle =
-        document.getElementById("themeToggle");
+    const themeToggle = $("#themeToggle");
 
     const savedTheme =
-        localStorage.getItem("portfolio-theme");
+        localStorage.getItem(
+            "portfolio-theme"
+        );
+
+    function updateThemeIcon() {
+
+        if (!themeToggle) return;
+
+        const currentTheme =
+            document.documentElement
+                .getAttribute("data-theme");
+
+        themeToggle.innerHTML =
+            currentTheme === "light"
+                ? '<i class="fas fa-sun"></i>'
+                : '<i class="fas fa-moon"></i>';
+
+        themeToggle.setAttribute(
+            "aria-label",
+            currentTheme === "light"
+                ? "Switch to dark mode"
+                : "Switch to light mode"
+        );
+
+    }
 
     if (savedTheme === "light") {
 
@@ -133,58 +229,64 @@ document.addEventListener("DOMContentLoaded", () => {
             "light"
         );
 
-        themeToggle.innerHTML =
-            '<i class="fas fa-sun"></i>';
+    } else {
+
+        document.documentElement
+            .removeAttribute("data-theme");
 
     }
 
+    updateThemeIcon();
 
-    themeToggle.addEventListener("click", () => {
 
-        const currentTheme =
-            document.documentElement.getAttribute(
-                "data-theme"
-            );
+    if (themeToggle) {
 
-        if (currentTheme === "light") {
+        themeToggle.addEventListener(
+            "click",
+            () => {
 
-            document.documentElement
-                .removeAttribute("data-theme");
+                const currentTheme =
+                    document.documentElement
+                        .getAttribute("data-theme");
 
-            localStorage.setItem(
-                "portfolio-theme",
-                "dark"
-            );
+                if (currentTheme === "light") {
 
-            themeToggle.innerHTML =
-                '<i class="fas fa-moon"></i>';
+                    document.documentElement
+                        .removeAttribute("data-theme");
 
-        } else {
+                    localStorage.setItem(
+                        "portfolio-theme",
+                        "dark"
+                    );
 
-            document.documentElement.setAttribute(
-                "data-theme",
-                "light"
-            );
+                } else {
 
-            localStorage.setItem(
-                "portfolio-theme",
-                "light"
-            );
+                    document.documentElement
+                        .setAttribute(
+                            "data-theme",
+                            "light"
+                        );
 
-            themeToggle.innerHTML =
-                '<i class="fas fa-sun"></i>';
+                    localStorage.setItem(
+                        "portfolio-theme",
+                        "light"
+                    );
 
-        }
+                }
 
-    });
+                updateThemeIcon();
+
+            }
+        );
+
+    }
 
 
     /* =====================================
        TYPING ANIMATION
     ===================================== */
 
-    const typingText =
-        document.getElementById("typingText");
+    const typingText = $("#typingText");
 
     const words = [
         "Web Developer",
@@ -198,8 +300,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let charIndex = 0;
     let deleting = false;
 
-
     function typeEffect() {
+
+        if (!typingText) return;
 
         const currentWord =
             words[wordIndex];
@@ -227,6 +330,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
                 return;
+
             }
 
         } else {
@@ -258,7 +362,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    typeEffect();
+    if (typingText) {
+        typeEffect();
+    }
 
 
     /* =====================================
@@ -266,91 +372,124 @@ document.addEventListener("DOMContentLoaded", () => {
     ===================================== */
 
     const profileUpload =
-        document.getElementById("profileUpload");
+        $("#profileUpload");
 
     const profileImage =
-        document.getElementById("profileImage");
+        $("#profileImage");
+
+    if (profileUpload && profileImage) {
+
+        profileUpload.addEventListener(
+            "change",
+            event => {
+
+                const file =
+                    event.target.files[0];
+
+                if (!file) return;
 
 
-    profileUpload.addEventListener(
-        "change",
-        event => {
+                const allowedTypes = [
+                    "image/jpeg",
+                    "image/png",
+                    "image/webp"
+                ];
 
-            const file =
-                event.target.files[0];
+                if (
+                    !allowedTypes.includes(
+                        file.type
+                    )
+                ) {
 
-            if (!file) return;
+                    alert(
+                        "Please select JPG, PNG or WEBP image."
+                    );
+
+                    profileUpload.value = "";
+
+                    return;
+
+                }
 
 
-            const allowedTypes = [
-                "image/jpeg",
-                "image/png",
-                "image/webp"
-            ];
+                if (
+                    file.size >
+                    5 * 1024 * 1024
+                ) {
 
-            if (
-                !allowedTypes.includes(
-                    file.type
-                )
-            ) {
+                    alert(
+                        "Please select an image smaller than 5MB."
+                    );
 
-                alert(
-                    "Please select JPG, PNG or WEBP image."
-                );
+                    profileUpload.value = "";
 
-                return;
+                    return;
+
+                }
+
+
+                const reader =
+                    new FileReader();
+
+
+                reader.onload = event => {
+
+                    profileImage.src =
+                        event.target.result;
+
+                    try {
+
+                        localStorage.setItem(
+                            "profileImage",
+                            event.target.result
+                        );
+
+                    } catch (error) {
+
+                        console.warn(
+                            "Could not save profile image:",
+                            error
+                        );
+
+                    }
+
+                };
+
+
+                reader.onerror = () => {
+
+                    alert(
+                        "Unable to read the selected image."
+                    );
+
+                };
+
+
+                reader.readAsDataURL(file);
+
             }
+        );
 
-
-            if (
-                file.size >
-                5 * 1024 * 1024
-            ) {
-
-                alert(
-                    "Please select an image smaller than 5MB."
-                );
-
-                return;
-            }
-
-
-            const reader =
-                new FileReader();
-
-
-            reader.onload = e => {
-
-                profileImage.src =
-                    e.target.result;
-
-                localStorage.setItem(
-                    "profileImage",
-                    e.target.result
-                );
-
-            };
-
-
-            reader.readAsDataURL(file);
-
-        }
-    );
+    }
 
 
     /* =====================================
        RESTORE PROFILE PHOTO
     ===================================== */
 
-    const savedProfileImage =
-        localStorage.getItem(
-            "profileImage"
-        );
+    if (profileImage) {
 
-    if (savedProfileImage) {
+        const savedProfileImage =
+            localStorage.getItem(
+                "profileImage"
+            );
 
-        profileImage.src =
-            savedProfileImage;
+        if (savedProfileImage) {
+
+            profileImage.src =
+                savedProfileImage;
+
+        }
 
     }
 
@@ -360,29 +499,550 @@ document.addEventListener("DOMContentLoaded", () => {
     ===================================== */
 
     const revealElements =
-        document.querySelectorAll(".reveal");
+        $$(".reveal");
 
 
-    const revealObserver =
-        new IntersectionObserver(
-            entries => {
+    if ("IntersectionObserver" in window) {
 
-                entries.forEach(entry => {
+        const revealObserver =
+            new IntersectionObserver(
+                entries => {
 
-                    if (entry.isIntersecting) {
+                    entries.forEach(
+                        entry => {
 
-                        entry.target.classList.add(
-                            "active"
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target
+                                    .classList
+                                    .add("active");
+
+                                revealObserver
+                                    .unobserve(
+                                        entry.target
+                                    );
+
+                            }
+
+                        }
+                    );
+
+                },
+                {
+                    threshold: 0.12,
+                    rootMargin:
+                        "0px 0px -50px 0px"
+                }
+            );
+
+
+        revealElements.forEach(
+            element => {
+                revealObserver.observe(element);
+            }
+        );
+
+    } else {
+
+        revealElements.forEach(
+            element => {
+                element.classList.add("active");
+            }
+        );
+
+    }
+
+
+    /* =====================================
+       SKILL PROGRESS ANIMATION
+    ===================================== */
+
+    const progressBars =
+        $$(".progress span");
+
+
+    if ("IntersectionObserver" in window) {
+
+        const skillObserver =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(
+                        entry => {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                const bar =
+                                    entry.target;
+
+                                const targetWidth =
+                                    bar.dataset.width ||
+                                    bar.getAttribute(
+                                        "data-width"
+                                    );
+
+                                if (targetWidth) {
+
+                                    requestAnimationFrame(
+                                        () => {
+
+                                            bar.style.width =
+                                                targetWidth +
+                                                (
+                                                    targetWidth
+                                                        .includes("%")
+                                                        ? ""
+                                                        : "%"
+                                                );
+
+                                        }
+                                    );
+
+                                }
+
+                                skillObserver
+                                    .unobserve(bar);
+
+                            }
+
+                        }
+                    );
+
+                },
+                {
+                    threshold: 0.4
+                }
+            );
+
+
+        progressBars.forEach(
+            bar => {
+                skillObserver.observe(bar);
+            }
+        );
+
+    }
+
+
+    /* =====================================
+       ACTIVE NAVIGATION
+    ===================================== */
+
+    const sections =
+        $$("section[id]");
+
+    function updateActiveNav() {
+
+        if (!sections.length) return;
+
+        const scrollPosition =
+            window.scrollY + 150;
+
+        let currentSection = "";
+
+        sections.forEach(
+            section => {
+
+                const sectionTop =
+                    section.offsetTop;
+
+                const sectionHeight =
+                    section.offsetHeight;
+
+                if (
+                    scrollPosition >= sectionTop &&
+                    scrollPosition <
+                    sectionTop + sectionHeight
+                ) {
+
+                    currentSection =
+                        section.getAttribute("id");
+
+                }
+
+            }
+        );
+
+
+        navLinks.forEach(link => {
+
+            link.classList.remove("active");
+
+            const href =
+                link.getAttribute("href");
+
+            if (
+                href ===
+                `#${currentSection}`
+            ) {
+
+                link.classList.add("active");
+
+            }
+
+        });
+
+    }
+
+
+    /* =====================================
+       BACK TO TOP
+    ===================================== */
+
+    if (backToTop) {
+
+        backToTop.addEventListener(
+            "click",
+            event => {
+
+                event.preventDefault();
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            }
+        );
+
+    }
+
+
+    /* =====================================
+       SMOOTH ANCHOR SCROLL
+    ===================================== */
+
+    $$('a[href^="#"]').forEach(
+        link => {
+
+            link.addEventListener(
+                "click",
+                event => {
+
+                    const targetId =
+                        link.getAttribute(
+                            "href"
                         );
 
-                        revealObserver.unobserve(
-                            entry.target
+                    if (
+                        !targetId ||
+                        targetId === "#"
+                    ) return;
+
+
+                    const target =
+                        document.querySelector(
+                            targetId
                         );
+
+                    if (!target) return;
+
+
+                    event.preventDefault();
+
+                    const headerHeight =
+                        header
+                            ? header.offsetHeight
+                            : 0;
+
+                    const targetPosition =
+                        target.getBoundingClientRect()
+                            .top +
+                        window.scrollY -
+                        headerHeight;
+
+                    window.scrollTo({
+                        top:
+                            Math.max(
+                                targetPosition,
+                                0
+                            ),
+                        behavior: "smooth"
+                    });
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================
+       CONTACT FORM
+    ===================================== */
+
+    const contactForm =
+        $("#contactForm");
+
+    const formMessage =
+        $("#formMessage");
+
+
+    if (contactForm) {
+
+        contactForm.addEventListener(
+            "submit",
+            event => {
+
+                event.preventDefault();
+
+
+                const name =
+                    contactForm.querySelector(
+                        '[name="name"]'
+                    );
+
+                const email =
+                    contactForm.querySelector(
+                        '[name="email"]'
+                    );
+
+                const subject =
+                    contactForm.querySelector(
+                        '[name="subject"]'
+                    );
+
+                const message =
+                    contactForm.querySelector(
+                        '[name="message"]'
+                    );
+
+
+                if (
+                    !name ||
+                    !email ||
+                    !message
+                ) {
+
+                    showFormMessage(
+                        "Form fields are missing.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                const nameValue =
+                    name.value.trim();
+
+                const emailValue =
+                    email.value.trim();
+
+                const subjectValue =
+                    subject
+                        ? subject.value.trim()
+                        : "";
+
+                const messageValue =
+                    message.value.trim();
+
+
+                if (!nameValue) {
+
+                    showFormMessage(
+                        "Please enter your name.",
+                        "error"
+                    );
+
+                    name.focus();
+
+                    return;
+
+                }
+
+
+                if (!isValidEmail(emailValue)) {
+
+                    showFormMessage(
+                        "Please enter a valid email address.",
+                        "error"
+                    );
+
+                    email.focus();
+
+                    return;
+
+                }
+
+
+                if (messageValue.length < 10) {
+
+                    showFormMessage(
+                        "Message should contain at least 10 characters.",
+                        "error"
+                    );
+
+                    message.focus();
+
+                    return;
+
+                }
+
+
+                /*
+                 * FRONTEND DEMO
+                 *
+                 * Replace this section with
+                 * Formspree / EmailJS / backend API
+                 * if you want real email delivery.
+                 */
+
+                showFormMessage(
+                    "Message validated successfully!",
+                    "success"
+                );
+
+
+                contactForm.reset();
+
+
+                setTimeout(
+                    () => {
+
+                        if (formMessage) {
+                            formMessage.textContent = "";
+                            formMessage.className =
+                                "form-message";
+                        }
+
+                    },
+                    4000
+                );
+
+            }
+        );
+
+    }
+
+
+    function isValidEmail(email) {
+
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+            .test(email);
+
+    }
+
+
+    function showFormMessage(
+        message,
+        type
+    ) {
+
+        if (!formMessage) return;
+
+        formMessage.textContent =
+            message;
+
+        formMessage.className =
+            `form-message ${type}`;
+
+    }
+
+
+    /* =====================================
+       BUTTON RIPPLE EFFECT
+    ===================================== */
+
+    $$(".btn, .nav-cta, .whatsapp-btn")
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    this.classList.remove(
+                        "clicked"
+                    );
+
+                    void this.offsetWidth;
+
+                    this.classList.add(
+                        "clicked"
+                    );
+
+                }
+            );
+
+        });
+
+
+    /* =====================================
+       IMAGE ERROR FALLBACK
+    ===================================== */
+
+    if (profileImage) {
+
+        profileImage.addEventListener(
+            "error",
+            () => {
+
+                profileImage.src =
+                    "https://via.placeholder.com/500x500/111827/6366f1?text=Abhijeet";
+
+            }
+        );
+
+    }
+
+
+    /* =====================================
+       RESIZE HANDLER
+    ===================================== */
+
+    let resizeTimer;
+
+    window.addEventListener(
+        "resize",
+        () => {
+
+            clearTimeout(resizeTimer);
+
+            resizeTimer = setTimeout(
+                () => {
+
+                    if (
+                        window.innerWidth > 850
+                    ) {
+
+                        closeMobileMenu();
 
                     }
 
-                });
+                    updateActiveNav();
 
-            },
-            {
-                threshold: 0
+                },
+                150
+            );
+
+        }
+    );
+
+
+    /* =====================================
+       INITIAL STATE
+    ===================================== */
+
+    updateActiveNav();
+
+
+    /* =====================================
+       CONSOLE
+    ===================================== */
+
+    console.log(
+        "%c Abhijeet Tiwari Portfolio ",
+        "background:#6366f1;color:#fff;padding:8px 12px;border-radius:6px;font-weight:bold;"
+    );
+
+    console.log(
+        "%cPortfolio loaded successfully.",
+        "color:#06b6d4;font-weight:bold;"
+    );
+
+});
