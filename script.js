@@ -1,96 +1,84 @@
 /* =====================================================
    PORTFOLIO JAVASCRIPT
-   Abhijeet Tiwari
 ===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =====================================================
+    /* =================================================
        ELEMENTS
-    ===================================================== */
+    ================================================= */
 
-    const pageLoader = document.getElementById("pageLoader");
     const header = document.getElementById("header");
-
-    const themeToggle = document.getElementById("themeToggle");
-    const menuToggle = document.getElementById("menuToggle");
     const navMenu = document.getElementById("navMenu");
-
+    const menuToggle = document.getElementById("menuToggle");
+    const themeToggle = document.getElementById("themeToggle");
     const typingText = document.getElementById("typingText");
-
-    const navLinks = document.querySelectorAll(".nav-link");
-    const revealElements = document.querySelectorAll(".reveal");
-    const skillCards = document.querySelectorAll(".skill-card");
-
-
-    /* =====================================================
-       PAGE LOADER
-    ===================================================== */
-
-    window.addEventListener("load", () => {
-
-        setTimeout(() => {
-
-            if (pageLoader) {
-                pageLoader.classList.add("hide");
-            }
-
-            document.body.classList.add("loaded");
-
-        }, 700);
-
-    });
+    const contactForm = document.getElementById("contactForm");
+    const formNote = document.getElementById("formNote");
+    const currentYear = document.getElementById("currentYear");
 
 
-    /* =====================================================
+    /* =================================================
+       HEADER SCROLL
+    ================================================= */
+
+    function handleHeaderScroll() {
+
+        if (!header) return;
+
+        if (window.scrollY > 30) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+
+    }
+
+    window.addEventListener("scroll", handleHeaderScroll);
+    handleHeaderScroll();
+
+
+    /* =================================================
        MOBILE MENU
-    ===================================================== */
+    ================================================= */
 
     if (menuToggle && navMenu) {
 
         menuToggle.addEventListener("click", () => {
 
-            const isOpen = navMenu.classList.toggle("active");
-
-            menuToggle.classList.toggle("active", isOpen);
+            const isOpen = navMenu.classList.toggle("open");
 
             menuToggle.setAttribute(
                 "aria-expanded",
-                isOpen ? "true" : "false"
+                String(isOpen)
             );
 
             const icon = menuToggle.querySelector("i");
 
             if (icon) {
 
-                if (isOpen) {
+                icon.classList.toggle(
+                    "fa-bars",
+                    !isOpen
+                );
 
-                    icon.classList.remove("fa-bars");
-                    icon.classList.add("fa-xmark");
-
-                } else {
-
-                    icon.classList.remove("fa-xmark");
-                    icon.classList.add("fa-bars");
-
-                }
+                icon.classList.toggle(
+                    "fa-xmark",
+                    isOpen
+                );
 
             }
-
-            document.body.classList.toggle("menu-open", isOpen);
 
         });
 
 
-        /* Close menu after clicking nav link */
+        /* Close menu when clicking nav link */
 
-        navLinks.forEach(link => {
+        document.querySelectorAll(".nav-link").forEach(link => {
 
             link.addEventListener("click", () => {
 
-                navMenu.classList.remove("active");
-
-                menuToggle.classList.remove("active");
+                navMenu.classList.remove("open");
 
                 menuToggle.setAttribute(
                     "aria-expanded",
@@ -105,8 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     icon.classList.add("fa-bars");
 
                 }
-
-                document.body.classList.remove("menu-open");
 
             });
 
@@ -115,54 +101,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================================
-       ESCAPE KEY
-    ===================================================== */
-
-    document.addEventListener("keydown", (event) => {
-
-        if (event.key === "Escape") {
-
-            if (navMenu) {
-                navMenu.classList.remove("active");
-            }
-
-            if (menuToggle) {
-
-                menuToggle.classList.remove("active");
-
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-                const icon = menuToggle.querySelector("i");
-
-                if (icon) {
-
-                    icon.classList.remove("fa-xmark");
-                    icon.classList.add("fa-bars");
-
-                }
-
-            }
-
-            document.body.classList.remove("menu-open");
-
-        }
-
-    });
-
-
-    /* =====================================================
+    /* =================================================
        THEME TOGGLE
-    ===================================================== */
+    ================================================= */
 
     const savedTheme = localStorage.getItem("portfolio-theme");
 
     if (savedTheme === "light") {
 
-        document.body.classList.add("light-theme");
+        document.documentElement.setAttribute(
+            "data-theme",
+            "light"
+        );
 
     }
 
@@ -175,40 +125,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!icon) return;
 
-        if (document.body.classList.contains("light-theme")) {
+        const isLight =
+            document.documentElement.getAttribute(
+                "data-theme"
+            ) === "light";
 
-            icon.classList.remove("fa-moon");
-            icon.classList.add("fa-sun");
+        icon.classList.toggle(
+            "fa-sun",
+            isLight
+        );
 
-            themeToggle.setAttribute(
-                "aria-label",
-                "Switch to dark theme"
-            );
-
-            themeToggle.setAttribute(
-                "title",
-                "Switch to dark theme"
-            );
-
-        } else {
-
-            icon.classList.remove("fa-sun");
-            icon.classList.add("fa-moon");
-
-            themeToggle.setAttribute(
-                "aria-label",
-                "Switch to light theme"
-            );
-
-            themeToggle.setAttribute(
-                "title",
-                "Switch to light theme"
-            );
-
-        }
+        icon.classList.toggle(
+            "fa-moon",
+            !isLight
+        );
 
     }
-
 
     updateThemeIcon();
 
@@ -217,17 +149,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
         themeToggle.addEventListener("click", () => {
 
-            document.body.classList.toggle("light-theme");
+            const isLight =
+                document.documentElement.getAttribute(
+                    "data-theme"
+                ) === "light";
 
-            const currentTheme =
-                document.body.classList.contains("light-theme")
-                    ? "light"
-                    : "dark";
+            if (isLight) {
 
-            localStorage.setItem(
-                "portfolio-theme",
-                currentTheme
-            );
+                document.documentElement.removeAttribute(
+                    "data-theme"
+                );
+
+                localStorage.setItem(
+                    "portfolio-theme",
+                    "dark"
+                );
+
+            } else {
+
+                document.documentElement.setAttribute(
+                    "data-theme",
+                    "light"
+                );
+
+                localStorage.setItem(
+                    "portfolio-theme",
+                    "light"
+                );
+
+            }
 
             updateThemeIcon();
 
@@ -236,13 +186,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================================
+    /* =================================================
        TYPING EFFECT
-    ===================================================== */
+    ================================================= */
 
     if (typingText) {
 
-        const typingWords = [
+        const words = [
             "Web Developer",
             "Software Developer",
             "Frontend Developer",
@@ -253,23 +203,19 @@ document.addEventListener("DOMContentLoaded", () => {
         let charIndex = 0;
         let deleting = false;
 
-        const typingSpeed = 90;
-        const deletingSpeed = 55;
-        const pauseAfterWord = 1600;
-        const pauseBeforeTyping = 400;
-
-
         function typeEffect() {
 
-            const currentWord = typingWords[wordIndex];
+            const currentWord = words[wordIndex];
 
             if (!deleting) {
 
                 typingText.textContent =
-                    currentWord.substring(0, charIndex + 1);
+                    currentWord.substring(
+                        0,
+                        charIndex + 1
+                    );
 
                 charIndex++;
-
 
                 if (charIndex === currentWord.length) {
 
@@ -277,221 +223,54 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     setTimeout(
                         typeEffect,
-                        pauseAfterWord
+                        1600
                     );
 
                     return;
-
                 }
-
-                setTimeout(
-                    typeEffect,
-                    typingSpeed
-                );
 
             } else {
 
                 typingText.textContent =
-                    currentWord.substring(0, charIndex - 1);
+                    currentWord.substring(
+                        0,
+                        charIndex - 1
+                    );
 
                 charIndex--;
-
 
                 if (charIndex === 0) {
 
                     deleting = false;
 
                     wordIndex =
-                        (wordIndex + 1) % typingWords.length;
-
-                    setTimeout(
-                        typeEffect,
-                        pauseBeforeTyping
-                    );
-
-                    return;
+                        (wordIndex + 1) % words.length;
 
                 }
 
-                setTimeout(
-                    typeEffect,
-                    deletingSpeed
-                );
-
             }
+
+            setTimeout(
+                typeEffect,
+                deleting ? 55 : 90
+            );
 
         }
 
-
-        setTimeout(typeEffect, 1000);
-
-    }
-
-
-    /* =====================================================
-       HEADER SCROLL EFFECT
-    ===================================================== */
-
-    function handleHeaderScroll() {
-
-        if (!header) return;
-
-        if (window.scrollY > 50) {
-
-            header.classList.add("scrolled");
-
-        } else {
-
-            header.classList.remove("scrolled");
-
-        }
+        typeEffect();
 
     }
 
 
-    handleHeaderScroll();
-
-    window.addEventListener(
-        "scroll",
-        handleHeaderScroll,
-        { passive: true }
-    );
-
-
-    /* =====================================================
-       ACTIVE NAVIGATION LINK
-    ===================================================== */
-
-    const sections = document.querySelectorAll(
-        "main section[id]"
-    );
-
-
-    function updateActiveNav() {
-
-        const scrollPosition =
-            window.scrollY + 150;
-
-        let currentSection = "";
-
-
-        sections.forEach(section => {
-
-            const sectionTop =
-                section.offsetTop;
-
-            const sectionHeight =
-                section.offsetHeight;
-
-            if (
-                scrollPosition >= sectionTop &&
-                scrollPosition <
-                sectionTop + sectionHeight
-            ) {
-
-                currentSection =
-                    section.getAttribute("id");
-
-            }
-
-        });
-
-
-        navLinks.forEach(link => {
-
-            link.classList.remove("active");
-
-            const target =
-                link.getAttribute("href");
-
-            if (
-                target === `#${currentSection}`
-            ) {
-
-                link.classList.add("active");
-
-            }
-
-        });
-
-    }
-
-
-    updateActiveNav();
-
-    window.addEventListener(
-        "scroll",
-        updateActiveNav,
-        { passive: true }
-    );
-
-
-    /* =====================================================
-       SMOOTH SCROLL
-    ===================================================== */
-
-    document.querySelectorAll(
-        'a[href^="#"]'
-    ).forEach(link => {
-
-        link.addEventListener("click", (event) => {
-
-            const targetId =
-                link.getAttribute("href");
-
-            if (
-                !targetId ||
-                targetId === "#"
-            ) {
-                return;
-            }
-
-
-            const target =
-                document.querySelector(targetId);
-
-
-            if (!target) {
-                return;
-            }
-
-
-            event.preventDefault();
-
-
-            const headerHeight =
-                header
-                    ? header.offsetHeight
-                    : 0;
-
-
-            const targetPosition =
-                target.getBoundingClientRect().top +
-                window.scrollY -
-                headerHeight;
-
-
-            window.scrollTo({
-
-                top: targetPosition,
-
-                behavior: "smooth"
-
-            });
-
-        });
-
-    });
-
-
-    /* =====================================================
+    /* =================================================
        SCROLL REVEAL
-    ===================================================== */
+    ================================================= */
 
-    if (
-        "IntersectionObserver" in window &&
-        revealElements.length
-    ) {
+    const revealElements =
+        document.querySelectorAll(".reveal");
+
+
+    if ("IntersectionObserver" in window) {
 
         const revealObserver =
             new IntersectionObserver(
@@ -499,12 +278,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     entries.forEach(entry => {
 
-                        if (
-                            entry.isIntersecting
-                        ) {
+                        if (entry.isIntersecting) {
 
                             entry.target.classList.add(
-                                "visible"
+                                "active"
                             );
 
                             observer.unobserve(
@@ -517,8 +294,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 },
                 {
-                    threshold: 0.12,
-                    rootMargin: "0px 0px -40px 0px"
+                    threshold: 0.12
                 }
             );
 
@@ -533,211 +309,161 @@ document.addEventListener("DOMContentLoaded", () => {
 
         revealElements.forEach(element => {
 
-            element.classList.add("visible");
+            element.classList.add("active");
 
         });
 
     }
 
 
-    /* =====================================================
-       SKILL PROGRESS ANIMATION
-    ===================================================== */
+    /* =================================================
+       ACTIVE NAVIGATION
+    ================================================= */
 
-    if (
-        "IntersectionObserver" in window &&
-        skillCards.length
-    ) {
-
-        const skillObserver =
-            new IntersectionObserver(
-                (entries, observer) => {
-
-                    entries.forEach(entry => {
-
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-                            const progress =
-                                entry.target.querySelector(
-                                    ".progress span"
-                                );
-
-
-                            if (progress) {
-
-                                const width =
-                                    progress.style.width;
-
-                                progress.style.width = "0%";
-
-
-                                requestAnimationFrame(() => {
-
-                                    setTimeout(() => {
-
-                                        progress.style.width =
-                                            width;
-
-                                    }, 150);
-
-                                });
-
-                            }
-
-
-                            entry.target.classList.add(
-                                "skill-visible"
-                            );
-
-
-                            observer.unobserve(
-                                entry.target
-                            );
-
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: 0.25
-                }
-            );
-
-
-        skillCards.forEach(card => {
-
-            skillObserver.observe(card);
-
-        });
-
-    }
-
-
-    /* =====================================================
-       BUTTON RIPPLE EFFECT
-    ===================================================== */
-
-    const buttons =
+    const sections =
         document.querySelectorAll(
-            ".btn, .nav-cta"
+            "section[id]"
+        );
+
+    const navLinks =
+        document.querySelectorAll(
+            ".nav-link"
         );
 
 
-    buttons.forEach(button => {
+    function updateActiveNav() {
 
-        button.addEventListener(
-            "click",
-            function(event) {
+        let currentSection = "home";
 
-                const ripple =
-                    document.createElement("span");
+        sections.forEach(section => {
 
-                ripple.classList.add("ripple");
+            const sectionTop =
+                section.offsetTop - 150;
+
+            if (window.scrollY >= sectionTop) {
+
+                currentSection =
+                    section.getAttribute("id");
+
+            }
+
+        });
 
 
-                const rect =
-                    this.getBoundingClientRect();
+        navLinks.forEach(link => {
+
+            link.classList.remove("active");
+
+            const href =
+                link.getAttribute("href");
+
+            if (href === `#${currentSection}`) {
+
+                link.classList.add("active");
+
+            }
+
+        });
+
+    }
 
 
-                const size =
-                    Math.max(
-                        rect.width,
-                        rect.height
+    window.addEventListener(
+        "scroll",
+        updateActiveNav
+    );
+
+    updateActiveNav();
+
+
+    /* =================================================
+       CONTACT FORM
+    ================================================= */
+
+    if (contactForm) {
+
+        contactForm.addEventListener(
+            "submit",
+            event => {
+
+                event.preventDefault();
+
+                const name =
+                    document.getElementById(
+                        "name"
+                    )?.value.trim();
+
+                const email =
+                    document.getElementById(
+                        "email"
+                    )?.value.trim();
+
+                const subject =
+                    document.getElementById(
+                        "subject"
+                    )?.value.trim();
+
+                const message =
+                    document.getElementById(
+                        "message"
+                    )?.value.trim();
+
+
+                if (
+                    !name ||
+                    !email ||
+                    !subject ||
+                    !message
+                ) {
+
+                    if (formNote) {
+
+                        formNote.textContent =
+                            "Please fill in all fields.";
+
+                        formNote.style.color =
+                            "#ff6b6b";
+
+                    }
+
+                    return;
+
+                }
+
+
+                const emailSubject =
+                    encodeURIComponent(
+                        subject
+                    );
+
+                const emailBody =
+                    encodeURIComponent(
+                        `Hello Abhijeet,
+
+Name: ${name}
+Email: ${email}
+
+Message:
+${message}`
                     );
 
 
-                ripple.style.width =
-                    `${size}px`;
-
-                ripple.style.height =
-                    `${size}px`;
+                const mailto =
+                    `mailto:abhijeettiwari955@gmail.com?subject=${emailSubject}&body=${emailBody}`;
 
 
-                ripple.style.left =
-                    `${event.clientX - rect.left - size / 2}px`;
+                if (formNote) {
 
-                ripple.style.top =
-                    `${event.clientY - rect.top - size / 2}px`;
+                    formNote.textContent =
+                        "Opening your email application...";
 
+                    formNote.style.color =
+                        "#25e87a";
 
-                this.appendChild(ripple);
-
-
-                setTimeout(() => {
-
-                    ripple.remove();
-
-                }, 600);
-
-            }
-        );
-
-    });
+                }
 
 
-    /* =====================================================
-       PROFILE CARD MOUSE PARALLAX
-    ===================================================== */
-
-    const heroVisual =
-        document.querySelector(".hero-visual");
-
-    const profileCard =
-        document.querySelector(".profile-card");
-
-
-    if (
-        heroVisual &&
-        profileCard &&
-        window.matchMedia("(min-width: 992px)").matches
-    ) {
-
-        heroVisual.addEventListener(
-            "mousemove",
-            (event) => {
-
-                const rect =
-                    heroVisual.getBoundingClientRect();
-
-
-                const x =
-                    (event.clientX - rect.left) /
-                    rect.width -
-                    0.5;
-
-
-                const y =
-                    (event.clientY - rect.top) /
-                    rect.height -
-                    0.5;
-
-
-                const rotateX =
-                    y * -6;
-
-                const rotateY =
-                    x * 6;
-
-
-                profileCard.style.transform =
-                    `perspective(1000px)
-                     rotateX(${rotateX}deg)
-                     rotateY(${rotateY}deg)
-                     translateY(-5px)`;
-
-            }
-        );
-
-
-        heroVisual.addEventListener(
-            "mouseleave",
-            () => {
-
-                profileCard.style.transform =
-                    "";
+                window.location.href = mailto;
 
             }
         );
@@ -745,39 +471,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================================
-       DISABLE PARALLAX ON MOBILE
-    ===================================================== */
-
-    window.addEventListener(
-        "resize",
-        () => {
-
-            if (
-                window.innerWidth < 992 &&
-                profileCard
-            ) {
-
-                profileCard.style.transform =
-                    "";
-
-            }
-
-        }
-    );
-
-
-    /* =====================================================
+    /* =================================================
        CURRENT YEAR
-       Works if HTML contains:
-       <span id="currentYear"></span>
-    ===================================================== */
-
-    const currentYear =
-        document.getElementById(
-            "currentYear"
-        );
-
+    ================================================= */
 
     if (currentYear) {
 
@@ -787,76 +483,105 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================================
-       PREVENT BODY SCROLL WHEN MOBILE MENU IS OPEN
-    ===================================================== */
+    /* =================================================
+       SMOOTH SCROLL
+    ================================================= */
 
-    window.addEventListener(
-        "resize",
-        () => {
+    document.querySelectorAll(
+        'a[href^="#"]'
+    ).forEach(link => {
 
-            if (
-                window.innerWidth > 900 &&
-                navMenu
-            ) {
+        link.addEventListener(
+            "click",
+            event => {
 
-                navMenu.classList.remove(
-                    "active"
-                );
+                const targetId =
+                    link.getAttribute("href");
 
-                document.body.classList.remove(
-                    "menu-open"
-                );
+                if (
+                    !targetId ||
+                    targetId === "#"
+                ) {
+                    return;
+                }
 
 
-                if (menuToggle) {
-
-                    menuToggle.classList.remove(
-                        "active"
+                const target =
+                    document.querySelector(
+                        targetId
                     );
 
-                    menuToggle.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
+                if (!target) {
+                    return;
+                }
 
 
-                    const icon =
-                        menuToggle.querySelector("i");
+                event.preventDefault();
+
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+        );
+
+    });
 
 
-                    if (icon) {
+    /* =================================================
+       IMAGE ERROR HANDLING
+    ================================================= */
 
-                        icon.classList.remove(
-                            "fa-xmark"
-                        );
+    const profileImage =
+        document.querySelector(
+            ".profile-image img"
+        );
 
-                        icon.classList.add(
-                            "fa-bars"
-                        );
 
-                    }
+    if (profileImage) {
+
+        profileImage.addEventListener(
+            "error",
+            () => {
+
+                profileImage.style.display =
+                    "none";
+
+                const parent =
+                    profileImage.parentElement;
+
+                if (parent) {
+
+                    parent.style.display =
+                        "grid";
+
+                    parent.style.placeItems =
+                        "center";
+
+                    parent.innerHTML =
+                        `<i class="fas fa-user"
+                            style="
+                            font-size:80px;
+                            color:#00d9ff;
+                            opacity:.7;
+                            ">
+                        </i>`;
 
                 }
 
             }
+        );
 
-        }
-    );
+    }
 
 
-    /* =====================================================
-       CONSOLE MESSAGE
-    ===================================================== */
+    /* =================================================
+       PAGE LOADED
+    ================================================= */
 
-    console.log(
-        "%cAbhijeet Tiwari Portfolio",
-        "color:#00e5ff;font-size:18px;font-weight:bold;"
-    );
-
-    console.log(
-        "%cMechanical Design Engineer & Web Developer",
-        "color:#8b5cf6;font-size:13px;"
+    document.body.classList.add(
+        "page-ready"
     );
 
 });
