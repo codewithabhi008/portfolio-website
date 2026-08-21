@@ -22,12 +22,22 @@
 
     <meta
         name="description"
-        content="Abhijeet Tiwari is a Mechanical Engineer and Web Developer skilled in AutoCAD, SolidWorks, BOM, Prowess ERP, HTML, CSS, JavaScript and React."
+        content="Abhijeet Tiwari — Mechanical Engineer and Web Developer skilled in AutoCAD, SolidWorks, BOM, Prowess ERP, HTML, CSS, JavaScript and React."
+    >
+
+    <meta
+        name="keywords"
+        content="Abhijeet Tiwari, Mechanical Engineer, Web Developer, AutoCAD, SolidWorks, CAD Designer, React Developer, Frontend Developer"
     >
 
     <meta
         name="robots"
         content="index, follow"
+    >
+
+    <link
+        rel="canonical"
+        href="https://codewithabhi008.github.io/portfolio_abhi/"
     >
 
     <title>
@@ -44,7 +54,7 @@
     >
 
 
-    <!-- GOOGLE FONT -->
+    <!-- GOOGLE FONTS -->
 
     <link
         rel="preconnect"
@@ -85,7 +95,7 @@
 
     <meta
         property="og:description"
-        content="Portfolio of Abhijeet Tiwari — Mechanical Engineer and Web Developer skilled in CAD, engineering tools and modern web technologies."
+        content="Portfolio of Abhijeet Tiwari — Mechanical Engineer and Web Developer."
     >
 
     <meta
@@ -102,33 +112,28 @@
     <!-- STRUCTURED DATA -->
 
     <script type="application/ld+json">
+
     {
         "@context": "https://schema.org",
         "@type": "Person",
-        "@id": "https://codewithabhi008.github.io/portfolio_abhi/#person",
         "name": "Abhijeet Tiwari",
         "url": "https://codewithabhi008.github.io/portfolio_abhi/",
         "image": "https://codewithabhi008.github.io/portfolio_abhi/assets/profile.jpg",
         "jobTitle": "Mechanical Engineer & Web Developer",
-        "description": "Mechanical Engineer and Web Developer skilled in AutoCAD, SolidWorks, BOM, Prowess ERP, HTML, CSS, JavaScript and React.",
         "email": "abhijeettiwari955@gmail.com",
         "knowsAbout": [
             "Mechanical Engineering",
             "AutoCAD",
             "SolidWorks",
             "Bill of Materials",
-            "BOM",
             "Prowess ERP",
             "Technical Drawing",
-            "Manufacturing",
-            "Web Development",
-            "HTML5",
-            "CSS3",
+            "HTML",
+            "CSS",
             "JavaScript",
             "React",
             "Git",
-            "GitHub",
-            "Responsive Web Design"
+            "GitHub"
         ],
         "sameAs": [
             "https://github.com/codewithabhi008",
@@ -137,2068 +142,16 @@
             "https://x.com/Abhijeet260820"
         ]
     }
+
     </script>
 
 
-<style>
-
-/* =========================================================
-   ROOT
-========================================================= */
-
-:root {
-
-    --primary: #6366f1;
-    --primary-dark: #4f46e5;
-    --secondary: #8b5cf6;
-
-    --accent: #06b6d4;
-    --success: #10b981;
-    --danger: #ef4444;
-
-    --bg: #f8fafc;
-    --bg-secondary: #eef2ff;
-
-    --card: rgba(255,255,255,0.78);
-
-    --text: #0f172a;
-    --text-light: #64748b;
-
-    --border: rgba(148,163,184,0.25);
-
-    --shadow:
-        0 20px 60px rgba(15,23,42,0.08);
-
-    --radius: 20px;
-
-    --max-width: 1180px;
-
-    --transition: 0.3s ease;
-}
-
-
-body.dark {
-
-    --bg: #070b14;
-    --bg-secondary: #0f172a;
-
-    --card: rgba(15,23,42,0.78);
-
-    --text: #f8fafc;
-    --text-light: #94a3b8;
-
-    --border: rgba(148,163,184,0.16);
-
-    --shadow:
-        0 20px 70px rgba(0,0,0,0.35);
-}
-
-
-/* =========================================================
-   RESET
-========================================================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-
-    font-family: "Inter", sans-serif;
-
-    background:
-        radial-gradient(
-            circle at 10% 10%,
-            rgba(99,102,241,0.08),
-            transparent 30%
-        ),
-        var(--bg);
-
-    color: var(--text);
-
-    line-height: 1.7;
-
-    overflow-x: hidden;
-
-    transition:
-        background var(--transition),
-        color var(--transition);
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-button,
-input,
-textarea {
-    font: inherit;
-}
-
-button {
-    cursor: pointer;
-}
-
-img {
-    max-width: 100%;
-    display: block;
-}
-
-.container {
-    width: min(
-        calc(100% - 40px),
-        var(--max-width)
-    );
-
-    margin-inline: auto;
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-.header {
-
-    position: fixed;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-
-    z-index: 1000;
-
-    background:
-        rgba(248,250,252,0.78);
-
-    backdrop-filter: blur(18px);
-
-    border-bottom:
-        1px solid var(--border);
-}
-
-body.dark .header {
-    background:
-        rgba(7,11,20,0.78);
-}
-
-.navbar {
-
-    min-height: 78px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 25px;
-}
-
-.logo {
-
-    font-family:
-        "Space Grotesk",
-        sans-serif;
-
-    font-size: 25px;
-
-    font-weight: 800;
-
-    letter-spacing: -1px;
-
-    color: var(--text);
-}
-
-.logo span {
-    color: var(--primary);
-}
-
-.nav-menu {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 30px;
-
-    list-style: none;
-}
-
-.nav-link {
-
-    position: relative;
-
-    color: var(--text-light);
-
-    font-size: 14px;
-
-    font-weight: 600;
-
-    transition: var(--transition);
-}
-
-.nav-link:hover,
-.nav-link.active {
-    color: var(--primary);
-}
-
-.nav-link::after {
-
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    bottom: -7px;
-
-    width: 0;
-    height: 2px;
-
-    background: var(--primary);
-
-    transition: var(--transition);
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
-    width: 100%;
-}
-
-.nav-actions {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-}
-
-.icon-btn,
-.menu-btn {
-
-    width: 42px;
-    height: 42px;
-
-    border-radius: 12px;
-
-    border: 1px solid var(--border);
-
-    background: var(--card);
-
-    color: var(--text);
-
-    display: grid;
-
-    place-items: center;
-
-    transition: var(--transition);
-}
-
-.icon-btn:hover,
-.menu-btn:hover {
-
-    color: white;
-
-    background: var(--primary);
-
-    transform: translateY(-2px);
-}
-
-.menu-btn {
-    display: none;
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero {
-
-    min-height: 100vh;
-
-    display: flex;
-
-    align-items: center;
-
-    position: relative;
-
-    padding:
-        140px 0
-        80px;
-
-    overflow: hidden;
-}
-
-.hero::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 450px;
-    height: 450px;
-
-    right: -150px;
-    top: 100px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(99,102,241,0.18),
-            transparent 70%
-        );
-
-    pointer-events: none;
-}
-
-.hero-content {
-
-    display: grid;
-
-    grid-template-columns:
-        1.1fr
-        0.9fr;
-
-    align-items: center;
-
-    gap: 70px;
-}
-
-.hello {
-
-    color: var(--primary);
-
-    font-weight: 700;
-
-    font-size: 17px;
-
-    margin-bottom: 8px;
-}
-
-.hero h1 {
-
-    font-family:
-        "Space Grotesk",
-        sans-serif;
-
-    font-size:
-        clamp(48px, 7vw, 78px);
-
-    line-height: 1.05;
-
-    letter-spacing: -3px;
-
-    margin-bottom: 20px;
-}
-
-.hero h1 span {
-    color: var(--primary);
-}
-
-.hero h2 {
-
-    font-size:
-        clamp(20px, 3vw, 30px);
-
-    font-weight: 700;
-
-    margin-bottom: 20px;
-}
-
-.hero h2 > span:last-child {
-    color: var(--primary);
-}
-
-.hero-description {
-
-    max-width: 650px;
-
-    color: var(--text-light);
-
-    font-size: 17px;
-
-    margin-bottom: 30px;
-}
-
-.hero-buttons {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 14px;
-
-    margin-bottom: 28px;
-}
-
-
-/* =========================================================
-   BUTTON
-========================================================= */
-
-.btn {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 10px;
-
-    padding:
-        13px
-        22px;
-
-    border-radius: 12px;
-
-    font-size: 14px;
-
-    font-weight: 700;
-
-    transition: var(--transition);
-}
-
-.primary-btn {
-
-    color: white;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--secondary)
-        );
-
-    box-shadow:
-        0 10px 30px
-        rgba(99,102,241,0.25);
-}
-
-.primary-btn:hover {
-
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 15px 35px
-        rgba(99,102,241,0.35);
-}
-
-.secondary-btn {
-
-    color: var(--text);
-
-    border:
-        1px solid var(--border);
-
-    background: var(--card);
-}
-
-.secondary-btn:hover {
-
-    color: var(--primary);
-
-    border-color:
-        rgba(99,102,241,0.4);
-
-    transform: translateY(-3px);
-}
-
-
-/* =========================================================
-   SOCIAL
-========================================================= */
-
-.social-links {
-
-    display: flex;
-
-    gap: 10px;
-}
-
-.social-links a {
-
-    width: 42px;
-    height: 42px;
-
-    border-radius: 12px;
-
-    border: 1px solid var(--border);
-
-    display: grid;
-
-    place-items: center;
-
-    color: var(--text-light);
-
-    background: var(--card);
-
-    transition: var(--transition);
-}
-
-.social-links a:hover {
-
-    color: white;
-
-    background: var(--primary);
-
-    transform:
-        translateY(-4px)
-        rotate(2deg);
-}
-
-
-/* =========================================================
-   PROFILE IMAGE
-========================================================= */
-
-.hero-image {
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    position: relative;
-}
-
-.image-container {
-
-    width:
-        min(400px, 80vw);
-
-    aspect-ratio: 1;
-
-    position: relative;
-
-    display: grid;
-
-    place-items: center;
-}
-
-.image-container::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 12px;
-
-    border-radius: 50%;
-
-    border:
-        2px solid
-        rgba(99,102,241,0.25);
-
-    animation:
-        spin 18s linear infinite;
-}
-
-.image-container::after {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    border-radius: 50%;
-
-    border:
-        1px dashed
-        rgba(139,92,246,0.35);
-
-    animation:
-        spinReverse 25s linear infinite;
-}
-
-.image-glow {
-
-    position: absolute;
-
-    width: 90%;
-
-    height: 90%;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(99,102,241,0.25),
-            transparent 65%
-        );
-
-    filter: blur(25px);
-}
-
-.image-container img {
-
-    width: 78%;
-    height: 78%;
-
-    object-fit: cover;
-
-    border-radius: 50%;
-
-    position: relative;
-
-    z-index: 2;
-
-    border:
-        7px solid
-        rgba(255,255,255,0.8);
-
-    box-shadow:
-        0 25px 70px
-        rgba(15,23,42,0.2);
-}
-
-body.dark .image-container img {
-    border-color:
-        rgba(15,23,42,0.9);
-}
-
-
-/* =========================================================
-   UPLOAD PHOTO
-========================================================= */
-
-.profile-upload {
-    margin-top: 18px;
-}
-
-.upload-btn {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    padding:
-        9px 16px;
-
-    border-radius: 10px;
-
-    background:
-        rgba(99,102,241,0.1);
-
-    border:
-        1px solid
-        rgba(99,102,241,0.25);
-
-    color: var(--primary);
-
-    font-size: 13px;
-
-    font-weight: 700;
-
-    transition: var(--transition);
-}
-
-.upload-btn:hover {
-
-    color: white;
-
-    background: var(--primary);
-
-    transform: translateY(-2px);
-}
-
-
-/* =========================================================
-   FLOATING CARDS
-========================================================= */
-
-.floating-card {
-
-    position: absolute;
-
-    z-index: 5;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 9px;
-
-    padding:
-        11px 15px;
-
-    border-radius: 13px;
-
-    background: var(--card);
-
-    backdrop-filter: blur(15px);
-
-    border:
-        1px solid var(--border);
-
-    box-shadow: var(--shadow);
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    color: var(--text);
-}
-
-.floating-card i {
-    color: var(--primary);
-}
-
-.card-one {
-
-    left: 0;
-    bottom: 90px;
-
-    animation:
-        float 4s ease-in-out infinite;
-}
-
-.card-two {
-
-    right: 0;
-    top: 80px;
-
-    animation:
-        float 4s
-        ease-in-out
-        infinite
-        1s;
-}
-
-
-/* =========================================================
-   SCROLL
-========================================================= */
-
-.scroll-down {
-
-    position: absolute;
-
-    bottom: 30px;
-
-    left: 50%;
-
-    transform:
-        translateX(-50%);
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 5px;
-
-    color: var(--text-light);
-
-    font-size: 11px;
-
-    font-weight: 600;
-
-    animation:
-        bounce 2s infinite;
-}
-
-
-/* =========================================================
-   SECTIONS
-========================================================= */
-
-.section {
-
-    padding:
-        110px 0;
-}
-
-.skills-section,
-.contact-section {
-
-    background:
-        linear-gradient(
-            180deg,
-            transparent,
-            var(--bg-secondary)
-        );
-}
-
-.section-heading {
-
-    text-align: center;
-
-    max-width: 650px;
-
-    margin:
-        0 auto 60px;
-}
-
-.section-label {
-
-    color: var(--primary);
-
-    font-size: 12px;
-
-    letter-spacing: 2px;
-
-    font-weight: 800;
-
-    margin-bottom: 8px;
-}
-
-.section-heading h2 {
-
-    font-family:
-        "Space Grotesk",
-        sans-serif;
-
-    font-size:
-        clamp(35px, 5vw, 48px);
-
-    line-height: 1.2;
-}
-
-.section-heading h2 span {
-    color: var(--primary);
-}
-
-.heading-line {
-
-    width: 65px;
-    height: 4px;
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--primary),
-            var(--secondary)
-        );
-
-    margin:
-        15px auto 0;
-}
-
-
-/* =========================================================
-   ABOUT
-========================================================= */
-
-.about-content {
-
-    display: grid;
-
-    grid-template-columns:
-        0.9fr
-        1.1fr;
-
-    gap: 70px;
-
-    align-items: center;
-}
-
-.about-card {
-
-    padding: 15px;
-
-    border-radius: 22px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(99,102,241,0.12),
-            rgba(139,92,246,0.08)
-        );
-
-    border:
-        1px solid var(--border);
-}
-
-.code-window {
-
-    border-radius: 16px;
-
-    overflow: hidden;
-
-    background: #0b1020;
-
-    box-shadow:
-        0 25px 60px
-        rgba(15,23,42,0.25);
-}
-
-.window-header {
-
-    height: 45px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 7px;
-
-    padding: 0 16px;
-
-    background: #111827;
-}
-
-.window-header span {
-
-    width: 11px;
-    height: 11px;
-
-    border-radius: 50%;
-}
-
-.window-header span:nth-child(1) {
-    background: #ef4444;
-}
-
-.window-header span:nth-child(2) {
-    background: #f59e0b;
-}
-
-.window-header span:nth-child(3) {
-    background: #10b981;
-}
-
-.code-content {
-
-    padding:
-        35px 28px;
-
-    color: #e2e8f0;
-
-    font-family:
-        monospace;
-
-    font-size: 14px;
-
-    line-height: 2;
-}
-
-.code-content .purple {
-    color: #c084fc;
-}
-
-.code-content .green {
-    color: #86efac;
-}
-
-.indent {
-    padding-left: 25px;
-}
-
-.about-text h3 {
-
-    font-family:
-        "Space Grotesk",
-        sans-serif;
-
-    font-size:
-        clamp(28px, 4vw, 38px);
-
-    line-height: 1.25;
-
-    margin-bottom: 20px;
-}
-
-.about-text h3 span {
-    color: var(--primary);
-}
-
-.about-text > p {
-
-    color: var(--text-light);
-
-    margin-bottom: 15px;
-}
-
-.about-info {
-
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap: 14px;
-
-    margin:
-        28px 0;
-}
-
-.about-info div {
-
-    display: flex;
-
-    flex-direction: column;
-
-    padding:
-        13px 15px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 12px;
-
-    background: var(--card);
-}
-
-.about-info strong {
-
-    font-size: 11px;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.7px;
-
-    color: var(--text-light);
-}
-
-.about-info span {
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    word-break: break-word;
-}
-
-.about-info .available {
-    color: var(--success);
-}
-
-
-/* =========================================================
-   SKILLS
-========================================================= */
-
-.skills-category {
-    margin-bottom: 65px;
-}
-
-.skills-category-title {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 12px;
-
-    margin-bottom: 30px;
-}
-
-.skills-category-title i {
-
-    color: var(--primary);
-
-    font-size: 24px;
-}
-
-.skills-category-title h3 {
-
-    font-family:
-        "Space Grotesk",
-        sans-serif;
-
-    font-size: 25px;
-}
-
-.skills-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 20px;
-}
-
-.skill-card {
-
-    position: relative;
-
-    padding: 28px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: var(--radius);
-
-    background: var(--card);
-
-    backdrop-filter: blur(15px);
-
-    box-shadow: var(--shadow);
-
-    transition:
-        transform var(--transition),
-        border var(--transition);
-}
-
-.skill-card:hover {
-
-    transform:
-        translateY(-7px);
-
-    border-color:
-        rgba(99,102,241,0.35);
-}
-
-.skill-icon {
-
-    width: 52px;
-    height: 52px;
-
-    border-radius: 14px;
-
-    display: grid;
-
-    place-items: center;
-
-    margin-bottom: 18px;
-
-    font-size: 25px;
-
-    background:
-        rgba(99,102,241,0.1);
-
-    color: var(--primary);
-}
-
-.skill-icon.html {
-    color: #f97316;
-}
-
-.skill-icon.css {
-    color: #3b82f6;
-}
-
-.skill-icon.js {
-    color: #eab308;
-}
-
-.skill-icon.react {
-    color: #06b6d4;
-}
-
-.skill-icon.git {
-    color: #f97316;
-}
-
-.skill-icon.responsive {
-    color: #8b5cf6;
-}
-
-.skill-icon.autocad {
-    color: #ef4444;
-}
-
-.skill-icon.solidworks {
-    color: #dc2626;
-}
-
-.skill-icon.bom {
-    color: #6366f1;
-}
-
-.skill-icon.erp {
-    color: #10b981;
-}
-
-.skill-card h3 {
-
-    font-family:
-        "Space Grotesk",
-        sans-serif;
-
-    font-size: 19px;
-
-    margin-bottom: 7px;
-}
-
-.skill-card p {
-
-    color: var(--text-light);
-
-    font-size: 13px;
-
-    min-height: 50px;
-
-    margin-bottom: 18px;
-}
-
-.progress {
-
-    height: 6px;
-
-    border-radius: 20px;
-
-    overflow: hidden;
-
-    background:
-        rgba(148,163,184,0.15);
-
-    margin-bottom: 7px;
-}
-
-.progress span {
-
-    display: block;
-
-    height: 100%;
-
-    border-radius: inherit;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--primary),
-            var(--secondary)
-        );
-}
-
-.skill-card small {
-
-    color: var(--primary);
-
-    font-weight: 800;
-
-    font-size: 11px;
-}
-
-
-/* =========================================================
-   PROJECTS
-========================================================= */
-
-.projects-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 25px;
-}
-
-.project-card {
-
-    overflow: hidden;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: var(--radius);
-
-    background: var(--card);
-
-    box-shadow: var(--shadow);
-
-    transition:
-        transform var(--transition),
-        border var(--transition);
-}
-
-.project-card:hover {
-
-    transform:
-        translateY(-8px);
-
-    border-color:
-        rgba(99,102,241,0.35);
-}
-
-.project-image {
-
-    height: 230px;
-
-    position: relative;
-
-    display: grid;
-
-    place-items: center;
-
-    overflow: hidden;
-}
-
-.project-one {
-
-    background:
-        linear-gradient(
-            135deg,
-            #312e81,
-            #6366f1
-        );
-}
-
-.project-two {
-
-    background:
-        linear-gradient(
-            135deg,
-            #075985,
-            #06b6d4
-        );
-}
-
-.project-three {
-
-    background:
-        linear-gradient(
-            135deg,
-            #064e3b,
-            #10b981
-        );
-}
-
-.project-four {
-
-    background:
-        linear-gradient(
-            135deg,
-            #7c2d12,
-            #f97316
-        );
-}
-
-.project-big-icon {
-
-    color:
-        rgba(255,255,255,0.85);
-
-    font-size: 70px;
-}
-
-.project-overlay {
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        rgba(15,23,42,0.7);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 12px;
-
-    opacity: 0;
-
-    transition: var(--transition);
-}
-
-.project-card:hover .project-overlay {
-    opacity: 1;
-}
-
-.project-overlay a {
-
-    width: 45px;
-    height: 45px;
-
-    border-radius: 50%;
-
-    display: grid;
-
-    place-items: center;
-
-    color: white;
-
-    background:
-        var(--primary);
-
-    transition: var(--transition);
-}
-
-.project-overlay a:hover {
-
-    transform: scale(1.1);
-
-    background:
-        var(--secondary);
-}
-
-.project-content {
-    padding: 25px;
-}
-
-.project-tags {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 7px;
-
-    margin-bottom: 13px;
-}
-
-.project-tags span {
-
-    padding:
-        4px 9px;
-
-    border-radius: 6px;
-
-    background:
-        rgba(99,102,241,0.1);
-
-    color: var(--primary);
-
-    font-size: 10px;
-
-    font-weight: 800;
-}
-
-.project-content h3 {
-
-    font-family:
-        "Space Grotesk",
-        sans-serif;
-
-    font-size: 20px;
-
-    margin-bottom: 8px;
-}
-
-.project-content p {
-
-    color: var(--text-light);
-
-    font-size: 13px;
-
-    margin-bottom: 17px;
-}
-
-.project-link {
-
-    color: var(--primary);
-
-    font-size: 13px;
-
-    font-weight: 800;
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 8px;
-}
-
-
-/* =========================================================
-   CONTACT
-========================================================= */
-
-.contact-content {
-
-    display: grid;
-
-    grid-template-columns:
-        0.8fr
-        1.2fr;
-
-    gap: 60px;
-
-    align-items: start;
-}
-
-.contact-info h3 {
-
-    font-family:
-        "Space Grotesk",
-        sans-serif;
-
-    font-size: 32px;
-
-    margin-bottom: 10px;
-}
-
-.contact-info > p {
-
-    color: var(--text-light);
-
-    margin-bottom: 30px;
-}
-
-.contact-item {
-
-    display: flex;
-
-    gap: 15px;
-
-    align-items: flex-start;
-
-    margin-bottom: 20px;
-}
-
-.contact-icon {
-
-    width: 45px;
-    height: 45px;
-
-    flex-shrink: 0;
-
-    display: grid;
-
-    place-items: center;
-
-    border-radius: 12px;
-
-    color: var(--primary);
-
-    background:
-        rgba(99,102,241,0.1);
-}
-
-.contact-item span {
-
-    display: block;
-
-    color: var(--text-light);
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    text-transform: uppercase;
-}
-
-.contact-item a,
-.contact-item p {
-
-    color: var(--text);
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    margin: 0;
-}
-
-.contact-item a:hover {
-    color: var(--primary);
-}
-
-.contact-form {
-
-    padding: 30px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: var(--radius);
-
-    background: var(--card);
-
-    box-shadow: var(--shadow);
-}
-
-.input-group {
-
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap: 15px;
-}
-
-.input-box {
-
-    display: flex;
-
-    flex-direction: column;
-
-    margin-bottom: 18px;
-}
-
-.input-box label {
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    margin-bottom: 7px;
-}
-
-.input-box input,
-.input-box textarea {
-
-    width: 100%;
-
-    padding:
-        13px 14px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 10px;
-
-    outline: none;
-
-    background:
-        rgba(148,163,184,0.06);
-
-    color: var(--text);
-
-    resize: vertical;
-
-    transition: var(--transition);
-}
-
-.input-box input:focus,
-.input-box textarea:focus {
-
-    border-color:
-        var(--primary);
-
-    box-shadow:
-        0 0 0 3px
-        rgba(99,102,241,0.1);
-}
-
-#formMessage {
-
-    margin-top: 15px;
-
-    color: var(--success);
-
-    font-size: 13px;
-
-    font-weight: 600;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.footer {
-
-    padding-top: 50px;
-
-    border-top:
-        1px solid var(--border);
-
-    background:
-        var(--bg-secondary);
-}
-
-.footer-content {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 20px;
-
-    padding-bottom: 30px;
-}
-
-.footer-content p {
-
-    color: var(--text-light);
-
-    font-size: 13px;
-}
-
-.footer-content strong {
-    color: var(--text);
-}
-
-.footer-social {
-
-    display: flex;
-
-    gap: 8px;
-}
-
-.footer-social a {
-
-    width: 38px;
-    height: 38px;
-
-    display: grid;
-
-    place-items: center;
-
-    border-radius: 10px;
-
-    color: var(--text-light);
-
-    border:
-        1px solid var(--border);
-
-    transition: var(--transition);
-}
-
-.footer-social a:hover {
-
-    color: white;
-
-    background: var(--primary);
-
-    transform: translateY(-3px);
-}
-
-.copyright {
-
-    text-align: center;
-
-    padding:
-        20px;
-
-    border-top:
-        1px solid var(--border);
-
-    color: var(--text-light);
-
-    font-size: 12px;
-}
-
-
-/* =========================================================
-   BACK TO TOP
-========================================================= */
-
-.back-to-top {
-
-    position: fixed;
-
-    right: 25px;
-    bottom: 25px;
-
-    width: 45px;
-    height: 45px;
-
-    border: none;
-
-    border-radius: 13px;
-
-    color: white;
-
-    background: var(--primary);
-
-    display: grid;
-
-    place-items: center;
-
-    box-shadow:
-        0 10px 30px
-        rgba(99,102,241,0.3);
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transform: translateY(15px);
-
-    transition: var(--transition);
-
-    z-index: 900;
-}
-
-.back-to-top.show {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    transform: translateY(0);
-}
-
-
-/* =========================================================
-   REVEAL
-========================================================= */
-
-.reveal {
-
-    opacity: 0;
-
-    transform:
-        translateY(30px);
-
-    transition:
-        opacity 0.7s ease,
-        transform 0.7s ease;
-}
-
-.reveal.show {
-
-    opacity: 1;
-
-    transform:
-        translateY(0);
-}
-
-
-/* =========================================================
-   ANIMATIONS
-========================================================= */
-
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-@keyframes bounce {
-
-    0%,
-    100% {
-        transform:
-            translateX(-50%)
-            translateY(0);
-    }
-
-    50% {
-        transform:
-            translateX(-50%)
-            translateY(8px);
-    }
-}
-
-@keyframes spin {
-
-    from {
-        transform: rotate(0);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes spinReverse {
-
-    from {
-        transform: rotate(360deg);
-    }
-
-    to {
-        transform: rotate(0);
-    }
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 950px) {
-
-    .nav-menu {
-
-        position: absolute;
-
-        top: 78px;
-        left: 20px;
-        right: 20px;
-
-        display: none;
-
-        flex-direction: column;
-
-        align-items: stretch;
-
-        gap: 0;
-
-        padding: 15px;
-
-        border:
-            1px solid var(--border);
-
-        border-radius: 16px;
-
-        background: var(--card);
-
-        backdrop-filter: blur(20px);
-
-        box-shadow: var(--shadow);
-    }
-
-    .nav-menu.open {
-        display: flex;
-    }
-
-    .nav-link {
-
-        display: block;
-
-        padding: 12px 10px;
-    }
-
-    .nav-link::after {
-        display: none;
-    }
-
-    .menu-btn {
-        display: grid;
-    }
-
-    .hero-content {
-
-        grid-template-columns:
-            1fr;
-
-        text-align: center;
-
-        gap: 60px;
-    }
-
-    .hero-text {
-
-        order: 1;
-    }
-
-    .hero-image {
-
-        order: 2;
-    }
-
-    .hero-description {
-        margin-inline: auto;
-    }
-
-    .hero-buttons,
-    .social-links {
-        justify-content: center;
-    }
-
-    .about-content {
-
-        grid-template-columns:
-            1fr;
-
-        gap: 40px;
-    }
-
-    .about-image {
-        max-width: 650px;
-        margin-inline: auto;
-        width: 100%;
-    }
-
-    .skills-grid,
-    .projects-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .contact-content {
-
-        grid-template-columns:
-            1fr;
-    }
-}
-
-
-@media (max-width: 620px) {
-
-    .container {
-        width:
-            min(
-                calc(100% - 28px),
-                var(--max-width)
-            );
-    }
-
-    .navbar {
-        min-height: 70px;
-    }
-
-    .hero {
-        padding-top: 120px;
-    }
-
-    .hero h1 {
-        letter-spacing: -2px;
-    }
-
-    .hero-description {
-        font-size: 15px;
-    }
-
-    .section {
-        padding: 80px 0;
-    }
-
-    .section-heading {
-        margin-bottom: 40px;
-    }
-
-    .skills-grid,
-    .projects-grid {
-
-        grid-template-columns:
-            1fr;
-    }
-
-    .about-info {
-
-        grid-template-columns:
-            1fr;
-    }
-
-    .input-group {
-
-        grid-template-columns:
-            1fr;
-    }
-
-    .footer-content {
-
-        flex-direction: column;
-
-        text-align: center;
-    }
-
-    .floating-card {
-        display: none;
-    }
-
-    .image-container {
-        width: 310px;
-    }
-
-    .contact-form {
-        padding: 20px;
-    }
-}
-
-</style>
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
 </head>
 
@@ -2206,21 +159,46 @@ body.dark .image-container img {
 <body>
 
 
-<!-- =========================================================
-     HEADER
-========================================================= -->
+<!-- =========================
+     PAGE LOADER
+========================= -->
 
-<header class="header">
+<div
+    class="page-loader"
+    id="pageLoader"
+>
+
+    <div class="loader"></div>
+
+</div>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header
+    class="header"
+    id="header"
+>
 
     <nav class="navbar container">
+
+
+        <!-- LOGO -->
 
         <a
             href="#home"
             class="logo"
+            aria-label="Abhijeet Tiwari Home"
         >
+
             <span>&lt;</span>AT<span>/&gt;</span>
+
         </a>
 
+
+        <!-- NAVIGATION -->
 
         <ul
             class="nav-menu"
@@ -2275,23 +253,30 @@ body.dark .image-container img {
         </ul>
 
 
+        <!-- ACTIONS -->
+
         <div class="nav-actions">
 
             <button
                 class="icon-btn"
                 id="themeToggle"
-                aria-label="Toggle theme"
+                type="button"
+                aria-label="Toggle dark mode"
             >
                 <i class="fas fa-moon"></i>
             </button>
 
+
             <button
                 class="menu-btn"
                 id="menuToggle"
-                aria-label="Open menu"
+                type="button"
+                aria-label="Open navigation menu"
                 aria-expanded="false"
             >
+
                 <i class="fas fa-bars"></i>
+
             </button>
 
         </div>
@@ -2301,54 +286,75 @@ body.dark .image-container img {
 </header>
 
 
-<!-- =========================================================
+<!-- =========================
      MAIN
-========================================================= -->
+========================= -->
 
 <main>
 
 
-<!-- =========================================================
+<!-- =========================
      HERO
-========================================================= -->
+========================= -->
 
 <section
-    id="home"
     class="hero"
+    id="home"
 >
 
-    <div class="container hero-content">
+    <div class="hero-grid container">
 
 
-        <div class="hero-text reveal">
+        <!-- HERO CONTENT -->
 
-            <p class="hello">
+        <div class="hero-content reveal">
+
+
+            <div class="availability">
+
+                <span class="status-dot"></span>
+
+                Available for opportunities
+
+            </div>
+
+
+            <p class="hero-intro">
                 Hello, I'm
             </p>
 
+
             <h1>
-                Abhijeet <span>Tiwari</span>
+
+                Abhijeet
+                <span>Tiwari</span>
+
             </h1>
 
+
             <h2>
-                I'm a
-                <span id="typingText">
-                    Mechanical Engineer
-                </span>
+
+                Mechanical Engineer
+
+                <span>&amp;</span>
+
+                <strong id="typingText">
+                    Web Developer
+                </strong>
+
             </h2>
+
 
             <p class="hero-description">
 
-                A passionate Mechanical Engineer and Web Developer
-                with knowledge of engineering design, technical
-                documentation and modern web development.
-
-                I combine engineering knowledge with technology
-                to create practical, efficient and user-friendly
-                solutions.
+                I combine mechanical engineering knowledge
+                with modern web development to build
+                practical, efficient and user-focused solutions.
 
             </p>
 
+
+            <!-- BUTTONS -->
 
             <div class="hero-buttons">
 
@@ -2356,234 +362,308 @@ body.dark .image-container img {
                     href="#projects"
                     class="btn primary-btn"
                 >
-                    View My Work
+
+                    View Projects
+
                     <i class="fas fa-arrow-right"></i>
+
                 </a>
 
+
                 <a
-                    href="#contact"
+                    href="Abhijeet%20Tiwari_CV.pdf"
                     class="btn secondary-btn"
+                    download
                 >
-                    Contact Me
+
+                    Download CV
+
+                    <i class="fas fa-download"></i>
+
                 </a>
 
             </div>
 
 
-            <div class="social-links">
+            <!-- SOCIAL -->
 
-                <a
-                    href="https://github.com/codewithabhi008"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub"
-                >
-                    <i class="fab fa-github"></i>
-                </a>
+            <div class="hero-social">
 
-                <a
-                    href="https://www.linkedin.com/in/abhijeet-tiwari-609981222"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn"
-                >
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
+                <span>
+                    Follow me
+                </span>
 
-                <a
-                    href="https://www.instagram.com/imabhii_26"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Instagram"
-                >
-                    <i class="fab fa-instagram"></i>
-                </a>
 
-                <a
-                    href="https://x.com/Abhijeet260820"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="X"
-                >
-                    <i class="fab fa-x-twitter"></i>
-                </a>
+                <div class="social-links">
 
-                <a
-                    href="mailto:abhijeettiwari955@gmail.com"
-                    aria-label="Email"
-                >
-                    <i class="fas fa-envelope"></i>
-                </a>
+                    <a
+                        href="https://github.com/codewithabhi008"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="GitHub"
+                    >
+                        <i class="fab fa-github"></i>
+                    </a>
+
+
+                    <a
+                        href="https://www.linkedin.com/in/abhijeet-tiwari-609981222"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="LinkedIn"
+                    >
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+
+
+                    <a
+                        href="https://www.instagram.com/imabhii_26"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Instagram"
+                    >
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+
+                    <a
+                        href="https://x.com/Abhijeet260820"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="X"
+                    >
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+
+                </div>
 
             </div>
 
         </div>
 
 
-        <!-- PROFILE -->
+        <!-- HERO IMAGE -->
 
-        <div class="hero-image reveal">
+        <div class="hero-visual reveal">
 
-            <div class="image-container">
 
-                <div class="image-glow"></div>
+            <div class="hero-orbit orbit-one"></div>
+
+            <div class="hero-orbit orbit-two"></div>
+
+
+            <div class="profile-wrapper">
+
+
+                <div class="profile-glow"></div>
+
 
                 <img
-                    id="profileImage"
                     src="assets/profile.jpg"
-                    alt="Abhijeet Tiwari - Mechanical Engineer and Web Developer"
-                    width="400"
-                    height="400"
+                    alt="Abhijeet Tiwari"
+                    class="profile-image"
+                    width="420"
+                    height="420"
                 >
 
-            </div>
+
+                <div class="profile-badge badge-top">
+
+                    <i class="fas fa-code"></i>
+
+                    <span>
+                        Web Developer
+                    </span>
+
+                </div>
 
 
-            <div class="profile-upload">
+                <div class="profile-badge badge-bottom">
 
-                <label
-                    for="profileUpload"
-                    class="upload-btn"
-                >
-                    <i class="fas fa-camera"></i>
-                    Change Photo
-                </label>
+                    <i class="fas fa-gears"></i>
 
-                <input
-                    type="file"
-                    id="profileUpload"
-                    accept="image/jpeg,image/png,image/webp"
-                    hidden
-                >
+                    <span>
+                        Mechanical Engineer
+                    </span>
 
-            </div>
-
-
-            <div class="floating-card card-one">
-
-                <i class="fas fa-gears"></i>
-
-                <span>
-                    Mechanical Engineer
-                </span>
+                </div>
 
             </div>
 
-
-            <div class="floating-card card-two">
-
-                <i class="fas fa-code"></i>
-
-                <span>
-                    Web Developer
-                </span>
-
-            </div>
 
         </div>
 
     </div>
 
 
+    <!-- SCROLL -->
+
     <a
         href="#about"
-        class="scroll-down"
+        class="scroll-indicator"
+        aria-label="Scroll to About section"
     >
-        <span>Scroll Down</span>
+
+        <span>
+            Scroll
+        </span>
+
         <i class="fas fa-chevron-down"></i>
+
     </a>
 
 </section>
 
 
-<!-- =========================================================
+<!-- =========================
      ABOUT
-========================================================= -->
+========================= -->
 
 <section
-    id="about"
     class="section"
+    id="about"
 >
 
     <div class="container">
 
+
         <div class="section-heading reveal">
 
-            <p class="section-label">
-                GET TO KNOW ME
-            </p>
+            <span class="section-label">
+                ABOUT ME
+            </span>
 
             <h2>
-                About <span>Me</span>
+                Engineering meets
+                <span>Technology</span>
             </h2>
 
-            <div class="heading-line"></div>
+            <p>
+                A multidisciplinary approach to solving
+                real-world problems.
+            </p>
 
         </div>
 
 
-        <div class="about-content">
+        <div class="about-grid">
 
 
-            <!-- CODE CARD -->
+            <!-- ABOUT VISUAL -->
 
-            <div class="about-image reveal">
-
-                <div class="about-card">
-
-                    <div class="code-window">
-
-                        <div class="window-header">
-
-                            <span></span>
-                            <span></span>
-                            <span></span>
-
-                        </div>
+            <div class="about-visual reveal">
 
 
-                        <div class="code-content">
+                <div class="terminal">
 
-                            <p>
-                                <span class="purple">
-                                    const
-                                </span>
-                                engineer = {
-                            </p>
+                    <div class="terminal-header">
 
-                            <p class="indent">
-                                name:
-                                <span class="green">
-                                    "Abhijeet Tiwari"
-                                </span>,
-                            </p>
+                        <span></span>
+                        <span></span>
+                        <span></span>
 
-                            <p class="indent">
-                                role:
-                                <span class="green">
-                                    "Mechanical Engineer"
-                                </span>,
-                            </p>
+                        <small>
+                            portfolio.js
+                        </small>
 
-                            <p class="indent">
-                                skills:
-                                <span class="green">
-                                    ["CAD", "BOM", "ERP"]
-                                </span>,
-                            </p>
+                    </div>
 
-                            <p class="indent">
-                                developer:
-                                <span class="green">
-                                    true
-                                </span>
-                            </p>
 
-                            <p>
+                    <div class="terminal-body">
+
+                        <p>
+                            <span class="code-purple">
+                                const
+                            </span>
+
+                            engineer =
+                            <span class="code-yellow">
+                                {
+                            </span>
+                        </p>
+
+
+                        <p class="indent">
+
+                            name:
+
+                            <span class="code-green">
+                                "Abhijeet Tiwari"
+                            </span>,
+
+                        </p>
+
+
+                        <p class="indent">
+
+                            profession:
+
+                            <span class="code-green">
+                                "Mechanical Engineer"
+                            </span>,
+
+                        </p>
+
+
+                        <p class="indent">
+
+                            developer:
+
+                            <span class="code-blue">
+                                true
+                            </span>,
+
+                        </p>
+
+
+                        <p class="indent">
+
+                            skills:
+
+                            <span class="code-green">
+                                ["CAD", "React", "BOM"]
+                            </span>
+
+                        </p>
+
+
+                        <p>
+
+                            <span class="code-yellow">
                                 };
-                            </p>
+                            </span>
 
-                        </div>
+                        </p>
+
+
+                        <p class="terminal-cursor">
+                            _
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EXPERIENCE CARD -->
+
+                <div class="stats-card">
+
+                    <div class="stat-icon">
+
+                        <i class="fas fa-layer-group"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            2+
+                        </strong>
+
+                        <span>
+                            Professional Domains
+                        </span>
 
                     </div>
 
@@ -2594,107 +674,135 @@ body.dark .image-container img {
 
             <!-- ABOUT TEXT -->
 
-            <div class="about-text reveal">
+            <div class="about-content reveal">
 
-                <p class="section-label">
-                    ENGINEER & DEVELOPER
-                </p>
+
+                <span class="mini-label">
+                    ENGINEER + DEVELOPER
+                </span>
+
 
                 <h3>
-                    Engineering knowledge meets
-                    <span>
-                        modern technology.
-                    </span>
+
+                    Building solutions with
+                    <span>precision & creativity.</span>
+
                 </h3>
 
 
                 <p>
 
                     I'm Abhijeet Tiwari, a Mechanical Engineer
-                    and Web Developer with an interest in
-                    engineering design, technical documentation,
-                    CAD tools and modern web technologies.
+                    and Web Developer interested in engineering
+                    design, technical documentation and
+                    modern web technologies.
 
                 </p>
 
 
                 <p>
 
-                    I have knowledge of mechanical engineering
-                    tools and workflows including AutoCAD,
-                    SolidWorks, BOM preparation and Prowess ERP.
+                    My mechanical engineering skill set includes
+                    AutoCAD, SolidWorks, BOM preparation,
+                    technical drawings and Prowess ERP.
 
-                    Along with my engineering skills, I develop
-                    responsive and user-friendly websites using
-                    HTML, CSS, JavaScript and React.
-
-                </p>
-
-
-                <p>
-
-                    My goal is to combine engineering knowledge
-                    with technology to solve real-world problems
-                    and create efficient, practical and
-                    professional solutions.
+                    On the development side, I work with
+                    HTML, CSS, JavaScript, React and Git.
 
                 </p>
 
 
-                <div class="about-info">
+                <div class="about-details">
 
-                    <div>
-                        <strong>Name</strong>
-                        <span>
-                            Abhijeet Tiwari
-                        </span>
+
+                    <div class="detail-item">
+
+                        <i class="fas fa-user"></i>
+
+                        <div>
+
+                            <span>
+                                Name
+                            </span>
+
+                            <strong>
+                                Abhijeet Tiwari
+                            </strong>
+
+                        </div>
+
                     </div>
 
-                    <div>
-                        <strong>Profession</strong>
-                        <span>
-                            Mechanical Engineer & Web Developer
-                        </span>
+
+                    <div class="detail-item">
+
+                        <i class="fas fa-envelope"></i>
+
+                        <div>
+
+                            <span>
+                                Email
+                            </span>
+
+                            <strong>
+                                abhijeettiwari955@gmail.com
+                            </strong>
+
+                        </div>
+
                     </div>
 
-                    <div>
-                        <strong>Email</strong>
-                        <span>
-                            abhijeettiwari955@gmail.com
-                        </span>
+
+                    <div class="detail-item">
+
+                        <i class="fas fa-location-dot"></i>
+
+                        <div>
+
+                            <span>
+                                Location
+                            </span>
+
+                            <strong>
+                                India
+                            </strong>
+
+                        </div>
+
                     </div>
 
-                    <div>
-                        <strong>Location</strong>
-                        <span>
-                            India
-                        </span>
+
+                    <div class="detail-item">
+
+                        <i class="fas fa-briefcase"></i>
+
+                        <div>
+
+                            <span>
+                                Availability
+                            </span>
+
+                            <strong class="available">
+                                Open to Opportunities
+                            </strong>
+
+                        </div>
+
                     </div>
 
-                    <div>
-                        <strong>Availability</strong>
-                        <span class="available">
-                            Available
-                        </span>
-                    </div>
-
-                    <div>
-                        <strong>Interests</strong>
-                        <span>
-                            CAD · Web · Technology
-                        </span>
-                    </div>
 
                 </div>
 
 
                 <a
-                    href="Abhijeet%20Tiwari_CV.pdf"
-                    download
+                    href="#contact"
                     class="btn primary-btn"
                 >
-                    Download Resume
-                    <i class="fas fa-download"></i>
+
+                    Let's Connect
+
+                    <i class="fas fa-arrow-right"></i>
+
                 </a>
 
             </div>
@@ -2706,43 +814,58 @@ body.dark .image-container img {
 </section>
 
 
-<!-- =========================================================
+<!-- =========================
      SKILLS
-========================================================= -->
+========================= -->
 
 <section
-    id="skills"
     class="section skills-section"
+    id="skills"
 >
 
     <div class="container">
 
+
         <div class="section-heading reveal">
 
-            <p class="section-label">
-                MY EXPERTISE
-            </p>
+            <span class="section-label">
+                EXPERTISE
+            </span>
 
             <h2>
                 My <span>Skills</span>
             </h2>
 
-            <div class="heading-line"></div>
+            <p>
+                Technical skills across engineering and
+                modern web development.
+            </p>
 
         </div>
 
 
-        <!-- WEB DEVELOPMENT -->
+        <!-- WEB -->
 
-        <div class="skills-category">
+        <div class="skill-group">
 
-            <div class="skills-category-title reveal">
 
-                <i class="fas fa-code"></i>
+            <div class="skill-group-title reveal">
 
-                <h3>
-                    Web Development
-                </h3>
+                <div class="title-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        01
+                    </span>
+
+                    <h3>
+                        Web Development
+                    </h3>
+
+                </div>
 
             </div>
 
@@ -2750,158 +873,184 @@ body.dark .image-container img {
             <div class="skills-grid">
 
 
-                <div class="skill-card reveal">
+                <article class="skill-card reveal">
 
-                    <div class="skill-icon html">
-                        <i class="fab fa-html5"></i>
+                    <div class="skill-top">
+
+                        <div class="skill-icon html">
+                            <i class="fab fa-html5"></i>
+                        </div>
+
+                        <span>
+                            95%
+                        </span>
+
                     </div>
 
-                    <h3>
+                    <h4>
                         HTML5
-                    </h3>
+                    </h4>
 
                     <p>
                         Semantic, accessible and structured
                         web development.
                     </p>
 
-                    <div class="progress">
+                    <div class="skill-bar">
                         <span style="width:95%"></span>
                     </div>
 
-                    <small>
-                        95%
-                    </small>
-
-                </div>
+                </article>
 
 
-                <div class="skill-card reveal">
+                <article class="skill-card reveal">
 
-                    <div class="skill-icon css">
-                        <i class="fab fa-css3-alt"></i>
+                    <div class="skill-top">
+
+                        <div class="skill-icon css">
+                            <i class="fab fa-css3-alt"></i>
+                        </div>
+
+                        <span>
+                            90%
+                        </span>
+
                     </div>
 
-                    <h3>
+                    <h4>
                         CSS3
-                    </h3>
+                    </h4>
 
                     <p>
                         Responsive layouts, animations and
-                        modern UI design.
+                        modern UI systems.
                     </p>
 
-                    <div class="progress">
+                    <div class="skill-bar">
                         <span style="width:90%"></span>
                     </div>
 
-                    <small>
-                        90%
-                    </small>
-
-                </div>
+                </article>
 
 
-                <div class="skill-card reveal">
+                <article class="skill-card reveal">
 
-                    <div class="skill-icon js">
-                        <i class="fab fa-js"></i>
+                    <div class="skill-top">
+
+                        <div class="skill-icon js">
+                            <i class="fab fa-js"></i>
+                        </div>
+
+                        <span>
+                            85%
+                        </span>
+
                     </div>
 
-                    <h3>
+                    <h4>
                         JavaScript
-                    </h3>
+                    </h4>
 
                     <p>
-                        Interactive and dynamic web applications.
+                        Interactive interfaces and dynamic
+                        web experiences.
                     </p>
 
-                    <div class="progress">
+                    <div class="skill-bar">
                         <span style="width:85%"></span>
                     </div>
 
-                    <small>
-                        85%
-                    </small>
-
-                </div>
+                </article>
 
 
-                <div class="skill-card reveal">
+                <article class="skill-card reveal">
 
-                    <div class="skill-icon react">
-                        <i class="fab fa-react"></i>
+                    <div class="skill-top">
+
+                        <div class="skill-icon react">
+                            <i class="fab fa-react"></i>
+                        </div>
+
+                        <span>
+                            75%
+                        </span>
+
                     </div>
 
-                    <h3>
+                    <h4>
                         React
-                    </h3>
+                    </h4>
 
                     <p>
-                        Component-based modern web applications.
+                        Component-based modern frontend
+                        applications.
                     </p>
 
-                    <div class="progress">
+                    <div class="skill-bar">
                         <span style="width:75%"></span>
                     </div>
 
-                    <small>
-                        75%
-                    </small>
-
-                </div>
+                </article>
 
 
-                <div class="skill-card reveal">
+                <article class="skill-card reveal">
 
-                    <div class="skill-icon git">
-                        <i class="fab fa-git-alt"></i>
+                    <div class="skill-top">
+
+                        <div class="skill-icon git">
+                            <i class="fab fa-git-alt"></i>
+                        </div>
+
+                        <span>
+                            85%
+                        </span>
+
                     </div>
 
-                    <h3>
+                    <h4>
                         Git & GitHub
-                    </h3>
+                    </h4>
 
                     <p>
-                        Version control and collaborative
-                        development.
+                        Version control and project
+                        collaboration.
                     </p>
 
-                    <div class="progress">
+                    <div class="skill-bar">
                         <span style="width:85%"></span>
                     </div>
 
-                    <small>
-                        85%
-                    </small>
-
-                </div>
+                </article>
 
 
-                <div class="skill-card reveal">
+                <article class="skill-card reveal">
 
-                    <div class="skill-icon responsive">
-                        <i class="fas fa-mobile-screen-button"></i>
+                    <div class="skill-top">
+
+                        <div class="skill-icon responsive">
+                            <i class="fas fa-mobile-screen-button"></i>
+                        </div>
+
+                        <span>
+                            92%
+                        </span>
+
                     </div>
 
-                    <h3>
+                    <h4>
                         Responsive Design
-                    </h3>
+                    </h4>
 
                     <p>
-                        Websites optimized for desktop,
-                        tablet and mobile.
+                        Mobile-first layouts across all
+                        screen sizes.
                     </p>
 
-                    <div class="progress">
+                    <div class="skill-bar">
                         <span style="width:92%"></span>
                     </div>
 
-                    <small>
-                        92%
-                    </small>
-
-                </div>
+                </article>
 
             </div>
 
@@ -2910,15 +1059,26 @@ body.dark .image-container img {
 
         <!-- MECHANICAL -->
 
-        <div class="skills-category">
+        <div class="skill-group mechanical-group">
 
-            <div class="skills-category-title reveal">
 
-                <i class="fas fa-gears"></i>
+            <div class="skill-group-title reveal">
 
-                <h3>
-                    Mechanical Engineering
-                </h3>
+                <div class="title-icon mechanical">
+                    <i class="fas fa-gears"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        02
+                    </span>
+
+                    <h3>
+                        Mechanical Engineering
+                    </h3>
+
+                </div>
 
             </div>
 
@@ -2926,160 +1086,184 @@ body.dark .image-container img {
             <div class="skills-grid">
 
 
-                <div class="skill-card reveal">
+                <article class="skill-card reveal">
 
-                    <div class="skill-icon autocad">
-                        <i class="fas fa-drafting-compass"></i>
+                    <div class="skill-top">
+
+                        <div class="skill-icon autocad">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+
+                        <span>
+                            88%
+                        </span>
+
                     </div>
 
-                    <h3>
+                    <h4>
                         AutoCAD
-                    </h3>
+                    </h4>
 
                     <p>
                         2D drafting, technical drawings and
                         engineering layouts.
                     </p>
 
-                    <div class="progress">
+                    <div class="skill-bar">
                         <span style="width:88%"></span>
                     </div>
 
-                    <small>
-                        88%
-                    </small>
-
-                </div>
+                </article>
 
 
-                <div class="skill-card reveal">
+                <article class="skill-card reveal">
 
-                    <div class="skill-icon solidworks">
-                        <i class="fas fa-cube"></i>
+                    <div class="skill-top">
+
+                        <div class="skill-icon solidworks">
+                            <i class="fas fa-cube"></i>
+                        </div>
+
+                        <span>
+                            85%
+                        </span>
+
                     </div>
 
-                    <h3>
+                    <h4>
                         SolidWorks
-                    </h3>
+                    </h4>
 
                     <p>
-                        3D modeling, part design and
-                        mechanical assemblies.
+                        3D modelling, parts and mechanical
+                        assemblies.
                     </p>
 
-                    <div class="progress">
+                    <div class="skill-bar">
                         <span style="width:85%"></span>
                     </div>
 
-                    <small>
-                        85%
-                    </small>
-
-                </div>
+                </article>
 
 
-                <div class="skill-card reveal">
+                <article class="skill-card reveal">
 
-                    <div class="skill-icon bom">
-                        <i class="fas fa-list-check"></i>
+                    <div class="skill-top">
+
+                        <div class="skill-icon bom">
+                            <i class="fas fa-list-check"></i>
+                        </div>
+
+                        <span>
+                            90%
+                        </span>
+
                     </div>
 
-                    <h3>
+                    <h4>
                         BOM
-                    </h3>
+                    </h4>
 
                     <p>
                         Bill of Materials preparation and
-                        engineering documentation.
+                        documentation.
                     </p>
 
-                    <div class="progress">
+                    <div class="skill-bar">
                         <span style="width:90%"></span>
                     </div>
 
-                    <small>
-                        90%
-                    </small>
-
-                </div>
+                </article>
 
 
-                <div class="skill-card reveal">
+                <article class="skill-card reveal">
 
-                    <div class="skill-icon erp">
-                        <i class="fas fa-database"></i>
+                    <div class="skill-top">
+
+                        <div class="skill-icon erp">
+                            <i class="fas fa-database"></i>
+                        </div>
+
+                        <span>
+                            80%
+                        </span>
+
                     </div>
 
-                    <h3>
+                    <h4>
                         Prowess ERP
-                    </h3>
+                    </h4>
 
                     <p>
-                        ERP-based material, production and
-                        engineering workflows.
+                        Engineering and production workflow
+                        management.
                     </p>
 
-                    <div class="progress">
+                    <div class="skill-bar">
                         <span style="width:80%"></span>
                     </div>
 
-                    <small>
-                        80%
-                    </small>
-
-                </div>
+                </article>
 
 
-                <div class="skill-card reveal">
+                <article class="skill-card reveal">
 
-                    <div class="skill-icon">
-                        <i class="fas fa-ruler-combined"></i>
+                    <div class="skill-top">
+
+                        <div class="skill-icon drawing">
+                            <i class="fas fa-ruler-combined"></i>
+                        </div>
+
+                        <span>
+                            88%
+                        </span>
+
                     </div>
 
-                    <h3>
+                    <h4>
                         Technical Drawing
-                    </h3>
+                    </h4>
 
                     <p>
-                        Engineering drawings, dimensions and
-                        technical specifications.
+                        Dimensions, specifications and
+                        engineering documentation.
                     </p>
 
-                    <div class="progress">
+                    <div class="skill-bar">
                         <span style="width:88%"></span>
                     </div>
 
-                    <small>
-                        88%
-                    </small>
-
-                </div>
+                </article>
 
 
-                <div class="skill-card reveal">
+                <article class="skill-card reveal">
 
-                    <div class="skill-icon">
-                        <i class="fas fa-industry"></i>
+                    <div class="skill-top">
+
+                        <div class="skill-icon manufacturing">
+                            <i class="fas fa-industry"></i>
+                        </div>
+
+                        <span>
+                            80%
+                        </span>
+
                     </div>
 
-                    <h3>
+                    <h4>
                         Manufacturing
-                    </h3>
+                    </h4>
 
                     <p>
                         Understanding of manufacturing and
                         production processes.
                     </p>
 
-                    <div class="progress">
+                    <div class="skill-bar">
                         <span style="width:80%"></span>
                     </div>
 
-                    <small>
-                        80%
-                    </small>
-
-                </div>
+                </article>
 
             </div>
 
@@ -3090,28 +1274,31 @@ body.dark .image-container img {
 </section>
 
 
-<!-- =========================================================
+<!-- =========================
      PROJECTS
-========================================================= -->
+========================= -->
 
 <section
-    id="projects"
     class="section"
+    id="projects"
 >
 
     <div class="container">
 
+
         <div class="section-heading reveal">
 
-            <p class="section-label">
-                MY RECENT WORK
-            </p>
+            <span class="section-label">
+                PORTFOLIO
+            </span>
 
             <h2>
                 Featured <span>Projects</span>
             </h2>
 
-            <div class="heading-line"></div>
+            <p>
+                Selected engineering and development work.
+            </p>
 
         </div>
 
@@ -3119,11 +1306,17 @@ body.dark .image-container img {
         <div class="projects-grid">
 
 
-            <!-- PROJECT 1 -->
+            <!-- PROJECT -->
 
             <article class="project-card reveal">
 
                 <div class="project-image project-one">
+
+                    <div class="project-number">
+                        01
+                    </div>
+
+                    <i class="fas fa-drafting-compass"></i>
 
                     <div class="project-overlay">
 
@@ -3131,16 +1324,14 @@ body.dark .image-container img {
                             href="https://github.com/codewithabhi008"
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="GitHub"
+                            aria-label="View GitHub"
                         >
+
                             <i class="fab fa-github"></i>
+
                         </a>
 
                     </div>
-
-                    <i
-                        class="fas fa-drafting-compass project-big-icon"
-                    ></i>
 
                 </div>
 
@@ -3163,22 +1354,30 @@ body.dark .image-container img {
 
                     </div>
 
+
                     <h3>
                         Mechanical CAD Design
                     </h3>
 
+
                     <p>
-                        Mechanical design project involving
+
+                        Mechanical design work involving
                         technical drawings, dimensions and
                         engineering documentation.
+
                     </p>
+
 
                     <a
                         href="#contact"
                         class="project-link"
                     >
+
                         Discuss Project
+
                         <i class="fas fa-arrow-right"></i>
+
                     </a>
 
                 </div>
@@ -3186,11 +1385,17 @@ body.dark .image-container img {
             </article>
 
 
-            <!-- PROJECT 2 -->
+            <!-- PROJECT -->
 
             <article class="project-card reveal">
 
                 <div class="project-image project-two">
+
+                    <div class="project-number">
+                        02
+                    </div>
+
+                    <i class="fas fa-cube"></i>
 
                     <div class="project-overlay">
 
@@ -3198,16 +1403,14 @@ body.dark .image-container img {
                             href="https://github.com/codewithabhi008"
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="GitHub"
+                            aria-label="View GitHub"
                         >
+
                             <i class="fab fa-github"></i>
+
                         </a>
 
                     </div>
-
-                    <i
-                        class="fas fa-cube project-big-icon"
-                    ></i>
 
                 </div>
 
@@ -3221,7 +1424,7 @@ body.dark .image-container img {
                         </span>
 
                         <span>
-                            3D Modeling
+                            3D
                         </span>
 
                         <span>
@@ -3230,21 +1433,29 @@ body.dark .image-container img {
 
                     </div>
 
+
                     <h3>
                         SolidWorks 3D Design
                     </h3>
 
+
                     <p>
-                        3D mechanical component modeling and
-                        assembly design using SolidWorks.
+
+                        3D mechanical component modelling
+                        and assembly design using SolidWorks.
+
                     </p>
+
 
                     <a
                         href="#contact"
                         class="project-link"
                     >
+
                         Discuss Project
+
                         <i class="fas fa-arrow-right"></i>
+
                     </a>
 
                 </div>
@@ -3252,11 +1463,17 @@ body.dark .image-container img {
             </article>
 
 
-            <!-- PROJECT 3 -->
+            <!-- PROJECT -->
 
             <article class="project-card reveal">
 
                 <div class="project-image project-three">
+
+                    <div class="project-number">
+                        03
+                    </div>
+
+                    <i class="fas fa-list-check"></i>
 
                     <div class="project-overlay">
 
@@ -3264,16 +1481,14 @@ body.dark .image-container img {
                             href="https://github.com/codewithabhi008"
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="GitHub"
+                            aria-label="View GitHub"
                         >
+
                             <i class="fab fa-github"></i>
+
                         </a>
 
                     </div>
-
-                    <i
-                        class="fas fa-list-check project-big-icon"
-                    ></i>
 
                 </div>
 
@@ -3287,31 +1502,39 @@ body.dark .image-container img {
                         </span>
 
                         <span>
-                            Documentation
-                        </span>
-
-                        <span>
                             ERP
                         </span>
 
+                        <span>
+                            Documentation
+                        </span>
+
                     </div>
+
 
                     <h3>
                         BOM & Engineering Documentation
                     </h3>
 
+
                     <p>
-                        Bill of Materials preparation and
-                        structured engineering documentation
-                        for production workflows.
+
+                        Structured Bill of Materials and
+                        engineering documentation for
+                        production workflows.
+
                     </p>
+
 
                     <a
                         href="#contact"
                         class="project-link"
                     >
+
                         Discuss Project
+
                         <i class="fas fa-arrow-right"></i>
+
                     </a>
 
                 </div>
@@ -3319,11 +1542,17 @@ body.dark .image-container img {
             </article>
 
 
-            <!-- PROJECT 4 -->
+            <!-- PROJECT -->
 
             <article class="project-card reveal">
 
                 <div class="project-image project-four">
+
+                    <div class="project-number">
+                        04
+                    </div>
+
+                    <i class="fas fa-code"></i>
 
                     <div class="project-overlay">
 
@@ -3331,16 +1560,14 @@ body.dark .image-container img {
                             href="https://github.com/codewithabhi008"
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="GitHub"
+                            aria-label="View GitHub"
                         >
+
                             <i class="fab fa-github"></i>
+
                         </a>
 
                     </div>
-
-                    <i
-                        class="fas fa-code project-big-icon"
-                    ></i>
 
                 </div>
 
@@ -3363,22 +1590,30 @@ body.dark .image-container img {
 
                     </div>
 
+
                     <h3>
                         Responsive Web Portfolio
                     </h3>
 
+
                     <p>
+
                         Modern responsive portfolio website
-                        combining professional engineering and
-                        web development skills.
+                        combining engineering and web
+                        development skills.
+
                     </p>
+
 
                     <a
                         href="#contact"
                         class="project-link"
                     >
+
                         Discuss Project
+
                         <i class="fas fa-arrow-right"></i>
+
                     </a>
 
                 </div>
@@ -3392,130 +1627,169 @@ body.dark .image-container img {
 </section>
 
 
-<!-- =========================================================
+<!-- =========================
      CONTACT
-========================================================= -->
+========================= -->
 
 <section
-    id="contact"
     class="section contact-section"
+    id="contact"
 >
 
     <div class="container">
 
+
         <div class="section-heading reveal">
 
-            <p class="section-label">
-                GET IN TOUCH
-            </p>
+            <span class="section-label">
+                CONTACT
+            </span>
 
             <h2>
-                Contact <span>Me</span>
+                Let's <span>Connect</span>
             </h2>
 
-            <div class="heading-line"></div>
+            <p>
+                Have an opportunity or project in mind?
+                Let's talk.
+            </p>
 
         </div>
 
 
-        <div class="contact-content">
+        <div class="contact-grid">
 
+
+            <!-- CONTACT INFO -->
 
             <div class="contact-info reveal">
 
+
+                <span class="mini-label">
+                    GET IN TOUCH
+                </span>
+
+
                 <h3>
-                    Let's work together!
+                    Let's build something
+                    <span>great together.</span>
                 </h3>
 
+
                 <p>
-                    Have a project idea, engineering opportunity
-                    or web development requirement?
-                    Feel free to get in touch.
+
+                    Whether you have an engineering opportunity,
+                    web development requirement or simply want
+                    to connect, feel free to reach out.
+
                 </p>
 
 
-                <div class="contact-item">
+                <div class="contact-list">
 
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
+
+                    <a
+                        href="mailto:abhijeettiwari955@gmail.com"
+                        class="contact-item"
+                    >
+
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Email
+                            </span>
+
+                            <strong>
+                                abhijeettiwari955@gmail.com
+                            </strong>
+
+                        </div>
+
+                    </a>
+
+
+                    <div class="contact-item">
+
+                        <div class="contact-icon">
+                            <i class="fas fa-location-dot"></i>
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Location
+                            </span>
+
+                            <strong>
+                                India
+                            </strong>
+
+                        </div>
+
                     </div>
 
-                    <div>
 
-                        <span>
-                            Email
-                        </span>
+                    <div class="contact-item">
 
-                        <a
-                            href="mailto:abhijeettiwari955@gmail.com"
-                        >
-                            abhijeettiwari955@gmail.com
-                        </a>
+                        <div class="contact-icon">
+                            <i class="fas fa-gears"></i>
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Engineering
+                            </span>
+
+                            <strong>
+                                AutoCAD · SolidWorks · BOM
+                            </strong>
+
+                        </div>
 
                     </div>
+
 
                 </div>
 
 
-                <div class="contact-item">
+                <div class="contact-social">
 
-                    <div class="contact-icon">
-                        <i class="fas fa-location-dot"></i>
-                    </div>
+                    <a
+                        href="https://github.com/codewithabhi008"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i class="fab fa-github"></i>
+                    </a>
 
-                    <div>
+                    <a
+                        href="https://www.linkedin.com/in/abhijeet-tiwari-609981222"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
 
-                        <span>
-                            Location
-                        </span>
+                    <a
+                        href="https://www.instagram.com/imabhii_26"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i class="fab fa-instagram"></i>
+                    </a>
 
-                        <p>
-                            India
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="contact-item">
-
-                    <div class="contact-icon">
-                        <i class="fas fa-gears"></i>
-                    </div>
-
-                    <div>
-
-                        <span>
-                            Engineering Skills
-                        </span>
-
-                        <p>
-                            AutoCAD · SolidWorks · BOM · Prowess ERP
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="contact-item">
-
-                    <div class="contact-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-
-                    <div>
-
-                        <span>
-                            Development Skills
-                        </span>
-
-                        <p>
-                            HTML · CSS · JavaScript · React
-                        </p>
-
-                    </div>
+                    <a
+                        href="https://x.com/Abhijeet260820"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
 
                 </div>
 
@@ -3529,9 +1803,11 @@ body.dark .image-container img {
                 id="contactForm"
             >
 
-                <div class="input-group">
 
-                    <div class="input-box">
+                <div class="form-row">
+
+
+                    <div class="input-group">
 
                         <label for="name">
                             Your Name
@@ -3540,23 +1816,27 @@ body.dark .image-container img {
                         <input
                             type="text"
                             id="name"
+                            name="name"
                             placeholder="Enter your name"
+                            autocomplete="name"
                             required
                         >
 
                     </div>
 
 
-                    <div class="input-box">
+                    <div class="input-group">
 
                         <label for="email">
-                            Your Email
+                            Email Address
                         </label>
 
                         <input
                             type="email"
                             id="email"
-                            placeholder="Enter your email"
+                            name="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
                             required
                         >
 
@@ -3565,7 +1845,7 @@ body.dark .image-container img {
                 </div>
 
 
-                <div class="input-box">
+                <div class="input-group">
 
                     <label for="subject">
                         Subject
@@ -3574,14 +1854,15 @@ body.dark .image-container img {
                     <input
                         type="text"
                         id="subject"
-                        placeholder="Engineering / Web Development / Other"
+                        name="subject"
+                        placeholder="How can I help you?"
                         required
                     >
 
                 </div>
 
 
-                <div class="input-box">
+                <div class="input-group">
 
                     <label for="message">
                         Message
@@ -3589,8 +1870,9 @@ body.dark .image-container img {
 
                     <textarea
                         id="message"
-                        rows="6"
-                        placeholder="Write your message..."
+                        name="message"
+                        rows="7"
+                        placeholder="Tell me about your project..."
                         required
                     ></textarea>
 
@@ -3599,14 +1881,20 @@ body.dark .image-container img {
 
                 <button
                     type="submit"
-                    class="btn primary-btn"
+                    class="btn primary-btn submit-btn"
                 >
+
                     Send Message
+
                     <i class="fas fa-paper-plane"></i>
+
                 </button>
 
 
-                <p id="formMessage"></p>
+                <p
+                    id="formMessage"
+                    class="form-message"
+                ></p>
 
             </form>
 
@@ -3619,31 +1907,56 @@ body.dark .image-container img {
 </main>
 
 
-<!-- =========================================================
+<!-- =========================
      FOOTER
-========================================================= -->
+========================= -->
 
 <footer class="footer">
 
-    <div class="container footer-content">
-
-        <a
-            href="#home"
-            class="logo"
-        >
-            <span>&lt;</span>AT<span>/&gt;</span>
-        </a>
+    <div class="container footer-main">
 
 
-        <p>
+        <div>
 
-            Designed & Built by
+            <a
+                href="#home"
+                class="logo"
+            >
 
-            <strong>
-                Abhijeet Tiwari
-            </strong>
+                <span>&lt;</span>AT<span>/&gt;</span>
 
-        </p>
+            </a>
+
+            <p>
+                Mechanical Engineer & Web Developer.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#skills">
+                Skills
+            </a>
+
+            <a href="#projects">
+                Projects
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+        </div>
 
 
         <div class="footer-social">
@@ -3652,6 +1965,7 @@ body.dark .image-container img {
                 href="https://github.com/codewithabhi008"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="GitHub"
             >
                 <i class="fab fa-github"></i>
             </a>
@@ -3660,28 +1974,14 @@ body.dark .image-container img {
                 href="https://www.linkedin.com/in/abhijeet-tiwari-609981222"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="LinkedIn"
             >
                 <i class="fab fa-linkedin-in"></i>
             </a>
 
             <a
-                href="https://www.instagram.com/imabhii_26"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <i class="fab fa-instagram"></i>
-            </a>
-
-            <a
-                href="https://x.com/Abhijeet260820"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <i class="fab fa-x-twitter"></i>
-            </a>
-
-            <a
                 href="mailto:abhijeettiwari955@gmail.com"
+                aria-label="Email"
             >
                 <i class="fas fa-envelope"></i>
             </a>
@@ -3693,12 +1993,16 @@ body.dark .image-container img {
 
     <div class="copyright">
 
-        ©
-        <span id="year"></span>
+        <p>
 
-        Abhijeet Tiwari.
+            ©
+            <span id="year"></span>
 
-        All Rights Reserved.
+            Abhijeet Tiwari.
+
+            All Rights Reserved.
+
+        </p>
 
     </div>
 
@@ -3710,6 +2014,7 @@ body.dark .image-container img {
 <button
     class="back-to-top"
     id="backToTop"
+    type="button"
     aria-label="Back to top"
 >
 
@@ -3718,551 +2023,10 @@ body.dark .image-container img {
 </button>
 
 
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
+<!-- JAVASCRIPT -->
 
-<script>
+<script src="script.js"></script>
 
-/* =========================================================
-   YEAR
-========================================================= */
-
-document.getElementById("year").textContent =
-    new Date().getFullYear();
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-const menuToggle =
-    document.getElementById("menuToggle");
-
-const navMenu =
-    document.getElementById("navMenu");
-
-menuToggle.addEventListener(
-    "click",
-    () => {
-
-        navMenu.classList.toggle("open");
-
-        const isOpen =
-            navMenu.classList.contains("open");
-
-        menuToggle.setAttribute(
-            "aria-expanded",
-            isOpen
-        );
-
-        menuToggle.innerHTML =
-            isOpen
-                ? '<i class="fas fa-xmark"></i>'
-                : '<i class="fas fa-bars"></i>';
-    }
-);
-
-
-document.querySelectorAll(".nav-link")
-.forEach(link => {
-
-    link.addEventListener(
-        "click",
-        () => {
-
-            navMenu.classList.remove("open");
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-            menuToggle.innerHTML =
-                '<i class="fas fa-bars"></i>';
-
-        }
-    );
-
-});
-
-
-/* =========================================================
-   DARK LIGHT MODE
-========================================================= */
-
-const themeToggle =
-    document.getElementById("themeToggle");
-
-const savedTheme =
-    localStorage.getItem("portfolio-theme");
-
-if (savedTheme === "dark") {
-
-    document.body.classList.add("dark");
-
-    themeToggle.innerHTML =
-        '<i class="fas fa-sun"></i>';
-}
-
-
-themeToggle.addEventListener(
-    "click",
-    () => {
-
-        document.body.classList.toggle("dark");
-
-        const isDark =
-            document.body.classList.contains("dark");
-
-        localStorage.setItem(
-            "portfolio-theme",
-            isDark
-                ? "dark"
-                : "light"
-        );
-
-        themeToggle.innerHTML =
-            isDark
-                ? '<i class="fas fa-sun"></i>'
-                : '<i class="fas fa-moon"></i>';
-
-    }
-);
-
-
-/* =========================================================
-   TYPING EFFECT
-========================================================= */
-
-const typingText =
-    document.getElementById("typingText");
-
-const roles = [
-
-    "Mechanical Engineer",
-
-    "Web Developer",
-
-    "CAD Designer",
-
-    "Frontend Developer",
-
-    "Engineering Professional"
-
-];
-
-let roleIndex = 0;
-
-let charIndex = 0;
-
-let deleting = false;
-
-
-function typeEffect() {
-
-    const currentRole =
-        roles[roleIndex];
-
-
-    if (!deleting) {
-
-        typingText.textContent =
-            currentRole.substring(
-                0,
-                charIndex + 1
-            );
-
-        charIndex++;
-
-        if (
-            charIndex ===
-            currentRole.length
-        ) {
-
-            deleting = true;
-
-            setTimeout(
-                typeEffect,
-                1500
-            );
-
-            return;
-        }
-
-    } else {
-
-        typingText.textContent =
-            currentRole.substring(
-                0,
-                charIndex - 1
-            );
-
-        charIndex--;
-
-        if (charIndex === 0) {
-
-            deleting = false;
-
-            roleIndex =
-                (roleIndex + 1)
-                % roles.length;
-
-        }
-
-    }
-
-    setTimeout(
-        typeEffect,
-        deleting
-            ? 45
-            : 80
-    );
-}
-
-
-typeEffect();
-
-
-/* =========================================================
-   PROFILE PHOTO UPLOAD
-========================================================= */
-
-const profileUpload =
-    document.getElementById(
-        "profileUpload"
-    );
-
-const profileImage =
-    document.getElementById(
-        "profileImage"
-    );
-
-
-const savedPhoto =
-    localStorage.getItem(
-        "profile-photo"
-    );
-
-
-if (savedPhoto) {
-
-    profileImage.src =
-        savedPhoto;
-}
-
-
-profileUpload.addEventListener(
-    "change",
-    function () {
-
-        const file =
-            this.files[0];
-
-        if (!file) {
-            return;
-        }
-
-
-        if (
-            !file.type.startsWith(
-                "image/"
-            )
-        ) {
-
-            alert(
-                "Please select a valid image."
-            );
-
-            return;
-        }
-
-
-        if (
-            file.size >
-            5 * 1024 * 1024
-        ) {
-
-            alert(
-                "Please select an image smaller than 5MB."
-            );
-
-            return;
-        }
-
-
-        const reader =
-            new FileReader();
-
-
-        reader.onload =
-            function (event) {
-
-                const imageData =
-                    event.target.result;
-
-                profileImage.src =
-                    imageData;
-
-                localStorage.setItem(
-                    "profile-photo",
-                    imageData
-                );
-
-            };
-
-
-        reader.readAsDataURL(file);
-
-    }
-);
-
-
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
-
-const revealElements =
-    document.querySelectorAll(
-        ".reveal"
-    );
-
-
-const revealObserver =
-    new IntersectionObserver(
-        entries => {
-
-            entries.forEach(
-                entry => {
-
-                    if (
-                        entry.isIntersecting
-                    ) {
-
-                        entry.target.classList.add(
-                            "show"
-                        );
-
-                    }
-
-                }
-            );
-
-        },
-        {
-            threshold: 0.12
-        }
-    );
-
-
-revealElements.forEach(
-    element => {
-
-        revealObserver.observe(
-            element
-        );
-
-    }
-);
-
-
-/* =========================================================
-   ACTIVE NAVIGATION
-========================================================= */
-
-const sections =
-    document.querySelectorAll(
-        "section[id]"
-    );
-
-
-const navLinks =
-    document.querySelectorAll(
-        ".nav-link"
-    );
-
-
-window.addEventListener(
-    "scroll",
-    () => {
-
-        let current = "";
-
-        sections.forEach(
-            section => {
-
-                const sectionTop =
-                    section.offsetTop - 150;
-
-                if (
-                    window.scrollY >=
-                    sectionTop
-                ) {
-
-                    current =
-                        section.getAttribute(
-                            "id"
-                        );
-
-                }
-
-            }
-        );
-
-
-        navLinks.forEach(
-            link => {
-
-                link.classList.remove(
-                    "active"
-                );
-
-                if (
-                    link.getAttribute(
-                        "href"
-                    ) ===
-                    "#" + current
-                ) {
-
-                    link.classList.add(
-                        "active"
-                    );
-
-                }
-
-            }
-        );
-
-    }
-);
-
-
-/* =========================================================
-   BACK TO TOP
-========================================================= */
-
-const backToTop =
-    document.getElementById(
-        "backToTop"
-    );
-
-
-window.addEventListener(
-    "scroll",
-    () => {
-
-        if (
-            window.scrollY > 500
-        ) {
-
-            backToTop.classList.add(
-                "show"
-            );
-
-        } else {
-
-            backToTop.classList.remove(
-                "show"
-            );
-
-        }
-
-    }
-);
-
-
-backToTop.addEventListener(
-    "click",
-    () => {
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    }
-);
-
-
-/* =========================================================
-   CONTACT FORM
-========================================================= */
-
-const contactForm =
-    document.getElementById(
-        "contactForm"
-    );
-
-const formMessage =
-    document.getElementById(
-        "formMessage"
-    );
-
-
-contactForm.addEventListener(
-    "submit",
-    function (event) {
-
-        event.preventDefault();
-
-
-        const name =
-            document.getElementById(
-                "name"
-            ).value.trim();
-
-        const email =
-            document.getElementById(
-                "email"
-            ).value.trim();
-
-        const subject =
-            document.getElementById(
-                "subject"
-            ).value.trim();
-
-        const message =
-            document.getElementById(
-                "message"
-            ).value.trim();
-
-
-        const mailSubject =
-            encodeURIComponent(
-                subject
-            );
-
-
-        const mailBody =
-            encodeURIComponent(
-
-                "Name: " +
-                name +
-
-                "\nEmail: " +
-                email +
-
-                "\n\nMessage:\n" +
-                message
-
-            );
-
-
-        window.location.href =
-            "mailto:abhijeettiwari955@gmail.com" +
-            "?subject=" +
-            mailSubject +
-            "&body=" +
-            mailBody;
-
-
-        formMessage.textContent =
-            "Opening your email application...";
-
-    }
-);
-
-</script>
 
 </body>
 
