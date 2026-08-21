@@ -1,405 +1,242 @@
-/* =====================================================
-   ABHIJEET TIWARI PORTFOLIO
-   Main JavaScript
-===================================================== */
+/* =========================================================
+   PROFESSIONAL PORTFOLIO JAVASCRIPT
+   Abhijeet Tiwari
+========================================================= */
 
 "use strict";
 
 
-/* =====================================================
-   DOM ELEMENTS
-===================================================== */
+/* =========================================================
+   DOM READY
+========================================================= */
 
-const body = document.body;
+document.addEventListener("DOMContentLoaded", () => {
 
-const header = document.querySelector(".header");
+    initYear();
 
-const menuToggle = document.getElementById("menuToggle");
-const navMenu = document.getElementById("navMenu");
+    initMobileMenu();
 
-const themeToggle = document.getElementById("themeToggle");
+    initTheme();
 
-const typingText = document.getElementById("typingText");
+    initTypingEffect();
 
-const contactForm = document.getElementById("contactForm");
-const formMessage = document.getElementById("formMessage");
+    initProfileUpload();
 
-const backToTop = document.getElementById("backToTop");
+    initRevealAnimation();
 
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll(".nav-link");
+    initActiveNavigation();
 
-const revealElements = document.querySelectorAll(".reveal");
+    initBackToTop();
 
-const yearElement = document.getElementById("year");
+    initContactForm();
 
+    initScrollProgress();
 
-/* =====================================================
-   SETTINGS
-===================================================== */
-
-const prefersReducedMotion =
-    window.matchMedia &&
-    window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-
-/* =====================================================
-   ENABLE JAVASCRIPT MODE
-===================================================== */
-
-/*
-   CSS mein .js-enabled ke through
-   scroll reveal animation control hoti hai.
-*/
-
-body.classList.add("js-enabled");
-
-
-/* =====================================================
-   CURRENT YEAR
-===================================================== */
-
-if (yearElement) {
-
-    yearElement.textContent =
-        new Date().getFullYear();
-
-}
-
-
-/* =====================================================
-   MOBILE NAVIGATION
-===================================================== */
-
-function openMobileMenu() {
-
-    if (!navMenu || !menuToggle) {
-        return;
-    }
-
-    navMenu.classList.add("active");
-
-    menuToggle.setAttribute(
-        "aria-expanded",
-        "true"
-    );
-
-    menuToggle.setAttribute(
-        "aria-label",
-        "Close navigation menu"
-    );
-
-    menuToggle.setAttribute(
-        "title",
-        "Close navigation menu"
-    );
-
-    const icon =
-        menuToggle.querySelector("i");
-
-    if (icon) {
-
-        icon.classList.remove("fa-bars");
-
-        icon.classList.add("fa-xmark");
-
-    }
-
-}
-
-
-function closeMobileMenu() {
-
-    if (!navMenu || !menuToggle) {
-        return;
-    }
-
-    navMenu.classList.remove("active");
-
-    menuToggle.setAttribute(
-        "aria-expanded",
-        "false"
-    );
-
-    menuToggle.setAttribute(
-        "aria-label",
-        "Open navigation menu"
-    );
-
-    menuToggle.setAttribute(
-        "title",
-        "Open navigation menu"
-    );
-
-    const icon =
-        menuToggle.querySelector("i");
-
-    if (icon) {
-
-        icon.classList.remove("fa-xmark");
-
-        icon.classList.add("fa-bars");
-
-    }
-
-}
-
-
-function toggleMobileMenu() {
-
-    if (!navMenu) {
-        return;
-    }
-
-    if (
-        navMenu.classList.contains("active")
-    ) {
-
-        closeMobileMenu();
-
-    } else {
-
-        openMobileMenu();
-
-    }
-
-}
-
-
-if (menuToggle) {
-
-    menuToggle.addEventListener(
-        "click",
-        toggleMobileMenu
-    );
-
-}
-
-
-/* Close menu after navigation click */
-
-navLinks.forEach(link => {
-
-    link.addEventListener(
-        "click",
-        () => {
-
-            closeMobileMenu();
-
-        }
-    );
+    initHeaderScroll();
 
 });
 
 
-/* Close menu when clicking outside */
+/* =========================================================
+   YEAR
+========================================================= */
 
-document.addEventListener(
-    "click",
-    event => {
+function initYear() {
 
-        if (!navMenu || !menuToggle) {
-            return;
-        }
+    const year =
+        document.getElementById("year");
 
-        const clickedInsideMenu =
-            navMenu.contains(event.target);
+    if (year) {
 
-        const clickedMenuButton =
-            menuToggle.contains(event.target);
-
-        if (
-            !clickedInsideMenu &&
-            !clickedMenuButton &&
-            navMenu.classList.contains("active")
-        ) {
-
-            closeMobileMenu();
-
-        }
+        year.textContent =
+            new Date().getFullYear();
 
     }
-);
+
+}
 
 
-/* Close menu with Escape */
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
-document.addEventListener(
-    "keydown",
-    event => {
+function initMobileMenu() {
 
-        if (
-            event.key === "Escape" &&
-            navMenu?.classList.contains("active")
-        ) {
+    const menuToggle =
+        document.getElementById("menuToggle");
 
-            closeMobileMenu();
+    const navMenu =
+        document.getElementById("navMenu");
 
-            menuToggle?.focus();
+    if (!menuToggle || !navMenu) {
+        return;
+    }
+
+
+    menuToggle.addEventListener(
+        "click",
+        () => {
+
+            const isOpen =
+                navMenu.classList.toggle("open");
+
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
+
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen
+                    ? "Close menu"
+                    : "Open menu"
+            );
+
+
+            menuToggle.innerHTML =
+                isOpen
+                    ? '<i class="fas fa-xmark"></i>'
+                    : '<i class="fas fa-bars"></i>';
 
         }
-
-    }
-);
+    );
 
 
-/* Close menu on desktop resize */
+    navMenu
+        .querySelectorAll(".nav-link")
+        .forEach(link => {
 
-window.addEventListener(
-    "resize",
-    () => {
+            link.addEventListener(
+                "click",
+                () => {
 
-        if (
-            window.innerWidth > 700 &&
-            navMenu?.classList.contains("active")
-        ) {
+                    navMenu.classList.remove(
+                        "open"
+                    );
 
-            closeMobileMenu();
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                    menuToggle.setAttribute(
+                        "aria-label",
+                        "Open menu"
+                    );
+
+                    menuToggle.innerHTML =
+                        '<i class="fas fa-bars"></i>';
+
+                }
+            );
+
+        });
+
+
+    document.addEventListener(
+        "click",
+        event => {
+
+            if (
+                !navMenu.contains(event.target) &&
+                !menuToggle.contains(event.target)
+            ) {
+
+                navMenu.classList.remove(
+                    "open"
+                );
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                menuToggle.innerHTML =
+                    '<i class="fas fa-bars"></i>';
+
+            }
 
         }
+    );
 
-    }
-);
+}
 
 
-/* =====================================================
-   DARK / LIGHT MODE
-===================================================== */
+/* =========================================================
+   THEME
+========================================================= */
 
-function updateThemeIcon() {
+function initTheme() {
+
+    const themeToggle =
+        document.getElementById(
+            "themeToggle"
+        );
 
     if (!themeToggle) {
         return;
     }
 
-    const icon =
-        themeToggle.querySelector("i");
 
-    if (!icon) {
-        return;
-    }
-
-    const isDark =
-        body.classList.contains("dark");
-
-
-    if (isDark) {
-
-        icon.classList.remove("fa-moon");
-
-        icon.classList.add("fa-sun");
-
-        themeToggle.setAttribute(
-            "aria-label",
-            "Switch to light mode"
-        );
-
-        themeToggle.setAttribute(
-            "title",
-            "Switch to light mode"
-        );
-
-        themeToggle.setAttribute(
-            "aria-pressed",
-            "true"
-        );
-
-    } else {
-
-        icon.classList.remove("fa-sun");
-
-        icon.classList.add("fa-moon");
-
-        themeToggle.setAttribute(
-            "aria-label",
-            "Switch to dark mode"
-        );
-
-        themeToggle.setAttribute(
-            "title",
-            "Switch to dark mode"
-        );
-
-        themeToggle.setAttribute(
-            "aria-pressed",
-            "false"
-        );
-
-    }
-
-}
-
-
-/* Load saved theme */
-
-let savedTheme = null;
-
-try {
-
-    savedTheme =
+    const savedTheme =
         localStorage.getItem(
             "portfolio-theme"
         );
 
-} catch (error) {
 
-    savedTheme = null;
-
-}
-
-
-if (savedTheme === "dark") {
-
-    body.classList.add("dark");
-
-} else if (savedTheme === "light") {
-
-    body.classList.remove("dark");
-
-} else if (
-    window.matchMedia &&
-    window.matchMedia(
-        "(prefers-color-scheme: dark)"
-    ).matches
-) {
-
-    body.classList.add("dark");
-
-}
+    const systemDark =
+        window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        ).matches;
 
 
-updateThemeIcon();
+    const shouldUseDark =
+        savedTheme === "dark" ||
+        (!savedTheme && systemDark);
 
 
-/* Theme toggle */
+    if (shouldUseDark) {
 
-if (themeToggle) {
+        document.body.classList.add(
+            "dark"
+        );
+
+    }
+
+
+    updateThemeIcon(
+        themeToggle
+    );
+
 
     themeToggle.addEventListener(
         "click",
         () => {
 
+            document.body.classList.toggle(
+                "dark"
+            );
+
+
             const isDark =
-                body.classList.toggle("dark");
-
-            try {
-
-                localStorage.setItem(
-                    "portfolio-theme",
-                    isDark
-                        ? "dark"
-                        : "light"
+                document.body.classList.contains(
+                    "dark"
                 );
 
-            } catch (error) {
 
-                /* Storage unavailable */
+            localStorage.setItem(
+                "portfolio-theme",
+                isDark
+                    ? "dark"
+                    : "light"
+            );
 
-            }
 
-            updateThemeIcon();
+            updateThemeIcon(
+                themeToggle
+            );
 
         }
     );
@@ -407,140 +244,271 @@ if (themeToggle) {
 }
 
 
-/* =====================================================
+function updateThemeIcon(button) {
+
+    const isDark =
+        document.body.classList.contains(
+            "dark"
+        );
+
+
+    button.innerHTML =
+        isDark
+            ? '<i class="fas fa-sun"></i>'
+            : '<i class="fas fa-moon"></i>';
+
+
+    button.setAttribute(
+        "aria-label",
+        isDark
+            ? "Switch to light mode"
+            : "Switch to dark mode"
+    );
+
+}
+
+
+/* =========================================================
    TYPING EFFECT
-===================================================== */
+========================================================= */
 
-const words = [
-    "Web Developer",
-    "Frontend Developer",
-    "UI Designer",
-    "Problem Solver"
-];
+function initTypingEffect() {
 
-
-let wordIndex = 0;
-
-let charIndex = 0;
-
-let isDeleting = false;
-
-let typingTimer = null;
-
-
-function typeEffect() {
+    const typingText =
+        document.getElementById(
+            "typingText"
+        );
 
     if (!typingText) {
         return;
     }
 
 
-    const currentWord =
-        words[wordIndex];
+    const roles = [
+
+        "Mechanical Engineer",
+
+        "Web Developer",
+
+        "CAD Designer",
+
+        "Frontend Developer",
+
+        "Engineering Professional"
+
+    ];
 
 
-    if (!isDeleting) {
+    let roleIndex = 0;
 
-        charIndex++;
+    let charIndex = 0;
 
-        typingText.textContent =
-            currentWord.substring(
-                0,
-                charIndex
-            );
-
-    } else {
-
-        charIndex--;
-
-        typingText.textContent =
-            currentWord.substring(
-                0,
-                charIndex
-            );
-
-    }
+    let deleting = false;
 
 
-    let speed =
-        isDeleting
-            ? 55
-            : 90;
+    function type() {
+
+        const currentRole =
+            roles[roleIndex];
 
 
-    /* Word completed */
+        if (!deleting) {
 
-    if (
-        !isDeleting &&
-        charIndex >= currentWord.length
-    ) {
-
-        speed = 1800;
-
-        isDeleting = true;
-
-    }
+            typingText.textContent =
+                currentRole.substring(
+                    0,
+                    charIndex + 1
+                );
 
 
-    /* Word deleted */
-
-    if (
-        isDeleting &&
-        charIndex <= 0
-    ) {
-
-        isDeleting = false;
-
-        wordIndex =
-            (wordIndex + 1) %
-            words.length;
-
-        speed = 400;
-
-    }
+            charIndex++;
 
 
-    typingTimer =
+            if (
+                charIndex >=
+                currentRole.length
+            ) {
+
+                deleting = true;
+
+                setTimeout(
+                    type,
+                    1400
+                );
+
+                return;
+
+            }
+
+        } else {
+
+            typingText.textContent =
+                currentRole.substring(
+                    0,
+                    charIndex - 1
+                );
+
+
+            charIndex--;
+
+
+            if (charIndex <= 0) {
+
+                charIndex = 0;
+
+                deleting = false;
+
+                roleIndex =
+                    (roleIndex + 1)
+                    % roles.length;
+
+            }
+
+        }
+
+
         setTimeout(
-            typeEffect,
-            speed
+            type,
+            deleting ? 45 : 80
         );
 
+    }
+
+
+    type();
+
 }
 
 
-/* Start typing */
+/* =========================================================
+   PROFILE PHOTO
+========================================================= */
 
-if (typingText) {
+function initProfileUpload() {
 
-    if (prefersReducedMotion) {
+    const profileUpload =
+        document.getElementById(
+            "profileUpload"
+        );
 
-        typingText.textContent =
-            words[0];
+    const profileImage =
+        document.getElementById(
+            "profileImage"
+        );
 
-    } else {
 
-        typingText.textContent = "";
+    if (
+        !profileUpload ||
+        !profileImage
+    ) {
 
-        typeEffect();
+        return;
 
     }
 
-}
+
+    const savedPhoto =
+        localStorage.getItem(
+            "profile-photo"
+        );
 
 
-/* =====================================================
-   SCROLL REVEAL
-===================================================== */
+    if (savedPhoto) {
 
-function activateRevealElements() {
+        profileImage.src =
+            savedPhoto;
 
-    revealElements.forEach(
-        element => {
+    }
 
-            element.classList.add(
-                "active"
-            );
+
+    profileUpload.addEventListener(
+        "change",
+        event => {
+
+            const file =
+                event.target.files[0];
+
+
+            if (!file) {
+                return;
+            }
+
+
+            const validTypes = [
+                "image/jpeg",
+                "image/png",
+                "image/webp"
+            ];
+
+
+            if (
+                !validTypes.includes(
+                    file.type
+                )
+            ) {
+
+                alert(
+                    "Please select a JPG, PNG or WEBP image."
+                );
+
+                event.target.value = "";
+
+                return;
+
+            }
+
+
+            const maxSize =
+                5 * 1024 * 1024;
+
+
+            if (file.size > maxSize) {
+
+                alert(
+                    "Please select an image smaller than 5MB."
+                );
+
+                event.target.value = "";
+
+                return;
+
+            }
+
+
+            const reader =
+                new FileReader();
+
+
+            reader.onload = event => {
+
+                const imageData =
+                    event.target.result;
+
+
+                profileImage.src =
+                    imageData;
+
+
+                try {
+
+                    localStorage.setItem(
+                        "profile-photo",
+                        imageData
+                    );
+
+                } catch (error) {
+
+                    console.warn(
+                        "Could not save profile image.",
+                        error
+                    );
+
+                }
+
+            };
+
+
+            reader.readAsDataURL(file);
 
         }
     );
@@ -548,18 +516,47 @@ function activateRevealElements() {
 }
 
 
-if (
-    prefersReducedMotion ||
-    !("IntersectionObserver" in window)
-) {
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
 
-    activateRevealElements();
+function initRevealAnimation() {
 
-} else {
+    const elements =
+        document.querySelectorAll(
+            ".reveal"
+        );
 
-    const revealObserver =
+
+    if (!elements.length) {
+        return;
+    }
+
+
+    if (
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches
+    ) {
+
+        elements.forEach(
+            element => {
+
+                element.classList.add(
+                    "show"
+                );
+
+            }
+        );
+
+        return;
+
+    }
+
+
+    const observer =
         new IntersectionObserver(
-            (entries, observer) => {
+            entries => {
 
                 entries.forEach(
                     entry => {
@@ -569,8 +566,9 @@ if (
                         ) {
 
                             entry.target.classList.add(
-                                "active"
+                                "show"
                             );
+
 
                             observer.unobserve(
                                 entry.target
@@ -586,15 +584,15 @@ if (
                 threshold: 0.12,
 
                 rootMargin:
-                    "0px 0px -50px 0px"
+                    "0px 0px -40px 0px"
             }
         );
 
 
-    revealElements.forEach(
+    elements.forEach(
         element => {
 
-            revealObserver.observe(
+            observer.observe(
                 element
             );
 
@@ -604,11 +602,22 @@ if (
 }
 
 
-/* =====================================================
+/* =========================================================
    ACTIVE NAVIGATION
-===================================================== */
+========================================================= */
 
-function updateActiveNav() {
+function initActiveNavigation() {
+
+    const sections =
+        document.querySelectorAll(
+            "section[id]"
+        );
+
+    const navLinks =
+        document.querySelectorAll(
+            ".nav-link"
+        );
+
 
     if (
         !sections.length ||
@@ -620,317 +629,262 @@ function updateActiveNav() {
     }
 
 
-    const headerHeight =
-        header
-            ? header.offsetHeight
-            : 80;
+    const updateActiveLink = () => {
+
+        const scrollPosition =
+            window.scrollY + 180;
 
 
-    const scrollPosition =
-        window.scrollY +
-        headerHeight +
-        100;
+        let currentSection = "";
 
 
-    let currentSection =
-        sections[0]?.id || "home";
+        sections.forEach(
+            section => {
+
+                const top =
+                    section.offsetTop;
+
+                const height =
+                    section.offsetHeight;
 
 
-    sections.forEach(
-        section => {
+                if (
+                    scrollPosition >= top &&
+                    scrollPosition <
+                        top + height
+                ) {
 
-            const sectionTop =
-                section.offsetTop;
+                    currentSection =
+                        section.id;
 
-
-            if (
-                scrollPosition >=
-                sectionTop
-            ) {
-
-                currentSection =
-                    section.id;
+                }
 
             }
+        );
 
+
+        navLinks.forEach(
+            link => {
+
+                const href =
+                    link.getAttribute(
+                        "href"
+                    );
+
+
+                link.classList.toggle(
+                    "active",
+                    href ===
+                    `#${currentSection}`
+                );
+
+            }
+        );
+
+    };
+
+
+    window.addEventListener(
+        "scroll",
+        updateActiveLink,
+        {
+            passive: true
         }
     );
 
 
-    navLinks.forEach(
-        link => {
-
-            const href =
-                link.getAttribute(
-                    "href"
-                );
-
-
-            const isActive =
-                href ===
-                `#${currentSection}`;
-
-
-            link.classList.toggle(
-                "active",
-                isActive
-            );
-
-
-            if (isActive) {
-
-                link.setAttribute(
-                    "aria-current",
-                    "page"
-                );
-
-            } else {
-
-                link.removeAttribute(
-                    "aria-current"
-                );
-
-            }
-
-        }
-    );
+    updateActiveLink();
 
 }
 
 
-window.addEventListener(
-    "scroll",
-    updateActiveNav,
-    {
-        passive: true
-    }
-);
-
-
-/* =====================================================
+/* =========================================================
    BACK TO TOP
-===================================================== */
+========================================================= */
 
-function updateBackToTop() {
+function initBackToTop() {
+
+    const backToTop =
+        document.getElementById(
+            "backToTop"
+        );
+
 
     if (!backToTop) {
         return;
     }
 
 
-    if (window.scrollY > 500) {
+    const updateButton =
+        () => {
 
-        backToTop.classList.add(
-            "show"
-        );
+            backToTop.classList.toggle(
+                "show",
+                window.scrollY > 500
+            );
 
-    } else {
-
-        backToTop.classList.remove(
-            "show"
-        );
-
-    }
-
-}
+        };
 
 
-window.addEventListener(
-    "scroll",
-    updateBackToTop,
-    {
-        passive: true
-    }
-);
+    window.addEventListener(
+        "scroll",
+        updateButton,
+        {
+            passive: true
+        }
+    );
 
-
-if (backToTop) {
 
     backToTop.addEventListener(
         "click",
         () => {
 
             window.scrollTo({
-
                 top: 0,
-
-                behavior:
-                    prefersReducedMotion
-                        ? "auto"
-                        : "smooth"
-
+                behavior: "smooth"
             });
 
         }
     );
 
+
+    updateButton();
+
 }
 
 
-/* =====================================================
-   SMOOTH SCROLL
-===================================================== */
+/* =========================================================
+   HEADER SCROLL EFFECT
+========================================================= */
 
-document
-    .querySelectorAll(
-        'a[href^="#"]'
-    )
-    .forEach(
-        link => {
+function initHeaderScroll() {
 
-            link.addEventListener(
-                "click",
-                event => {
-
-                    const targetId =
-                        link.getAttribute(
-                            "href"
-                        );
+    const header =
+        document.querySelector(
+            ".header"
+        );
 
 
-                    /*
-                       Ignore empty # links.
-                    */
-
-                    if (
-                        !targetId ||
-                        targetId === "#"
-                    ) {
-
-                        return;
-
-                    }
-
-
-                    let target = null;
-
-                    try {
-
-                        target =
-                            document.querySelector(
-                                targetId
-                            );
-
-                    } catch (error) {
-
-                        return;
-
-                    }
-
-
-                    if (!target) {
-                        return;
-                    }
-
-
-                    event.preventDefault();
-
-
-                    closeMobileMenu();
-
-
-                    const headerHeight =
-                        header
-                            ? header.offsetHeight
-                            : 0;
-
-
-                    const targetPosition =
-                        target.getBoundingClientRect()
-                            .top +
-                        window.scrollY -
-                        headerHeight;
-
-
-                    window.scrollTo({
-
-                        top:
-                            Math.max(
-                                0,
-                                targetPosition
-                            ),
-
-                        behavior:
-                            prefersReducedMotion
-                                ? "auto"
-                                : "smooth"
-
-                    });
-
-
-                    /*
-                       Update URL without
-                       forcing browser jump.
-                    */
-
-                    if (
-                        history.pushState
-                    ) {
-
-                        try {
-
-                            history.pushState(
-                                null,
-                                "",
-                                targetId
-                            );
-
-                        } catch (error) {
-
-                            /* Ignore */
-
-                        }
-
-                    }
-
-                }
-            );
-
-        }
-    );
-
-
-/* =====================================================
-   CONTACT FORM
-===================================================== */
-
-function showFormMessage(
-    message,
-    color
-) {
-
-    if (!formMessage) {
+    if (!header) {
         return;
     }
 
 
-    formMessage.textContent =
-        message;
+    const updateHeader =
+        () => {
+
+            header.classList.toggle(
+                "scrolled",
+                window.scrollY > 20
+            );
+
+        };
 
 
-    formMessage.style.color =
-        color;
+    window.addEventListener(
+        "scroll",
+        updateHeader,
+        {
+            passive: true
+        }
+    );
 
 
-    if (message) {
-
-        formMessage.setAttribute(
-            "role",
-            "status"
-        );
-
-    } else {
-
-        formMessage.removeAttribute(
-            "role"
-        );
-
-    }
+    updateHeader();
 
 }
 
 
-if (contactForm) {
+/* =========================================================
+   SCROLL PROGRESS
+========================================================= */
+
+function initScrollProgress() {
+
+    const progress =
+        document.createElement(
+            "div"
+        );
+
+
+    progress.className =
+        "scroll-progress";
+
+
+    document.body.prepend(
+        progress
+    );
+
+
+    const updateProgress =
+        () => {
+
+            const scrollTop =
+                window.scrollY;
+
+
+            const documentHeight =
+                document.documentElement
+                    .scrollHeight -
+                window.innerHeight;
+
+
+            const percentage =
+                documentHeight > 0
+                    ? (
+                        scrollTop /
+                        documentHeight
+                    ) * 100
+                    : 0;
+
+
+            progress.style.width =
+                `${percentage}%`;
+
+        };
+
+
+    window.addEventListener(
+        "scroll",
+        updateProgress,
+        {
+            passive: true
+        }
+    );
+
+
+    window.addEventListener(
+        "resize",
+        updateProgress
+    );
+
+
+    updateProgress();
+
+}
+
+
+/* =========================================================
+   CONTACT FORM
+========================================================= */
+
+function initContactForm() {
+
+    const contactForm =
+        document.getElementById(
+            "contactForm"
+        );
+
+    const formMessage =
+        document.getElementById(
+            "formMessage"
+        );
+
+
+    if (!contactForm) {
+        return;
+    }
+
 
     contactForm.addEventListener(
         "submit",
@@ -939,54 +893,33 @@ if (contactForm) {
             event.preventDefault();
 
 
-            const nameInput =
-                document.getElementById(
-                    "name"
-                );
-
-            const emailInput =
-                document.getElementById(
-                    "email"
-                );
-
-            const subjectInput =
-                document.getElementById(
-                    "subject"
-                );
-
-            const messageInput =
-                document.getElementById(
-                    "message"
-                );
-
-
             const name =
-                nameInput?.value.trim() || "";
+                document
+                    .getElementById("name")
+                    ?.value
+                    .trim();
 
 
             const email =
-                emailInput?.value.trim() || "";
+                document
+                    .getElementById("email")
+                    ?.value
+                    .trim();
 
 
             const subject =
-                subjectInput?.value.trim() || "";
+                document
+                    .getElementById("subject")
+                    ?.value
+                    .trim();
 
 
             const message =
-                messageInput?.value.trim() || "";
+                document
+                    .getElementById("message")
+                    ?.value
+                    .trim();
 
-
-            /* Clear previous message */
-
-            showFormMessage(
-                "",
-                ""
-            );
-
-
-            /* =================================================
-               REQUIRED FIELD VALIDATION
-            ================================================= */
 
             if (
                 !name ||
@@ -996,41 +929,18 @@ if (contactForm) {
             ) {
 
                 showFormMessage(
+                    formMessage,
                     "Please fill in all fields.",
-                    "#ef4444"
+                    "error"
                 );
 
                 return;
 
             }
 
-
-            /* =================================================
-               NAME VALIDATION
-            ================================================= */
-
-            if (
-                name.length < 2
-            ) {
-
-                showFormMessage(
-                    "Please enter a valid name.",
-                    "#ef4444"
-                );
-
-                nameInput?.focus();
-
-                return;
-
-            }
-
-
-            /* =================================================
-               EMAIL VALIDATION
-            ================================================= */
 
             const emailPattern =
-                /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
             if (
@@ -1038,105 +948,49 @@ if (contactForm) {
             ) {
 
                 showFormMessage(
+                    formMessage,
                     "Please enter a valid email address.",
-                    "#ef4444"
+                    "error"
                 );
-
-                emailInput?.focus();
 
                 return;
 
             }
 
 
-            /* =================================================
-               SUBJECT VALIDATION
-            ================================================= */
-
-            if (
-                subject.length < 3
-            ) {
-
-                showFormMessage(
-                    "Please enter a valid subject.",
-                    "#ef4444"
-                );
-
-                subjectInput?.focus();
-
-                return;
-
-            }
-
-
-            /* =================================================
-               MESSAGE VALIDATION
-            ================================================= */
-
-            if (
-                message.length < 10
-            ) {
-
-                showFormMessage(
-                    "Please write a message of at least 10 characters.",
-                    "#ef4444"
-                );
-
-                messageInput?.focus();
-
-                return;
-
-            }
-
-
-            /* =================================================
-               EMAIL CLIENT
-            ================================================= */
-
-            const mailtoSubject =
+            const mailSubject =
                 encodeURIComponent(
                     subject
                 );
 
 
-            const mailtoBody =
+            const mailBody =
                 encodeURIComponent(
-`Hello Abhijeet,
 
-Name: ${name}
-Email: ${email}
+                    `Name: ${name}\n` +
+                    `Email: ${email}\n\n` +
+                    `Message:\n${message}`
 
-Message:
-${message}
-
-Regards,
-${name}`
                 );
 
 
-            const mailtoLink =
-                `mailto:abhijeettiwari955@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
-
-
             showFormMessage(
+                formMessage,
                 "Opening your email application...",
-                "#22c55e"
+                "success"
             );
 
-
-            /*
-               Small delay so the success
-               message can be seen.
-            */
 
             setTimeout(
                 () => {
 
                     window.location.href =
-                        mailtoLink;
+                        "mailto:abhijeettiwari955@gmail.com" +
+                        `?subject=${mailSubject}` +
+                        `&body=${mailBody}`;
 
                 },
-                400
+                300
             );
 
         }
@@ -1145,211 +999,80 @@ ${name}`
 }
 
 
-/* =====================================================
-   FORM INPUT - CLEAR MESSAGE
-===================================================== */
+/* =========================================================
+   FORM MESSAGE
+========================================================= */
 
-if (
-    contactForm &&
-    formMessage
+function showFormMessage(
+    element,
+    message,
+    type = "success"
 ) {
 
-    contactForm
-        .querySelectorAll(
-            "input, textarea"
-        )
-        .forEach(
-            input => {
-
-                input.addEventListener(
-                    "input",
-                    () => {
-
-                        formMessage.textContent = "";
-
-                    }
-                );
-
-            }
-        );
-
-}
-
-
-/* =====================================================
-   HEADER SCROLL EFFECT
-===================================================== */
-
-function updateHeader() {
-
-    if (!header) {
+    if (!element) {
         return;
     }
 
 
-    if (window.scrollY > 20) {
+    element.textContent =
+        message;
 
-        header.classList.add(
-            "scrolled"
-        );
 
-    } else {
-
-        header.classList.remove(
-            "scrolled"
-        );
-
-    }
+    element.style.color =
+        type === "error"
+            ? "#ef4444"
+            : "#10b981";
 
 }
 
 
-window.addEventListener(
-    "scroll",
-    updateHeader,
-    {
-        passive: true
-    }
-);
-
-
-/* =====================================================
-   KEYBOARD ACCESSIBILITY
-===================================================== */
+/* =========================================================
+   ESCAPE KEY
+========================================================= */
 
 document.addEventListener(
     "keydown",
     event => {
 
-        /*
-           Escape = close mobile menu
-        */
+        if (event.key !== "Escape") {
+            return;
+        }
+
+
+        const navMenu =
+            document.getElementById(
+                "navMenu"
+            );
+
+        const menuToggle =
+            document.getElementById(
+                "menuToggle"
+            );
+
 
         if (
-            event.key === "Escape" &&
-            navMenu?.classList.contains(
-                "active"
+            navMenu &&
+            navMenu.classList.contains(
+                "open"
             )
         ) {
 
-            closeMobileMenu();
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   SYSTEM THEME CHANGE
-===================================================== */
-
-if (
-    window.matchMedia
-) {
-
-    const systemTheme =
-        window.matchMedia(
-            "(prefers-color-scheme: dark)"
-        );
-
-
-    systemTheme.addEventListener?.(
-        "change",
-        event => {
-
-            /*
-               Only follow system theme
-               when user has not manually
-               selected a theme.
-            */
-
-            let manualTheme = null;
-
-            try {
-
-                manualTheme =
-                    localStorage.getItem(
-                        "portfolio-theme"
-                    );
-
-            } catch (error) {
-
-                manualTheme = null;
-
-            }
-
-
-            if (manualTheme) {
-                return;
-            }
-
-
-            body.classList.toggle(
-                "dark",
-                event.matches
+            navMenu.classList.remove(
+                "open"
             );
 
 
-            updateThemeIcon();
+            if (menuToggle) {
 
-        }
-    );
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
 
-}
+                menuToggle.innerHTML =
+                    '<i class="fas fa-bars"></i>';
 
-
-/* =====================================================
-   INITIAL PAGE SETUP
-===================================================== */
-
-function initializePage() {
-
-    updateThemeIcon();
-
-    updateActiveNav();
-
-    updateBackToTop();
-
-    updateHeader();
-
-}
-
-
-/* Run initialization */
-
-if (
-    document.readyState ===
-    "loading"
-) {
-
-    document.addEventListener(
-        "DOMContentLoaded",
-        initializePage
-    );
-
-} else {
-
-    initializePage();
-
-}
-
-
-/* =====================================================
-   CLEANUP
-===================================================== */
-
-window.addEventListener(
-    "beforeunload",
-    () => {
-
-        if (typingTimer) {
-
-            clearTimeout(
-                typingTimer
-            );
-
-            typingTimer = null;
+            }
 
         }
 
