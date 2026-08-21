@@ -26,18 +26,8 @@
     >
 
     <meta
-        name="keywords"
-        content="Abhijeet Tiwari, Mechanical Engineer, Web Developer, AutoCAD, SolidWorks, CAD Designer, React Developer, Frontend Developer"
-    >
-
-    <meta
         name="robots"
         content="index, follow"
-    >
-
-    <link
-        rel="canonical"
-        href="https://codewithabhi008.github.io/portfolio_abhi/"
     >
 
     <title>
@@ -81,6 +71,14 @@
     >
 
 
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+
     <!-- OPEN GRAPH -->
 
     <meta
@@ -109,50 +107,6 @@
     >
 
 
-    <!-- STRUCTURED DATA -->
-
-    <script type="application/ld+json">
-
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Abhijeet Tiwari",
-        "url": "https://codewithabhi008.github.io/portfolio_abhi/",
-        "image": "https://codewithabhi008.github.io/portfolio_abhi/assets/profile.jpg",
-        "jobTitle": "Mechanical Engineer & Web Developer",
-        "email": "abhijeettiwari955@gmail.com",
-        "knowsAbout": [
-            "Mechanical Engineering",
-            "AutoCAD",
-            "SolidWorks",
-            "Bill of Materials",
-            "Prowess ERP",
-            "Technical Drawing",
-            "HTML",
-            "CSS",
-            "JavaScript",
-            "React",
-            "Git",
-            "GitHub"
-        ],
-        "sameAs": [
-            "https://github.com/codewithabhi008",
-            "https://www.linkedin.com/in/abhijeet-tiwari-609981222",
-            "https://www.instagram.com/imabhii_26",
-            "https://x.com/Abhijeet260820"
-        ]
-    }
-
-    </script>
-
-
-    <!-- CSS -->
-
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
-
 </head>
 
 
@@ -160,45 +114,20 @@
 
 
 <!-- =========================
-     PAGE LOADER
-========================= -->
-
-<div
-    class="page-loader"
-    id="pageLoader"
->
-
-    <div class="loader"></div>
-
-</div>
-
-
-<!-- =========================
      HEADER
 ========================= -->
 
-<header
-    class="header"
-    id="header"
->
+<header class="header">
 
     <nav class="navbar container">
-
-
-        <!-- LOGO -->
 
         <a
             href="#home"
             class="logo"
-            aria-label="Abhijeet Tiwari Home"
         >
-
             <span>&lt;</span>AT<span>/&gt;</span>
-
         </a>
 
-
-        <!-- NAVIGATION -->
 
         <ul
             class="nav-menu"
@@ -253,30 +182,23 @@
         </ul>
 
 
-        <!-- ACTIONS -->
-
         <div class="nav-actions">
 
             <button
                 class="icon-btn"
                 id="themeToggle"
-                type="button"
                 aria-label="Toggle dark mode"
             >
                 <i class="fas fa-moon"></i>
             </button>
 
-
             <button
                 class="menu-btn"
                 id="menuToggle"
-                type="button"
-                aria-label="Open navigation menu"
+                aria-label="Open navigation"
                 aria-expanded="false"
             >
-
                 <i class="fas fa-bars"></i>
-
             </button>
 
         </div>
@@ -284,6 +206,7 @@
     </nav>
 
 </header>
+
 
 
 <!-- =========================
@@ -298,37 +221,34 @@
 ========================= -->
 
 <section
-    class="hero"
     id="home"
+    class="hero"
 >
 
-    <div class="hero-grid container">
+    <div class="hero-bg"></div>
+
+    <div class="container hero-content">
 
 
-        <!-- HERO CONTENT -->
+        <div class="hero-text reveal">
 
-        <div class="hero-content reveal">
-
-
-            <div class="availability">
+            <div class="availability-badge">
 
                 <span class="status-dot"></span>
 
-                Available for opportunities
+                Available for Opportunities
 
             </div>
 
 
-            <p class="hero-intro">
+            <p class="hello">
                 Hello, I'm
             </p>
 
 
             <h1>
-
                 Abhijeet
                 <span>Tiwari</span>
-
             </h1>
 
 
@@ -336,25 +256,24 @@
 
                 Mechanical Engineer
 
-                <span>&amp;</span>
-
-                <strong id="typingText">
-                    Web Developer
-                </strong>
+                <span class="typing-wrapper">
+                    &
+                    <span id="typingText">
+                        Web Developer
+                    </span>
+                </span>
 
             </h2>
 
 
             <p class="hero-description">
 
-                I combine mechanical engineering knowledge
-                with modern web development to build
-                practical, efficient and user-focused solutions.
+                I combine mechanical engineering knowledge with
+                modern web development to create practical,
+                efficient and user-friendly solutions.
 
             </p>
 
-
-            <!-- BUTTONS -->
 
             <div class="hero-buttons">
 
@@ -362,11 +281,8 @@
                     href="#projects"
                     class="btn primary-btn"
                 >
-
-                    View Projects
-
+                    View My Work
                     <i class="fas fa-arrow-right"></i>
-
                 </a>
 
 
@@ -375,71 +291,66 @@
                     class="btn secondary-btn"
                     download
                 >
-
                     Download CV
-
                     <i class="fas fa-download"></i>
-
                 </a>
 
             </div>
 
 
-            <!-- SOCIAL -->
+            <div class="social-links">
 
-            <div class="hero-social">
-
-                <span>
-                    Follow me
-                </span>
-
-
-                <div class="social-links">
-
-                    <a
-                        href="https://github.com/codewithabhi008"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="GitHub"
-                    >
-                        <i class="fab fa-github"></i>
-                    </a>
+                <a
+                    href="https://github.com/codewithabhi008"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                >
+                    <i class="fab fa-github"></i>
+                </a>
 
 
-                    <a
-                        href="https://www.linkedin.com/in/abhijeet-tiwari-609981222"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="LinkedIn"
-                    >
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
+                <a
+                    href="https://www.linkedin.com/in/abhijeet-tiwari-609981222"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                >
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
 
 
-                    <a
-                        href="https://www.instagram.com/imabhii_26"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Instagram"
-                    >
-                        <i class="fab fa-instagram"></i>
-                    </a>
+                <a
+                    href="https://www.instagram.com/imabhii_26"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                >
+                    <i class="fab fa-instagram"></i>
+                </a>
 
 
-                    <a
-                        href="https://x.com/Abhijeet260820"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="X"
-                    >
-                        <i class="fab fa-x-twitter"></i>
-                    </a>
+                <a
+                    href="https://x.com/Abhijeet260820"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="X"
+                >
+                    <i class="fab fa-x-twitter"></i>
+                </a>
 
-                </div>
+
+                <a
+                    href="mailto:abhijeettiwari955@gmail.com"
+                    aria-label="Email"
+                >
+                    <i class="fas fa-envelope"></i>
+                </a>
 
             </div>
 
         </div>
+
 
 
         <!-- HERO IMAGE -->
@@ -447,72 +358,91 @@
         <div class="hero-visual reveal">
 
 
-            <div class="hero-orbit orbit-one"></div>
+            <div class="orbit orbit-one"></div>
 
-            <div class="hero-orbit orbit-two"></div>
+            <div class="orbit orbit-two"></div>
 
 
             <div class="profile-wrapper">
 
-
                 <div class="profile-glow"></div>
 
-
                 <img
+                    id="profileImage"
                     src="assets/profile.jpg"
                     alt="Abhijeet Tiwari"
-                    class="profile-image"
-                    width="420"
-                    height="420"
                 >
 
-
-                <div class="profile-badge badge-top">
-
-                    <i class="fas fa-code"></i>
-
-                    <span>
-                        Web Developer
-                    </span>
-
-                </div>
+            </div>
 
 
-                <div class="profile-badge badge-bottom">
+            <div class="floating-card card-one">
 
-                    <i class="fas fa-gears"></i>
+                <i class="fas fa-gears"></i>
 
-                    <span>
-                        Mechanical Engineer
-                    </span>
-
+                <div>
+                    <strong>Mechanical</strong>
+                    <small>Engineering</small>
                 </div>
 
             </div>
 
+
+            <div class="floating-card card-two">
+
+                <i class="fas fa-code"></i>
+
+                <div>
+                    <strong>Web</strong>
+                    <small>Development</small>
+                </div>
+
+            </div>
+
+
+            <div class="profile-upload">
+
+                <label
+                    for="profileUpload"
+                    class="upload-btn"
+                >
+
+                    <i class="fas fa-camera"></i>
+
+                    Change Photo
+
+                </label>
+
+
+                <input
+                    type="file"
+                    id="profileUpload"
+                    accept="image/jpeg,image/png,image/webp"
+                    hidden
+                >
+
+            </div>
 
         </div>
 
     </div>
 
 
-    <!-- SCROLL -->
-
     <a
         href="#about"
         class="scroll-indicator"
-        aria-label="Scroll to About section"
     >
 
         <span>
-            Scroll
+            Scroll to explore
         </span>
 
-        <i class="fas fa-chevron-down"></i>
+        <i class="fas fa-arrow-down"></i>
 
     </a>
 
 </section>
+
 
 
 <!-- =========================
@@ -520,8 +450,8 @@
 ========================= -->
 
 <section
-    class="section"
     id="about"
+    class="section"
 >
 
     <div class="container">
@@ -534,14 +464,16 @@
             </span>
 
             <h2>
-                Engineering meets
-                <span>Technology</span>
+                Engineering
+                <span>meets Technology</span>
             </h2>
 
             <p>
-                A multidisciplinary approach to solving
-                real-world problems.
+                A multidisciplinary professional combining
+                mechanical engineering and web development.
             </p>
+
+            <div class="heading-line"></div>
 
         </div>
 
@@ -549,121 +481,51 @@
         <div class="about-grid">
 
 
-            <!-- ABOUT VISUAL -->
+            <div class="about-code reveal">
 
-            <div class="about-visual reveal">
+                <div class="code-card">
 
-
-                <div class="terminal">
-
-                    <div class="terminal-header">
+                    <div class="code-header">
 
                         <span></span>
                         <span></span>
                         <span></span>
 
                         <small>
-                            portfolio.js
+                            engineer.js
                         </small>
 
                     </div>
 
 
-                    <div class="terminal-body">
+                    <div class="code-body">
 
-                        <p>
-                            <span class="code-purple">
-                                const
-                            </span>
+<pre><code><span class="code-purple">const</span> engineer = {
 
-                            engineer =
-                            <span class="code-yellow">
-                                {
-                            </span>
-                        </p>
+  name:
+    <span class="code-green">"Abhijeet Tiwari"</span>,
 
+  role:
+    <span class="code-green">"Mechanical Engineer"</span>,
 
-                        <p class="indent">
+  developer:
+    <span class="code-blue">true</span>,
 
-                            name:
+  engineering: [
+    <span class="code-green">"AutoCAD"</span>,
+    <span class="code-green">"SolidWorks"</span>,
+    <span class="code-green">"BOM"</span>,
+    <span class="code-green">"Prowess ERP"</span>
+  ],
 
-                            <span class="code-green">
-                                "Abhijeet Tiwari"
-                            </span>,
+  development: [
+    <span class="code-green">"HTML"</span>,
+    <span class="code-green">"CSS"</span>,
+    <span class="code-green">"JavaScript"</span>,
+    <span class="code-green">"React"</span>
+  ]
 
-                        </p>
-
-
-                        <p class="indent">
-
-                            profession:
-
-                            <span class="code-green">
-                                "Mechanical Engineer"
-                            </span>,
-
-                        </p>
-
-
-                        <p class="indent">
-
-                            developer:
-
-                            <span class="code-blue">
-                                true
-                            </span>,
-
-                        </p>
-
-
-                        <p class="indent">
-
-                            skills:
-
-                            <span class="code-green">
-                                ["CAD", "React", "BOM"]
-                            </span>
-
-                        </p>
-
-
-                        <p>
-
-                            <span class="code-yellow">
-                                };
-                            </span>
-
-                        </p>
-
-
-                        <p class="terminal-cursor">
-                            _
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- EXPERIENCE CARD -->
-
-                <div class="stats-card">
-
-                    <div class="stat-icon">
-
-                        <i class="fas fa-layer-group"></i>
-
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            2+
-                        </strong>
-
-                        <span>
-                            Professional Domains
-                        </span>
+};</code></pre>
 
                     </div>
 
@@ -672,10 +534,8 @@
             </div>
 
 
-            <!-- ABOUT TEXT -->
 
             <div class="about-content reveal">
-
 
                 <span class="mini-label">
                     ENGINEER + DEVELOPER
@@ -683,10 +543,8 @@
 
 
                 <h3>
-
                     Building solutions with
-                    <span>precision & creativity.</span>
-
+                    <span>technical thinking.</span>
                 </h3>
 
 
@@ -694,7 +552,7 @@
 
                     I'm Abhijeet Tiwari, a Mechanical Engineer
                     and Web Developer interested in engineering
-                    design, technical documentation and
+                    design, technical documentation, CAD and
                     modern web technologies.
 
                 </p>
@@ -702,107 +560,68 @@
 
                 <p>
 
-                    My mechanical engineering skill set includes
-                    AutoCAD, SolidWorks, BOM preparation,
-                    technical drawings and Prowess ERP.
-
-                    On the development side, I work with
-                    HTML, CSS, JavaScript, React and Git.
+                    My engineering knowledge includes AutoCAD,
+                    SolidWorks, technical drawing, BOM preparation,
+                    manufacturing workflows and Prowess ERP.
 
                 </p>
 
 
-                <div class="about-details">
+                <p>
+
+                    On the development side, I work with HTML,
+                    CSS, JavaScript, React, Git and responsive
+                    web design.
+
+                </p>
 
 
-                    <div class="detail-item">
+                <div class="about-info">
 
-                        <i class="fas fa-user"></i>
-
-                        <div>
-
-                            <span>
-                                Name
-                            </span>
-
-                            <strong>
-                                Abhijeet Tiwari
-                            </strong>
-
-                        </div>
-
+                    <div>
+                        <span>Name</span>
+                        <strong>Abhijeet Tiwari</strong>
                     </div>
 
-
-                    <div class="detail-item">
-
-                        <i class="fas fa-envelope"></i>
-
-                        <div>
-
-                            <span>
-                                Email
-                            </span>
-
-                            <strong>
-                                abhijeettiwari955@gmail.com
-                            </strong>
-
-                        </div>
-
+                    <div>
+                        <span>Profession</span>
+                        <strong>Mechanical Engineer</strong>
                     </div>
 
-
-                    <div class="detail-item">
-
-                        <i class="fas fa-location-dot"></i>
-
-                        <div>
-
-                            <span>
-                                Location
-                            </span>
-
-                            <strong>
-                                India
-                            </strong>
-
-                        </div>
-
+                    <div>
+                        <span>Development</span>
+                        <strong>Web Developer</strong>
                     </div>
 
-
-                    <div class="detail-item">
-
-                        <i class="fas fa-briefcase"></i>
-
-                        <div>
-
-                            <span>
-                                Availability
-                            </span>
-
-                            <strong class="available">
-                                Open to Opportunities
-                            </strong>
-
-                        </div>
-
+                    <div>
+                        <span>Location</span>
+                        <strong>India</strong>
                     </div>
 
+                    <div>
+                        <span>Availability</span>
+                        <strong class="available">
+                            Available
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Focus</span>
+                        <strong>
+                            Engineering + Technology
+                        </strong>
+                    </div>
 
                 </div>
 
 
                 <a
-                    href="#contact"
+                    href="Abhijeet%20Tiwari_CV.pdf"
+                    download
                     class="btn primary-btn"
                 >
-
-                    Let's Connect
-
-                    <i class="fas fa-arrow-right"></i>
-
+                    Download Resume
+                    <i class="fas fa-file-arrow-down"></i>
                 </a>
 
             </div>
@@ -814,13 +633,14 @@
 </section>
 
 
+
 <!-- =========================
      SKILLS
 ========================= -->
 
 <section
-    class="section skills-section"
     id="skills"
+    class="section skills-section"
 >
 
     <div class="container">
@@ -829,255 +649,43 @@
         <div class="section-heading reveal">
 
             <span class="section-label">
-                EXPERTISE
+                MY EXPERTISE
             </span>
 
             <h2>
-                My <span>Skills</span>
+                Professional
+                <span>Skills</span>
             </h2>
 
             <p>
-                Technical skills across engineering and
-                modern web development.
+                Technical skills developed across engineering
+                and modern web development.
             </p>
 
-        </div>
-
-
-        <!-- WEB -->
-
-        <div class="skill-group">
-
-
-            <div class="skill-group-title reveal">
-
-                <div class="title-icon">
-                    <i class="fas fa-code"></i>
-                </div>
-
-                <div>
-
-                    <span>
-                        01
-                    </span>
-
-                    <h3>
-                        Web Development
-                    </h3>
-
-                </div>
-
-            </div>
-
-
-            <div class="skills-grid">
-
-
-                <article class="skill-card reveal">
-
-                    <div class="skill-top">
-
-                        <div class="skill-icon html">
-                            <i class="fab fa-html5"></i>
-                        </div>
-
-                        <span>
-                            95%
-                        </span>
-
-                    </div>
-
-                    <h4>
-                        HTML5
-                    </h4>
-
-                    <p>
-                        Semantic, accessible and structured
-                        web development.
-                    </p>
-
-                    <div class="skill-bar">
-                        <span style="width:95%"></span>
-                    </div>
-
-                </article>
-
-
-                <article class="skill-card reveal">
-
-                    <div class="skill-top">
-
-                        <div class="skill-icon css">
-                            <i class="fab fa-css3-alt"></i>
-                        </div>
-
-                        <span>
-                            90%
-                        </span>
-
-                    </div>
-
-                    <h4>
-                        CSS3
-                    </h4>
-
-                    <p>
-                        Responsive layouts, animations and
-                        modern UI systems.
-                    </p>
-
-                    <div class="skill-bar">
-                        <span style="width:90%"></span>
-                    </div>
-
-                </article>
-
-
-                <article class="skill-card reveal">
-
-                    <div class="skill-top">
-
-                        <div class="skill-icon js">
-                            <i class="fab fa-js"></i>
-                        </div>
-
-                        <span>
-                            85%
-                        </span>
-
-                    </div>
-
-                    <h4>
-                        JavaScript
-                    </h4>
-
-                    <p>
-                        Interactive interfaces and dynamic
-                        web experiences.
-                    </p>
-
-                    <div class="skill-bar">
-                        <span style="width:85%"></span>
-                    </div>
-
-                </article>
-
-
-                <article class="skill-card reveal">
-
-                    <div class="skill-top">
-
-                        <div class="skill-icon react">
-                            <i class="fab fa-react"></i>
-                        </div>
-
-                        <span>
-                            75%
-                        </span>
-
-                    </div>
-
-                    <h4>
-                        React
-                    </h4>
-
-                    <p>
-                        Component-based modern frontend
-                        applications.
-                    </p>
-
-                    <div class="skill-bar">
-                        <span style="width:75%"></span>
-                    </div>
-
-                </article>
-
-
-                <article class="skill-card reveal">
-
-                    <div class="skill-top">
-
-                        <div class="skill-icon git">
-                            <i class="fab fa-git-alt"></i>
-                        </div>
-
-                        <span>
-                            85%
-                        </span>
-
-                    </div>
-
-                    <h4>
-                        Git & GitHub
-                    </h4>
-
-                    <p>
-                        Version control and project
-                        collaboration.
-                    </p>
-
-                    <div class="skill-bar">
-                        <span style="width:85%"></span>
-                    </div>
-
-                </article>
-
-
-                <article class="skill-card reveal">
-
-                    <div class="skill-top">
-
-                        <div class="skill-icon responsive">
-                            <i class="fas fa-mobile-screen-button"></i>
-                        </div>
-
-                        <span>
-                            92%
-                        </span>
-
-                    </div>
-
-                    <h4>
-                        Responsive Design
-                    </h4>
-
-                    <p>
-                        Mobile-first layouts across all
-                        screen sizes.
-                    </p>
-
-                    <div class="skill-bar">
-                        <span style="width:92%"></span>
-                    </div>
-
-                </article>
-
-            </div>
+            <div class="heading-line"></div>
 
         </div>
 
 
-        <!-- MECHANICAL -->
 
-        <div class="skill-group mechanical-group">
+        <!-- ENGINEERING SKILLS -->
 
+        <div class="skill-category">
 
-            <div class="skill-group-title reveal">
+            <div class="category-heading reveal">
 
-                <div class="title-icon mechanical">
+                <div class="category-icon">
                     <i class="fas fa-gears"></i>
                 </div>
 
                 <div>
-
                     <span>
-                        02
+                        TECHNICAL EXPERTISE
                     </span>
 
                     <h3>
                         Mechanical Engineering
                     </h3>
-
                 </div>
 
             </div>
@@ -1094,8 +702,8 @@
                             <i class="fas fa-drafting-compass"></i>
                         </div>
 
-                        <span>
-                            88%
+                        <span class="skill-percent">
+                            90%
                         </span>
 
                     </div>
@@ -1105,15 +713,16 @@
                     </h4>
 
                     <p>
-                        2D drafting, technical drawings and
-                        engineering layouts.
+                        2D drafting, technical drawings,
+                        dimensions and engineering layouts.
                     </p>
 
-                    <div class="skill-bar">
-                        <span style="width:88%"></span>
+                    <div class="progress">
+                        <span style="width:90%"></span>
                     </div>
 
                 </article>
+
 
 
                 <article class="skill-card reveal">
@@ -1124,8 +733,8 @@
                             <i class="fas fa-cube"></i>
                         </div>
 
-                        <span>
-                            85%
+                        <span class="skill-percent">
+                            88%
                         </span>
 
                     </div>
@@ -1135,15 +744,47 @@
                     </h4>
 
                     <p>
-                        3D modelling, parts and mechanical
-                        assemblies.
+                        3D part modeling, assemblies and
+                        mechanical design.
                     </p>
 
-                    <div class="skill-bar">
-                        <span style="width:85%"></span>
+                    <div class="progress">
+                        <span style="width:88%"></span>
                     </div>
 
                 </article>
+
+
+
+                <article class="skill-card reveal">
+
+                    <div class="skill-top">
+
+                        <div class="skill-icon drawing">
+                            <i class="fas fa-ruler-combined"></i>
+                        </div>
+
+                        <span class="skill-percent">
+                            92%
+                        </span>
+
+                    </div>
+
+                    <h4>
+                        Technical Drawing
+                    </h4>
+
+                    <p>
+                        Engineering drawings, dimensions,
+                        specifications and detailing.
+                    </p>
+
+                    <div class="progress">
+                        <span style="width:92%"></span>
+                    </div>
+
+                </article>
+
 
 
                 <article class="skill-card reveal">
@@ -1154,7 +795,7 @@
                             <i class="fas fa-list-check"></i>
                         </div>
 
-                        <span>
+                        <span class="skill-percent">
                             90%
                         </span>
 
@@ -1166,14 +807,15 @@
 
                     <p>
                         Bill of Materials preparation and
-                        documentation.
+                        engineering documentation.
                     </p>
 
-                    <div class="skill-bar">
+                    <div class="progress">
                         <span style="width:90%"></span>
                     </div>
 
                 </article>
+
 
 
                 <article class="skill-card reveal">
@@ -1184,8 +826,8 @@
                             <i class="fas fa-database"></i>
                         </div>
 
-                        <span>
-                            80%
+                        <span class="skill-percent">
+                            82%
                         </span>
 
                     </div>
@@ -1195,45 +837,16 @@
                     </h4>
 
                     <p>
-                        Engineering and production workflow
-                        management.
+                        Material, production and engineering
+                        workflow management.
                     </p>
 
-                    <div class="skill-bar">
-                        <span style="width:80%"></span>
+                    <div class="progress">
+                        <span style="width:82%"></span>
                     </div>
 
                 </article>
 
-
-                <article class="skill-card reveal">
-
-                    <div class="skill-top">
-
-                        <div class="skill-icon drawing">
-                            <i class="fas fa-ruler-combined"></i>
-                        </div>
-
-                        <span>
-                            88%
-                        </span>
-
-                    </div>
-
-                    <h4>
-                        Technical Drawing
-                    </h4>
-
-                    <p>
-                        Dimensions, specifications and
-                        engineering documentation.
-                    </p>
-
-                    <div class="skill-bar">
-                        <span style="width:88%"></span>
-                    </div>
-
-                </article>
 
 
                 <article class="skill-card reveal">
@@ -1244,7 +857,7 @@
                             <i class="fas fa-industry"></i>
                         </div>
 
-                        <span>
+                        <span class="skill-percent">
                             80%
                         </span>
 
@@ -1259,11 +872,412 @@
                         production processes.
                     </p>
 
-                    <div class="skill-bar">
+                    <div class="progress">
                         <span style="width:80%"></span>
                     </div>
 
                 </article>
+
+
+
+                <article class="skill-card reveal">
+
+                    <div class="skill-top">
+
+                        <div class="skill-icon assembly">
+                            <i class="fas fa-screwdriver-wrench"></i>
+                        </div>
+
+                        <span class="skill-percent">
+                            85%
+                        </span>
+
+                    </div>
+
+                    <h4>
+                        3D Modeling & Assembly
+                    </h4>
+
+                    <p>
+                        Mechanical components, assemblies and
+                        design visualization.
+                    </p>
+
+                    <div class="progress">
+                        <span style="width:85%"></span>
+                    </div>
+
+                </article>
+
+
+
+                <article class="skill-card reveal">
+
+                    <div class="skill-top">
+
+                        <div class="skill-icon documentation">
+                            <i class="fas fa-file-lines"></i>
+                        </div>
+
+                        <span class="skill-percent">
+                            88%
+                        </span>
+
+                    </div>
+
+                    <h4>
+                        Engineering Documentation
+                    </h4>
+
+                    <p>
+                        Structured technical documents and
+                        engineering records.
+                    </p>
+
+                    <div class="progress">
+                        <span style="width:88%"></span>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- WEB DEVELOPMENT -->
+
+        <div class="skill-category">
+
+            <div class="category-heading reveal">
+
+                <div class="category-icon web">
+                    <i class="fas fa-code"></i>
+                </div>
+
+                <div>
+                    <span>
+                        DEVELOPMENT EXPERTISE
+                    </span>
+
+                    <h3>
+                        Web Development
+                    </h3>
+                </div>
+
+            </div>
+
+
+            <div class="skills-grid">
+
+
+                <article class="skill-card reveal">
+
+                    <div class="skill-top">
+
+                        <div class="skill-icon html">
+                            <i class="fab fa-html5"></i>
+                        </div>
+
+                        <span class="skill-percent">
+                            95%
+                        </span>
+
+                    </div>
+
+                    <h4>
+                        HTML5
+                    </h4>
+
+                    <p>
+                        Semantic, accessible and well-structured
+                        web development.
+                    </p>
+
+                    <div class="progress">
+                        <span style="width:95%"></span>
+                    </div>
+
+                </article>
+
+
+
+                <article class="skill-card reveal">
+
+                    <div class="skill-top">
+
+                        <div class="skill-icon css">
+                            <i class="fab fa-css3-alt"></i>
+                        </div>
+
+                        <span class="skill-percent">
+                            92%
+                        </span>
+
+                    </div>
+
+                    <h4>
+                        CSS3
+                    </h4>
+
+                    <p>
+                        Responsive layouts, animations and
+                        modern UI design.
+                    </p>
+
+                    <div class="progress">
+                        <span style="width:92%"></span>
+                    </div>
+
+                </article>
+
+
+
+                <article class="skill-card reveal">
+
+                    <div class="skill-top">
+
+                        <div class="skill-icon javascript">
+                            <i class="fab fa-js"></i>
+                        </div>
+
+                        <span class="skill-percent">
+                            88%
+                        </span>
+
+                    </div>
+
+                    <h4>
+                        JavaScript
+                    </h4>
+
+                    <p>
+                        Dynamic interfaces and interactive
+                        web applications.
+                    </p>
+
+                    <div class="progress">
+                        <span style="width:88%"></span>
+                    </div>
+
+                </article>
+
+
+
+                <article class="skill-card reveal">
+
+                    <div class="skill-top">
+
+                        <div class="skill-icon react">
+                            <i class="fab fa-react"></i>
+                        </div>
+
+                        <span class="skill-percent">
+                            82%
+                        </span>
+
+                    </div>
+
+                    <h4>
+                        React.js
+                    </h4>
+
+                    <p>
+                        Component-based modern web
+                        applications.
+                    </p>
+
+                    <div class="progress">
+                        <span style="width:82%"></span>
+                    </div>
+
+                </article>
+
+
+
+                <article class="skill-card reveal">
+
+                    <div class="skill-top">
+
+                        <div class="skill-icon git">
+                            <i class="fab fa-git-alt"></i>
+                        </div>
+
+                        <span class="skill-percent">
+                            85%
+                        </span>
+
+                    </div>
+
+                    <h4>
+                        Git & GitHub
+                    </h4>
+
+                    <p>
+                        Version control and project
+                        collaboration.
+                    </p>
+
+                    <div class="progress">
+                        <span style="width:85%"></span>
+                    </div>
+
+                </article>
+
+
+
+                <article class="skill-card reveal">
+
+                    <div class="skill-top">
+
+                        <div class="skill-icon responsive">
+                            <i class="fas fa-mobile-screen-button"></i>
+                        </div>
+
+                        <span class="skill-percent">
+                            95%
+                        </span>
+
+                    </div>
+
+                    <h4>
+                        Responsive Design
+                    </h4>
+
+                    <p>
+                        Mobile-first layouts optimized for
+                        all screen sizes.
+                    </p>
+
+                    <div class="progress">
+                        <span style="width:95%"></span>
+                    </div>
+
+                </article>
+
+
+
+                <article class="skill-card reveal">
+
+                    <div class="skill-top">
+
+                        <div class="skill-icon api">
+                            <i class="fas fa-plug"></i>
+                        </div>
+
+                        <span class="skill-percent">
+                            75%
+                        </span>
+
+                    </div>
+
+                    <h4>
+                        REST API / JSON
+                    </h4>
+
+                    <p>
+                        Working with APIs and structured
+                        JSON-based data.
+                    </p>
+
+                    <div class="progress">
+                        <span style="width:75%"></span>
+                    </div>
+
+                </article>
+
+
+
+                <article class="skill-card reveal">
+
+                    <div class="skill-top">
+
+                        <div class="skill-icon uiux">
+                            <i class="fas fa-pen-ruler"></i>
+                        </div>
+
+                        <span class="skill-percent">
+                            80%
+                        </span>
+
+                    </div>
+
+                    <h4>
+                        UI/UX Fundamentals
+                    </h4>
+
+                    <p>
+                        Clean interfaces, usability and
+                        user-focused design.
+                    </p>
+
+                    <div class="progress">
+                        <span style="width:80%"></span>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PROFESSIONAL SKILLS -->
+
+        <div class="professional-skills reveal">
+
+            <div class="category-heading center">
+
+                <div class="category-icon professional">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+
+                <div>
+                    <span>
+                        PROFESSIONAL STRENGTHS
+                    </span>
+
+                    <h3>
+                        Soft Skills
+                    </h3>
+                </div>
+
+            </div>
+
+
+            <div class="soft-skills">
+
+                <span>
+                    <i class="fas fa-lightbulb"></i>
+                    Problem Solving
+                </span>
+
+                <span>
+                    <i class="fas fa-file-pen"></i>
+                    Technical Documentation
+                </span>
+
+                <span>
+                    <i class="fas fa-users"></i>
+                    Team Collaboration
+                </span>
+
+                <span>
+                    <i class="fas fa-comments"></i>
+                    Communication
+                </span>
+
+                <span>
+                    <i class="fas fa-diagram-project"></i>
+                    Project Management
+                </span>
+
+                <span>
+                    <i class="fas fa-brain"></i>
+                    Analytical Thinking
+                </span>
 
             </div>
 
@@ -1274,13 +1288,14 @@
 </section>
 
 
+
 <!-- =========================
      PROJECTS
 ========================= -->
 
 <section
-    class="section"
     id="projects"
+    class="section"
 >
 
     <div class="container">
@@ -1289,16 +1304,20 @@
         <div class="section-heading reveal">
 
             <span class="section-label">
-                PORTFOLIO
+                MY WORK
             </span>
 
             <h2>
-                Featured <span>Projects</span>
+                Featured
+                <span>Projects</span>
             </h2>
 
             <p>
-                Selected engineering and development work.
+                Selected engineering and web development
+                projects.
             </p>
+
+            <div class="heading-line"></div>
 
         </div>
 
@@ -1306,31 +1325,14 @@
         <div class="projects-grid">
 
 
-            <!-- PROJECT -->
-
             <article class="project-card reveal">
 
-                <div class="project-image project-one">
-
-                    <div class="project-number">
-                        01
-                    </div>
+                <div class="project-visual project-blue">
 
                     <i class="fas fa-drafting-compass"></i>
 
-                    <div class="project-overlay">
-
-                        <a
-                            href="https://github.com/codewithabhi008"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="View GitHub"
-                        >
-
-                            <i class="fab fa-github"></i>
-
-                        </a>
-
+                    <div class="project-number">
+                        01
                     </div>
 
                 </div>
@@ -1340,17 +1342,9 @@
 
                     <div class="project-tags">
 
-                        <span>
-                            AutoCAD
-                        </span>
-
-                        <span>
-                            CAD
-                        </span>
-
-                        <span>
-                            Mechanical
-                        </span>
+                        <span>AutoCAD</span>
+                        <span>CAD</span>
+                        <span>Engineering</span>
 
                     </div>
 
@@ -1362,7 +1356,7 @@
 
                     <p>
 
-                        Mechanical design work involving
+                        Mechanical design project focused on
                         technical drawings, dimensions and
                         engineering documentation.
 
@@ -1370,13 +1364,15 @@
 
 
                     <a
-                        href="#contact"
+                        href="https://github.com/codewithabhi008"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         class="project-link"
                     >
 
-                        Discuss Project
+                        View GitHub
 
-                        <i class="fas fa-arrow-right"></i>
+                        <i class="fas fa-arrow-up-right-from-square"></i>
 
                     </a>
 
@@ -1385,31 +1381,15 @@
             </article>
 
 
-            <!-- PROJECT -->
 
             <article class="project-card reveal">
 
-                <div class="project-image project-two">
-
-                    <div class="project-number">
-                        02
-                    </div>
+                <div class="project-visual project-cyan">
 
                     <i class="fas fa-cube"></i>
 
-                    <div class="project-overlay">
-
-                        <a
-                            href="https://github.com/codewithabhi008"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="View GitHub"
-                        >
-
-                            <i class="fab fa-github"></i>
-
-                        </a>
-
+                    <div class="project-number">
+                        02
                     </div>
 
                 </div>
@@ -1419,17 +1399,9 @@
 
                     <div class="project-tags">
 
-                        <span>
-                            SolidWorks
-                        </span>
-
-                        <span>
-                            3D
-                        </span>
-
-                        <span>
-                            Assembly
-                        </span>
+                        <span>SolidWorks</span>
+                        <span>3D Modeling</span>
+                        <span>Assembly</span>
 
                     </div>
 
@@ -1441,20 +1413,22 @@
 
                     <p>
 
-                        3D mechanical component modelling
-                        and assembly design using SolidWorks.
+                        3D mechanical component modeling and
+                        assembly design using SolidWorks.
 
                     </p>
 
 
                     <a
-                        href="#contact"
+                        href="https://github.com/codewithabhi008"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         class="project-link"
                     >
 
-                        Discuss Project
+                        View GitHub
 
-                        <i class="fas fa-arrow-right"></i>
+                        <i class="fas fa-arrow-up-right-from-square"></i>
 
                     </a>
 
@@ -1463,31 +1437,15 @@
             </article>
 
 
-            <!-- PROJECT -->
 
             <article class="project-card reveal">
 
-                <div class="project-image project-three">
-
-                    <div class="project-number">
-                        03
-                    </div>
+                <div class="project-visual project-green">
 
                     <i class="fas fa-list-check"></i>
 
-                    <div class="project-overlay">
-
-                        <a
-                            href="https://github.com/codewithabhi008"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="View GitHub"
-                        >
-
-                            <i class="fab fa-github"></i>
-
-                        </a>
-
+                    <div class="project-number">
+                        03
                     </div>
 
                 </div>
@@ -1497,17 +1455,9 @@
 
                     <div class="project-tags">
 
-                        <span>
-                            BOM
-                        </span>
-
-                        <span>
-                            ERP
-                        </span>
-
-                        <span>
-                            Documentation
-                        </span>
+                        <span>BOM</span>
+                        <span>ERP</span>
+                        <span>Documentation</span>
 
                     </div>
 
@@ -1519,7 +1469,7 @@
 
                     <p>
 
-                        Structured Bill of Materials and
+                        Structured BOM preparation and
                         engineering documentation for
                         production workflows.
 
@@ -1542,31 +1492,15 @@
             </article>
 
 
-            <!-- PROJECT -->
 
             <article class="project-card reveal">
 
-                <div class="project-image project-four">
-
-                    <div class="project-number">
-                        04
-                    </div>
+                <div class="project-visual project-orange">
 
                     <i class="fas fa-code"></i>
 
-                    <div class="project-overlay">
-
-                        <a
-                            href="https://github.com/codewithabhi008"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="View GitHub"
-                        >
-
-                            <i class="fab fa-github"></i>
-
-                        </a>
-
+                    <div class="project-number">
+                        04
                     </div>
 
                 </div>
@@ -1576,43 +1510,37 @@
 
                     <div class="project-tags">
 
-                        <span>
-                            HTML
-                        </span>
-
-                        <span>
-                            CSS
-                        </span>
-
-                        <span>
-                            JavaScript
-                        </span>
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
 
                     </div>
 
 
                     <h3>
-                        Responsive Web Portfolio
+                        Responsive Portfolio Website
                     </h3>
 
 
                     <p>
 
-                        Modern responsive portfolio website
-                        combining engineering and web
+                        Modern responsive portfolio combining
+                        professional engineering and web
                         development skills.
 
                     </p>
 
 
                     <a
-                        href="#contact"
+                        href="https://github.com/codewithabhi008"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         class="project-link"
                     >
 
-                        Discuss Project
+                        View GitHub
 
-                        <i class="fas fa-arrow-right"></i>
+                        <i class="fas fa-arrow-up-right-from-square"></i>
 
                     </a>
 
@@ -1627,13 +1555,14 @@
 </section>
 
 
+
 <!-- =========================
      CONTACT
 ========================= -->
 
 <section
-    class="section contact-section"
     id="contact"
+    class="section contact-section"
 >
 
     <div class="container">
@@ -1642,17 +1571,20 @@
         <div class="section-heading reveal">
 
             <span class="section-label">
-                CONTACT
+                GET IN TOUCH
             </span>
 
             <h2>
-                Let's <span>Connect</span>
+                Let's Work
+                <span>Together</span>
             </h2>
 
             <p>
-                Have an opportunity or project in mind?
-                Let's talk.
+                Have an opportunity, project idea or
+                collaboration in mind?
             </p>
+
+            <div class="heading-line"></div>
 
         </div>
 
@@ -1660,27 +1592,17 @@
         <div class="contact-grid">
 
 
-            <!-- CONTACT INFO -->
-
             <div class="contact-info reveal">
 
-
-                <span class="mini-label">
-                    GET IN TOUCH
-                </span>
-
-
                 <h3>
-                    Let's build something
-                    <span>great together.</span>
+                    Let's connect.
                 </h3>
-
 
                 <p>
 
-                    Whether you have an engineering opportunity,
-                    web development requirement or simply want
-                    to connect, feel free to reach out.
+                    Whether it's an engineering opportunity,
+                    web development project or collaboration,
+                    feel free to reach out.
 
                 </p>
 
@@ -1688,10 +1610,7 @@
                 <div class="contact-list">
 
 
-                    <a
-                        href="mailto:abhijeettiwari955@gmail.com"
-                        class="contact-item"
-                    >
+                    <div class="contact-item">
 
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
@@ -1699,17 +1618,16 @@
 
                         <div>
 
-                            <span>
-                                Email
-                            </span>
+                            <span>Email</span>
 
-                            <strong>
+                            <a href="mailto:abhijeettiwari955@gmail.com">
                                 abhijeettiwari955@gmail.com
-                            </strong>
+                            </a>
 
                         </div>
 
-                    </a>
+                    </div>
+
 
 
                     <div class="contact-item">
@@ -1720,17 +1638,16 @@
 
                         <div>
 
-                            <span>
-                                Location
-                            </span>
+                            <span>Location</span>
 
-                            <strong>
+                            <p>
                                 India
-                            </strong>
+                            </p>
 
                         </div>
 
                     </div>
+
 
 
                     <div class="contact-item">
@@ -1741,18 +1658,35 @@
 
                         <div>
 
-                            <span>
-                                Engineering
-                            </span>
+                            <span>Engineering</span>
 
-                            <strong>
-                                AutoCAD · SolidWorks · BOM
-                            </strong>
+                            <p>
+                                AutoCAD · SolidWorks · BOM · ERP
+                            </p>
 
                         </div>
 
                     </div>
 
+
+
+                    <div class="contact-item">
+
+                        <div class="contact-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+
+                        <div>
+
+                            <span>Development</span>
+
+                            <p>
+                                HTML · CSS · JavaScript · React
+                            </p>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -1784,11 +1718,9 @@
                     </a>
 
                     <a
-                        href="https://x.com/Abhijeet260820"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href="mailto:abhijeettiwari955@gmail.com"
                     >
-                        <i class="fab fa-x-twitter"></i>
+                        <i class="fas fa-envelope"></i>
                     </a>
 
                 </div>
@@ -1796,16 +1728,15 @@
             </div>
 
 
-            <!-- FORM -->
+
+            <!-- CONTACT FORM -->
 
             <form
                 class="contact-form reveal"
                 id="contactForm"
             >
 
-
                 <div class="form-row">
-
 
                     <div class="input-group">
 
@@ -1816,9 +1747,7 @@
                         <input
                             type="text"
                             id="name"
-                            name="name"
                             placeholder="Enter your name"
-                            autocomplete="name"
                             required
                         >
 
@@ -1834,9 +1763,7 @@
                         <input
                             type="email"
                             id="email"
-                            name="email"
-                            placeholder="you@example.com"
-                            autocomplete="email"
+                            placeholder="Enter your email"
                             required
                         >
 
@@ -1854,7 +1781,6 @@
                     <input
                         type="text"
                         id="subject"
-                        name="subject"
                         placeholder="How can I help you?"
                         required
                     >
@@ -1870,9 +1796,8 @@
 
                     <textarea
                         id="message"
-                        name="message"
-                        rows="7"
-                        placeholder="Tell me about your project..."
+                        rows="6"
+                        placeholder="Write your message..."
                         required
                     ></textarea>
 
@@ -1907,6 +1832,7 @@
 </main>
 
 
+
 <!-- =========================
      FOOTER
 ========================= -->
@@ -1916,47 +1842,18 @@
     <div class="container footer-main">
 
 
-        <div>
-
-            <a
-                href="#home"
-                class="logo"
-            >
-
-                <span>&lt;</span>AT<span>/&gt;</span>
-
-            </a>
-
-            <p>
-                Mechanical Engineer & Web Developer.
-            </p>
-
-        </div>
+        <a
+            href="#home"
+            class="logo"
+        >
+            <span>&lt;</span>AT<span>/&gt;</span>
+        </a>
 
 
-        <div class="footer-links">
-
-            <a href="#home">
-                Home
-            </a>
-
-            <a href="#about">
-                About
-            </a>
-
-            <a href="#skills">
-                Skills
-            </a>
-
-            <a href="#projects">
-                Projects
-            </a>
-
-            <a href="#contact">
-                Contact
-            </a>
-
-        </div>
+        <p>
+            Designed & Built by
+            <strong>Abhijeet Tiwari</strong>
+        </p>
 
 
         <div class="footer-social">
@@ -1965,7 +1862,6 @@
                 href="https://github.com/codewithabhi008"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="GitHub"
             >
                 <i class="fab fa-github"></i>
             </a>
@@ -1974,14 +1870,20 @@
                 href="https://www.linkedin.com/in/abhijeet-tiwari-609981222"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="LinkedIn"
             >
                 <i class="fab fa-linkedin-in"></i>
             </a>
 
             <a
+                href="https://www.instagram.com/imabhii_26"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <i class="fab fa-instagram"></i>
+            </a>
+
+            <a
                 href="mailto:abhijeettiwari955@gmail.com"
-                aria-label="Email"
             >
                 <i class="fas fa-envelope"></i>
             </a>
@@ -1993,28 +1895,22 @@
 
     <div class="copyright">
 
-        <p>
-
-            ©
-            <span id="year"></span>
-
-            Abhijeet Tiwari.
-
-            All Rights Reserved.
-
-        </p>
+        ©
+        <span id="year"></span>
+        Abhijeet Tiwari.
+        All Rights Reserved.
 
     </div>
 
 </footer>
 
 
+
 <!-- BACK TO TOP -->
 
 <button
-    class="back-to-top"
     id="backToTop"
-    type="button"
+    class="back-to-top"
     aria-label="Back to top"
 >
 
@@ -2023,10 +1919,10 @@
 </button>
 
 
+
 <!-- JAVASCRIPT -->
 
 <script src="script.js"></script>
-
 
 </body>
 
